@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Ľudovka</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-title" id="topbarTitle">Ľudovka</div>
+  <button class="icon-btn" id="backBtn" hidden aria-label="Späť">←</button>
+</header>
+
+<main id="view"></main>
+
+<nav class="bottomnav">
+  <button class="navbtn active" data-tab="songs">
+    <span class="navicon">🎵</span><span>Piesne</span>
+  </button>
+  <button class="navbtn" data-tab="playlists">
+    <span class="navicon">📁</span><span>Playlisty</span>
+  </button>
+  <button class="navbtn" data-tab="admin">
+    <span class="navicon">➕</span><span>Spravovať</span>
+  </button>
+</nav>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="seed-songs.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

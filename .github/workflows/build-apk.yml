@@ -1,0 +1,54 @@
+name: Build Ľudovka APK
+
+# Builds a debug-signed, installable .apk (no Play Store / dev account involved)
+# and publishes it as a downloadable GitHub Release asset every time you push,
+# or whenever you trigger it manually from the Actions tab.
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Install required Android SDK packages
+        run: |
+          yes | sdkmanager --licenses > /dev/null || true
+          sdkmanager --install "platform-tools" "platforms;android-34" "build-tools;34.0.0" > /dev/null
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.4'
+
+      - name: Build debug APK
+        working-directory: android
+        run: gradle assembleDebug --no-daemon --stacktrace
+
+      - name: Collect APK
+        run: |
+          mkdir -p out
+          cp android/app/build/outputs/apk/debug/app-debug.apk out/Ludovka.apk
+
+      - name: Publish as GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: "Ľudovka build #${{ github.run_number }}"
+          files: out/Ludovka.apk
+          body: |
+            Automatically built .apk — download `Ludovka.apk` below and open it on your
+            Android phone (with "install from unknown sources" allowed) to sideload it.
