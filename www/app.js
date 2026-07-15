@@ -22,6 +22,20 @@ function escapeHtml(s){
   });
 }
 var SEARCH_ICON = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto;color:var(--ink-soft);"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
+
+/* Small, consistent line-art icon set (matches the bottom nav style). */
+function iconTag(path, size, sw){
+  return '<svg width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="'+(sw||1.8)+'" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-'+Math.round(size*0.2)+'px;">'+path+'</svg>';
+}
+function iconMusic(size){ return iconTag('<path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/>', size); }
+function iconFolder(size){ return iconTag('<path d="M3 6h6l2 2.5h10a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"/>', size); }
+function iconEdit(size){ return iconTag('<path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/>', size); }
+function iconPlus(size){ return iconTag('<line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>', size); }
+function iconUpload(size){ return iconTag('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v12"/>', size); }
+function iconDownload(size){ return iconTag('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/>', size); }
+function iconFile(size){ return iconTag('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/>', size); }
+function iconSearchBig(size){ return iconTag('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>', size); }
+function iconLock(size){ return iconTag('<rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>', size); }
 function uid(prefix){
   return prefix + '_' + Date.now().toString(36) + Math.random().toString(36).slice(2,8);
 }
@@ -219,8 +233,25 @@ var App = {
   tags: [],
   tab: 'songs',
   stack: [{name:'songs-root'}],
-  searchQuery: ''
+  searchQuery: '',
+  adminUnlocked: false
 };
+
+// Gates access to Spravovať / song editing. Unlocks only for the current app
+// session (in memory only) — closing or reloading the app locks it again.
+var ADMIN_PASSWORD = 'tookoolforskool';
+function ensureAdminUnlocked(){
+  if (App.adminUnlocked) return Promise.resolve(true);
+  return passwordDialog().then(function(pw){
+    if (pw === null) return false;
+    if (pw === ADMIN_PASSWORD){
+      App.adminUnlocked = true;
+      return true;
+    }
+    toast('Nesprávne heslo.');
+    return false;
+  });
+}
 
 function reloadData(){
   return Promise.all([Store.allSongs(), Store.allPlaylists(), Store.allTags()]).then(function(r){
@@ -296,9 +327,9 @@ function renderSongsRoot(){
   html += '</div>';
 
   if (App.songs.length === 0){
-    html += '<div class="empty-state"><span class="big">🎻</span>Zatiaľ tu nie sú žiadne piesne.<br>Pridaj ich v sekcii „Spravovať“.</div>';
+    html += '<div class="empty-state"><span class="big">'+iconMusic(40)+'</span>Zatiaľ tu nie sú žiadne piesne.<br>Pridaj ich v sekcii „Spravovať“.</div>';
   } else if (results.length === 0){
-    html += '<div class="empty-state"><span class="big">🔎</span>Nič sa nenašlo pre „'+escapeHtml(q)+'“.</div>';
+    html += '<div class="empty-state"><span class="big">'+iconSearchBig(40)+'</span>Nič sa nenašlo pre „'+escapeHtml(q)+'“.</div>';
   } else {
     html += '<div class="section-title">'+(q ? results.length+' výsledkov' : 'Všetky piesne ('+results.length+')')+'</div>';
     results.forEach(function(s){
@@ -337,19 +368,21 @@ function renderSongDetail(top){
     html += '<div class="chip-row" style="margin-bottom:14px;">'+songTagNames.map(function(n){return '<span class="chip">'+escapeHtml(n)+'</span>';}).join('')+'</div>';
   }
   html += '<div class="btn-row">';
-  html += '<button class="btn btn-primary" id="addToPlaylistBtn">📁 Pridať do playlistu</button>';
+  html += '<button class="btn btn-primary" id="addToPlaylistBtn">'+iconFolder(16)+' Pridať do playlistu</button>';
   html += '</div>';
   if (inPlaylists.length){
     html += '<div class="chip-row" style="margin-top:10px;">'+inPlaylists.map(function(p){return '<span class="chip">'+escapeHtml(p.name)+'</span>';}).join('')+'</div>';
   }
   html += '<div class="detail-lyrics">'+escapeHtml(s.lyrics)+'</div>';
   html += '<div class="btn-row">';
-  html += '<button class="btn btn-secondary btn-block" id="editSongBtn">✏️ Upraviť pieseň</button>';
+  html += '<button class="btn btn-secondary btn-block" id="editSongBtn">'+iconEdit(16)+' Upraviť pieseň</button>';
   html += '</div>';
   view.innerHTML = html;
 
   document.getElementById('addToPlaylistBtn').onclick = function(){ openPlaylistPicker(s.id); };
-  document.getElementById('editSongBtn').onclick = function(){ push({name:'song-form', id: s.id}); };
+  document.getElementById('editSongBtn').onclick = function(){
+    ensureAdminUnlocked().then(function(ok){ if (ok) push({name:'song-form', id: s.id}); });
+  };
 }
 
 /* ---- Song add/edit form ---- */
@@ -452,11 +485,11 @@ function renderPlaylistsRoot(){
   topbarTitle.textContent = 'Playlisty';
   var html = '';
   if (App.playlists.length === 0){
-    html += '<div class="empty-state"><span class="big">📁</span>Zatiaľ nemáš žiadne playlisty.<br>Vytvor si prvý tlačidlom „+“.</div>';
+    html += '<div class="empty-state"><span class="big">'+iconFolder(40)+'</span>Zatiaľ nemáš žiadne playlisty.<br>Vytvor si prvý tlačidlom „+“.</div>';
   } else {
     App.playlists.forEach(function(p){
       html += '<div class="playlist-card" data-open-playlist="'+p.id+'">';
-      html += '<div class="playlist-icon">📁</div><div class="meta" style="flex:1;">';
+      html += '<div class="playlist-icon">'+iconFolder(21)+'</div><div class="meta" style="flex:1;">';
       html += '<div class="playlist-name">'+escapeHtml(p.name)+'</div>';
       html += '<div class="playlist-count">'+p.songIds.length+' '+(p.songIds.length===1?'pieseň':(p.songIds.length>=2&&p.songIds.length<=4?'piesne':'piesní'))+'</div>';
       html += '</div><div class="chev">›</div></div>';
@@ -479,12 +512,12 @@ function renderPlaylistDetail(top){
   html += '<div class="detail-header"><div class="detail-title">'+escapeHtml(p.name)+'</div>';
   html += '<div class="detail-category">'+songs.length+' '+(songs.length===1?'pieseň':(songs.length>=2&&songs.length<=4?'piesne':'piesní'))+'</div></div>';
   html += '<div class="btn-row">';
-  html += '<button class="btn btn-primary" id="addSongsBtn">➕ Pridať piesne</button>';
-  html += '<button class="btn btn-secondary" id="renameBtn">✏️ Premenovať</button>';
+  html += '<button class="btn btn-primary" id="addSongsBtn">'+iconPlus(16)+' Pridať piesne</button>';
+  html += '<button class="btn btn-secondary" id="renameBtn">'+iconEdit(16)+' Premenovať</button>';
   html += '</div>';
 
   if (songs.length === 0){
-    html += '<div class="empty-state"><span class="big">🎵</span>Tento playlist je zatiaľ prázdny.</div>';
+    html += '<div class="empty-state"><span class="big">'+iconMusic(40)+'</span>Tento playlist je zatiaľ prázdny.</div>';
   } else {
     html += '<div class="section-title">Piesne v playliste</div>';
     songs.forEach(function(s){
@@ -623,12 +656,12 @@ function renderAdminRoot(){
   topbarTitle.textContent = 'Spravovať';
   var html = '';
   html += '<div class="section-title">Pridávanie piesní</div>';
-  html += '<button class="btn btn-secondary btn-block" id="addSongBtn">➕ Pridať jednu pieseň</button>';
-  html += '<button class="btn btn-secondary btn-block" id="importBtn" style="margin-top:10px;">📥 Hromadný import (CSV / Excel)</button>';
+  html += '<button class="btn btn-secondary btn-block" id="addSongBtn">'+iconPlus(16)+' Pridať jednu pieseň</button>';
+  html += '<button class="btn btn-secondary btn-block" id="importBtn" style="margin-top:10px;">'+iconUpload(16)+' Hromadný import (CSV / Excel)</button>';
   html += '<input type="file" id="csvFile" accept=".csv,text/csv" hidden>';
   html += '<div class="btn-row">';
-  html += '<button class="btn btn-secondary" id="templateBtn" style="flex:1;">📄 Stiahnuť šablónu</button>';
-  html += '<button class="btn btn-secondary" id="exportBtn" style="flex:1;">💾 Exportovať všetko</button>';
+  html += '<button class="btn btn-secondary" id="templateBtn" style="flex:1;">'+iconFile(16)+' Stiahnuť šablónu</button>';
+  html += '<button class="btn btn-secondary" id="exportBtn" style="flex:1;">'+iconDownload(16)+' Exportovať všetko</button>';
   html += '</div>';
   html += '<div class="hint">Šablóna obsahuje stĺpce <b>Nazov</b>, <b>Tagy</b>, <b>Text</b>. Viac tagov v jednej bunke oddeľ bodkočiarkou (napr. „Milostné; Tanečné“) — nové tagy sa pri importe vytvoria automaticky. Piesne s rovnakým názvom sa aktualizujú, nové sa pridajú.</div>';
   html += '<div id="importSummary"></div>';
@@ -643,18 +676,18 @@ function renderAdminRoot(){
     });
     html += '</div>';
   }
-  html += '<button class="btn btn-secondary btn-block" id="newTagBtn" style="margin-top:10px;">+ Nový tag</button>';
+  html += '<button class="btn btn-secondary btn-block" id="newTagBtn" style="margin-top:10px;">'+iconPlus(15)+' Nový tag</button>';
 
   html += '<div class="section-title" style="margin-top:26px;">Všetky piesne ('+App.songs.length+')</div>';
   if (App.songs.length === 0){
-    html += '<div class="empty-state"><span class="big">🎻</span>Zatiaľ žiadne piesne.</div>';
+    html += '<div class="empty-state"><span class="big">'+iconMusic(40)+'</span>Zatiaľ žiadne piesne.</div>';
   } else {
     App.songs.forEach(function(s){
       html += '<div class="song-card" data-edit-song="'+s.id+'">';
       html += '<div class="meta"><div class="song-title">'+escapeHtml(s.title)+'</div>';
       var tagNames = tagNamesForSong(s);
       if (tagNames.length) html += '<div class="song-sub">'+escapeHtml(tagNames.join(' · '))+'</div>';
-      html += '</div><div class="chev">✏️</div></div>';
+      html += '</div><div class="chev">'+iconEdit(17)+'</div></div>';
     });
   }
   view.innerHTML = html;
@@ -708,10 +741,10 @@ function renderAdminRoot(){
           render();
           document.getElementById('importSummary').innerHTML =
             '<div class="import-summary">Import dokončený z „'+escapeHtml(file.name)+'“:\n'+
-            '➕ Pridané: '+result.added+'\n'+
-            '🔄 Aktualizované: '+result.updated+'\n'+
-            (result.skipped ? '⚠️ Preskočené (bez názvu): '+result.skipped+'\n' : '') +
-            '📚 Spolu v knižnici: '+App.songs.length+'</div>';
+            'Pridané: '+result.added+'\n'+
+            'Aktualizované: '+result.updated+'\n'+
+            (result.skipped ? 'Preskočené (bez názvu): '+result.skipped+'\n' : '') +
+            'Spolu v knižnici: '+App.songs.length+'</div>';
         });
       } catch(err){
         toast('Import zlyhal: ' + err.message);
@@ -904,11 +937,37 @@ function promptDialog(title, placeholder, value){
     );
   });
 }
+function passwordDialog(){
+  return new Promise(function(resolve){
+    showSheet(
+      '<div class="sheet-title">'+iconLock(18)+' Prístup pre správcu</div>'+
+      '<div class="field"><input type="password" id="pwInput" placeholder="Heslo" autocomplete="off"></div>'+
+      '<div class="btn-row">'+
+      '<button class="btn btn-secondary" style="flex:1;" id="pwCancel">Zrušiť</button>'+
+      '<button class="btn btn-primary" style="flex:1;" id="pwOk">Vstúpiť</button>'+
+      '</div>',
+      function(root){
+        var input = root.querySelector('#pwInput');
+        input.focus();
+        var submit = function(){ var v=input.value; closeSheet(); resolve(v||null); };
+        root.querySelector('#pwCancel').onclick = function(){ closeSheet(); resolve(null); };
+        root.querySelector('#pwOk').onclick = submit;
+        input.addEventListener('keydown', function(e){ if (e.key==='Enter') submit(); });
+      }
+    );
+  });
+}
 
 /* ------------------------------------------------------------------ nav */
 
 document.querySelectorAll('.navbtn').forEach(function(b){
-  b.addEventListener('click', function(){ resetTab(b.dataset.tab); });
+  b.addEventListener('click', function(){
+    if (b.dataset.tab === 'admin'){
+      ensureAdminUnlocked().then(function(ok){ if (ok) resetTab('admin'); });
+    } else {
+      resetTab(b.dataset.tab);
+    }
+  });
 });
 backBtn.addEventListener('click', pop);
 window.appGoBack = pop; // called from Android's hardware/gesture back button
