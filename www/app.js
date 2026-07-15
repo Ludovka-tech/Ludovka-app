@@ -658,12 +658,12 @@ function renderAdminRoot(){
   html += '<div class="section-title">Pridávanie piesní</div>';
   html += '<button class="btn btn-secondary btn-block" id="addSongBtn">'+iconPlus(16)+' Pridať jednu pieseň</button>';
   html += '<button class="btn btn-secondary btn-block" id="importBtn" style="margin-top:10px;">'+iconUpload(16)+' Hromadný import (CSV / Excel)</button>';
-  html += '<input type="file" id="csvFile" accept=".csv,text/csv" hidden>';
+  html += '<input type="file" id="csvFile" accept=".csv,.xlsx,.xls,text/csv,text/comma-separated-values,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-excel" hidden>';
   html += '<div class="btn-row">';
   html += '<button class="btn btn-secondary" id="templateBtn" style="flex:1;">'+iconFile(16)+' Stiahnuť šablónu</button>';
   html += '<button class="btn btn-secondary" id="exportBtn" style="flex:1;">'+iconDownload(16)+' Exportovať všetko</button>';
   html += '</div>';
-  html += '<div class="hint">Šablóna obsahuje stĺpce <b>Nazov</b>, <b>Tagy</b>, <b>Text</b>. Viac tagov v jednej bunke oddeľ bodkočiarkou (napr. „Milostné; Tanečné“) — nové tagy sa pri importe vytvoria automaticky. Piesne s rovnakým názvom sa aktualizujú, nové sa pridajú.</div>';
+  html += '<div class="hint">Dá sa nahrať <b>.xlsx</b> aj <b>.csv</b> súbor so stĺpcami <b>Nazov</b>, <b>Tagy</b>, <b>Text</b>. Viac tagov v jednej bunke oddeľ bodkočiarkou (napr. „Milostné; Tanečné“) — nové tagy sa pri importe vytvoria automaticky. Piesne s rovnakým názvom sa aktualizujú, nové sa pridajú.</div>';
   html += '<div id="importSummary"></div>';
 
   html += '<div class="section-title" style="margin-top:26px;">Tagy</div>';
@@ -733,10 +733,11 @@ function renderAdminRoot(){
   document.getElementById('csvFile').onchange = function(e){
     var file = e.target.files[0];
     if (!file) return;
+    var isExcel = /\.(xlsx|xls)$/i.test(file.name);
     var reader = new FileReader();
     reader.onload = function(){
       try {
-        var result = importCsv(reader.result);
+        var result = isExcel ? importXlsx(reader.result) : importCsv(reader.result);
         reloadData().then(function(){
           render();
           document.getElementById('importSummary').innerHTML =
@@ -750,7 +751,8 @@ function renderAdminRoot(){
         toast('Import zlyhal: ' + err.message);
       }
     };
-    reader.readAsText(file, 'UTF-8');
+    if (isExcel) reader.readAsArrayBuffer(file);
+    else reader.readAsText(file, 'UTF-8');
     e.target.value = '';
   };
   document.getElementById('templateBtn').onclick = function(){
@@ -810,7 +812,17 @@ function matchHeader(h){
 }
 
 function importCsv(text){
-  var rows = parseCsv(text);
+  return importRows(parseCsv(text));
+}
+function importXlsx(arrayBuffer){
+  if (!window.XLSX) throw new Error('Podpora pre Excel sa nenačítala. Skús import ako .csv.');
+  var wb = XLSX.read(new Uint8Array(arrayBuffer), {type:'array'});
+  var sheet = wb.Sheets[wb.SheetNames[0]];
+  var rows = XLSX.utils.sheet_to_json(sheet, {header:1, defval:'', blankrows:false});
+  rows = rows.map(function(row){ return row.map(function(c){ return c==null ? '' : String(c); }); });
+  return importRows(rows);
+}
+function importRows(rows){
   if (rows.length === 0) throw new Error('Súbor je prázdny.');
   var header = rows[0].map(matchHeader);
   if (header.indexOf('title') < 0 || header.indexOf('lyrics') < 0){

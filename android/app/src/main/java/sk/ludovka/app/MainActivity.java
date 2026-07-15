@@ -74,11 +74,12 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.addCategory(Intent.CATEGORY_OPENABLE);
                 intent.setType("*/*");
-                intent.putExtra(Intent.EXTRA_MIME_TYPES, new String[]{
-                        "text/csv", "text/comma-separated-values", "text/plain", "application/vnd.ms-excel"
-                });
+                // Deliberately no EXTRA_MIME_TYPES restriction: some providers (e.g. Google
+                // Drive) grey out or hide files whose reported MIME type doesn't exactly
+                // match one in that list, which made .xlsx files unselectable. The web page
+                // already filters by file extension after picking.
                 try {
-                    fileChooserLauncher.launch(Intent.createChooser(intent, "Vyber CSV súbor"));
+                    fileChooserLauncher.launch(Intent.createChooser(intent, "Vyber súbor"));
                 } catch (Exception e) {
                     filePathCallback = null;
                     return false;
