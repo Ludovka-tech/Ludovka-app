@@ -1,8 +1,10 @@
 name: Build Ľudovka APK
 
 # Builds a debug-signed, installable .apk (no Play Store / dev account involved)
-# and publishes it as a downloadable GitHub Release asset every time you push,
-# or whenever you trigger it manually from the Actions tab.
+# and commits it to the "dist" branch every time you push, or whenever you
+# trigger it manually from the Actions tab. (Private repos can't serve Release
+# assets to plain unauthenticated downloads, so we use a plain git-tracked
+# branch instead — works with any git client, no API calls needed.)
 on:
   push:
     branches: [ main ]
@@ -43,12 +45,20 @@ jobs:
           mkdir -p out
           cp android/app/build/outputs/apk/debug/app-debug.apk out/Ludovka.apk
 
-      - name: Publish as GitHub Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: build-${{ github.run_number }}
-          name: "Ľudovka build #${{ github.run_number }}"
-          files: out/Ludovka.apk
-          body: |
-            Automatically built .apk — download `Ludovka.apk` below and open it on your
-            Android phone (with "install from unknown sources" allowed) to sideload it.
+      - name: Publish APK to dist branch
+        run: |
+          git config user.email "actions@github.com"
+          git config user.name "github-actions"
+          cp out/Ludovka.apk /tmp/Ludovka.apk
+          git fetch origin dist:dist || true
+          if git show-ref --verify --quiet refs/heads/dist; then
+            git checkout dist
+          else
+            git checkout --orphan dist
+            git rm -rf . > /dev/null 2>&1 || true
+          fi
+          cp /tmp/Ludovka.apk ./Ludovka.apk
+          printf "Built from commit %s (run #%s) on %s\n" "${{ github.sha }}" "${{ github.run_number }}" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" > BUILD_INFO.txt
+          git add Ludovka.apk BUILD_INFO.txt
+          git commit -m "APK build #${{ github.run_number }}" --allow-empty
+          git push origin dist --force
