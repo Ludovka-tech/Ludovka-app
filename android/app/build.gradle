@@ -36,6 +36,15 @@ android {
     }
 }
 
+// Some transitive androidx dependencies still pull in the old, split
+// kotlin-stdlib-jdk7 / kotlin-stdlib-jdk8 artifacts, whose classes are now
+// bundled directly inside kotlin-stdlib (1.8+). Having both on the classpath
+// causes a "Duplicate class" failure, so we exclude the old split artifacts.
+configurations.all {
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk7'
+    exclude group: 'org.jetbrains.kotlin', module: 'kotlin-stdlib-jdk8'
+}
+
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'androidx.activity:activity:1.8.2'
