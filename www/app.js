@@ -62,7 +62,7 @@ function highlightTitle(title, normQuery){
 /* -------------------------------------------------------------- storage */
 
 var DB_NAME = 'ludovka';
-var DB_VERSION = 1;
+var DB_VERSION = 2;
 var dbPromise = null;
 
 function openDB(){
@@ -77,6 +77,9 @@ function openDB(){
       }
       if (!db.objectStoreNames.contains('playlists')){
         db.createObjectStore('playlists', {keyPath:'id'});
+      }
+      if (!db.objectStoreNames.contains('tags')){
+        db.createObjectStore('tags', {keyPath:'id'});
       }
     };
     req.onsuccess = function(e){ resolve(e.target.result); };
@@ -138,6 +141,60 @@ var Store = {
       return new Promise(function(res,rej){ t.oncomplete=function(){res();}; t.onerror=function(){rej(t.error);}; });
     });
   },
+  allTags: function(){
+    return tx(['tags'],'readonly').then(function(t){
+      return reqToPromise(t.objectStore('tags').getAll());
+    });
+  },
+  putTag: function(tag){
+    return tx(['tags'],'readwrite').then(function(t){
+      t.objectStore('tags').put(tag);
+      return new Promise(function(res,rej){ t.oncomplete=function(){res(tag);}; t.onerror=function(){rej(t.error);}; });
+    });
+  },
+  deleteTag: function(id){
+    return tx(['tags','songs'],'readwrite').then(function(t){
+      t.objectStore('tags').delete(id);
+      var ss = t.objectStore('songs');
+      ss.getAll().onsuccess = function(e){
+        (e.target.result || []).forEach(function(s){
+          if (s.tagIds && s.tagIds.indexOf(id) >= 0){
+            s.tagIds = s.tagIds.filter(function(x){ return x !== id; });
+            ss.put(s);
+          }
+        });
+      };
+      return new Promise(function(res,rej){ t.oncomplete=function(){res();}; t.onerror=function(){rej(t.error);}; });
+    });
+  },
+  // One-time, idempotent migration: songs created before the tag system existed
+  // only had a single free-text `category`. Turn that into a real (auto-created) tag.
+  migrateCategoriesToTags: function(){
+    return Promise.all([Store.allSongs(), Store.allTags()]).then(function(r){
+      var songs = r[0], tags = r[1];
+      var byName = {};
+      tags.forEach(function(t){ byName[normalizeStr(t.name)] = t; });
+      var chain = Promise.resolve();
+      songs.forEach(function(s){
+        if (s.tagIds) return;
+        var tagIds = [];
+        if (s.category && s.category.trim()){
+          var name = s.category.trim();
+          var key = normalizeStr(name);
+          var tag = byName[key];
+          if (!tag){
+            tag = {id: uid('t'), name: name, createdAt: Date.now()};
+            byName[key] = tag;
+            chain = chain.then(function(){ return Store.putTag(tag); });
+          }
+          tagIds = [tag.id];
+        }
+        s.tagIds = tagIds;
+        chain = chain.then(function(){ return Store.putSong(s); });
+      });
+      return chain;
+    });
+  },
   seedIfEmpty: function(){
     return Store.allSongs().then(function(songs){
       if (songs.length > 0 || !window.SEED_SONGS) return;
@@ -158,19 +215,25 @@ var Store = {
 var App = {
   songs: [],
   playlists: [],
+  tags: [],
   tab: 'songs',
   stack: [{name:'songs-root'}],
   searchQuery: ''
 };
 
 function reloadData(){
-  return Promise.all([Store.allSongs(), Store.allPlaylists()]).then(function(r){
+  return Promise.all([Store.allSongs(), Store.allPlaylists(), Store.allTags()]).then(function(r){
     App.songs = r[0].sort(function(a,b){ return a.title.localeCompare(b.title,'sk'); });
     App.playlists = r[1].sort(function(a,b){ return (b.createdAt||0)-(a.createdAt||0); });
+    App.tags = r[2].sort(function(a,b){ return a.name.localeCompare(b.name,'sk'); });
   });
 }
 function songById(id){ return App.songs.find(function(s){ return s.id===id; }); }
 function playlistById(id){ return App.playlists.find(function(p){ return p.id===id; }); }
+function tagById(id){ return App.tags.find(function(t){ return t.id===id; }); }
+function tagNamesForSong(s){
+  return (s.tagIds || []).map(tagById).filter(Boolean).map(function(t){ return t.name; });
+}
 
 function push(view){ App.stack.push(view); render(); }
 function pop(){ App.stack.pop(); render(); }
@@ -188,6 +251,7 @@ function render(){
   document.querySelectorAll('.navbtn').forEach(function(b){
     b.classList.toggle('active', b.dataset.tab === App.tab);
   });
+  document.body.classList.toggle('song-detail-mode', top.name === 'song-detail');
   if (window.AndroidBridge && window.AndroidBridge.setCanGoBack){
     window.AndroidBridge.setCanGoBack(App.stack.length > 1);
   }
@@ -236,7 +300,8 @@ function renderSongsRoot(){
       html += '<div class="song-card" data-open-song="'+s.id+'">';
       html += '<div class="meta">';
       html += '<div class="song-title">'+highlightTitle(s.title, normQ)+'</div>';
-      if (s.category) html += '<div class="song-sub">'+escapeHtml(s.category)+'</div>';
+      var tagNames = tagNamesForSong(s);
+      if (tagNames.length) html += '<div class="song-sub">'+escapeHtml(tagNames.join(' · '))+'</div>';
       if (snippet) html += '<div class="song-snippet">'+snippet.before+'<mark>'+snippet.match+'</mark>'+snippet.after+'</div>';
       html += '</div><div class="chev">›</div></div>';
     });
@@ -255,13 +320,14 @@ function renderSongsRoot(){
 function renderSongDetail(top){
   var s = songById(top.id);
   if (!s){ pop(); return; }
-  topbarTitle.textContent = '';
+  topbarTitle.textContent = s.title;
   var inPlaylists = App.playlists.filter(function(p){ return p.songIds.indexOf(s.id)>=0; });
 
   var html = '';
-  html += '<div class="detail-header"><div class="detail-title">'+escapeHtml(s.title)+'</div>';
-  if (s.category) html += '<div class="detail-category">'+escapeHtml(s.category)+'</div>';
-  html += '</div>';
+  var songTagNames = tagNamesForSong(s);
+  if (songTagNames.length){
+    html += '<div class="chip-row" style="margin-bottom:14px;">'+songTagNames.map(function(n){return '<span class="chip">'+escapeHtml(n)+'</span>';}).join('')+'</div>';
+  }
   html += '<div class="btn-row">';
   html += '<button class="btn btn-primary" id="addToPlaylistBtn">📁 Pridať do playlistu</button>';
   html += '</div>';
@@ -282,16 +348,32 @@ function renderSongDetail(top){
 
 function renderSongForm(top){
   var editing = !!top.id;
-  var s = editing ? songById(top.id) : {title:'', category:'', lyrics:''};
+  var s = editing ? songById(top.id) : {title:'', lyrics:'', tagIds:[]};
   if (editing && !s){ pop(); return; }
   topbarTitle.textContent = editing ? 'Upraviť pieseň' : 'Nová pieseň';
 
-  var categories = Array.from(new Set(App.songs.map(function(x){return x.category;}).filter(Boolean))).sort();
+  var selectedTagIds = (s.tagIds || []).slice();
+
+  function tagFieldHtml(){
+    var html = '<div class="field"><label>Tagy (voliteľné)</label>';
+    if (App.tags.length === 0){
+      html += '<div class="hint">Zatiaľ nemáš žiadne tagy. Vytvor ich nižšie alebo v sekcii Spravovať → Tagy.</div>';
+    } else {
+      html += '<div class="chip-row" id="tagPickRow">';
+      App.tags.forEach(function(t){
+        var active = selectedTagIds.indexOf(t.id) >= 0;
+        html += '<button type="button" class="chip-toggle'+(active?' chip-active':'')+'" data-toggle-tag="'+t.id+'">'+escapeHtml(t.name)+'</button>';
+      });
+      html += '</div>';
+    }
+    html += '<button type="button" class="btn btn-secondary" id="newTagFromForm" style="margin-top:10px;">+ Nový tag</button>';
+    html += '</div>';
+    return html;
+  }
 
   var html = '';
   html += '<div class="field"><label>Názov piesne</label><input type="text" id="fTitle" value="'+escapeHtml(s.title)+'" placeholder="napr. Tancuj, tancuj"></div>';
-  html += '<div class="field"><label>Kategória (voliteľné)</label><input type="text" id="fCategory" list="categoryList" value="'+escapeHtml(s.category||'')+'" placeholder="napr. Milostné, Detské…">';
-  html += '<datalist id="categoryList">'+categories.map(function(c){return '<option value="'+escapeHtml(c)+'">';}).join('')+'</datalist></div>';
+  html += '<div id="tagFieldWrap">'+tagFieldHtml()+'</div>';
   html += '<div class="field"><label>Text piesne</label><textarea id="fLyrics" placeholder="Vlož text piesne…">'+escapeHtml(s.lyrics)+'</textarea></div>';
   html += '<button class="btn btn-primary btn-block" id="saveSongBtn">'+(editing?'Uložiť zmeny':'Pridať pieseň')+'</button>';
   if (editing){
@@ -299,14 +381,43 @@ function renderSongForm(top){
   }
   view.innerHTML = html;
 
+  function wireTagField(){
+    var wrap = document.getElementById('tagFieldWrap');
+    wrap.querySelectorAll('[data-toggle-tag]').forEach(function(btn){
+      btn.onclick = function(){
+        var id = btn.dataset.toggleTag;
+        var idx = selectedTagIds.indexOf(id);
+        if (idx >= 0) selectedTagIds.splice(idx,1); else selectedTagIds.push(id);
+        btn.classList.toggle('chip-active');
+      };
+    });
+    document.getElementById('newTagFromForm').onclick = function(){
+      promptDialog('Nový tag', 'Názov tagu (napr. Vianočné, Svadobné…)', '').then(function(name){
+        if (!name) return;
+        var norm = normalizeStr(name);
+        var existing = App.tags.find(function(t){ return normalizeStr(t.name) === norm; });
+        if (existing){
+          if (selectedTagIds.indexOf(existing.id) < 0) selectedTagIds.push(existing.id);
+          wrap.innerHTML = tagFieldHtml(); wireTagField();
+          return;
+        }
+        var tag = {id: uid('t'), name: name.trim(), createdAt: Date.now()};
+        Store.putTag(tag).then(reloadData).then(function(){
+          selectedTagIds.push(tag.id);
+          wrap.innerHTML = tagFieldHtml(); wireTagField();
+        });
+      });
+    };
+  }
+  wireTagField();
+
   document.getElementById('saveSongBtn').onclick = function(){
     var title = document.getElementById('fTitle').value.trim();
-    var category = document.getElementById('fCategory').value.trim();
     var lyrics = document.getElementById('fLyrics').value.trim();
     if (!title){ toast('Zadaj názov piesne.'); return; }
     if (!lyrics){ toast('Zadaj text piesne.'); return; }
-    var song = editing ? Object.assign({}, s, {title:title, category:category, lyrics:lyrics}) :
-      {id: uid('s'), title:title, category:category, lyrics:lyrics, createdAt: Date.now()};
+    var song = editing ? Object.assign({}, s, {title:title, lyrics:lyrics, tagIds:selectedTagIds}) :
+      {id: uid('s'), title:title, lyrics:lyrics, tagIds:selectedTagIds, createdAt: Date.now()};
     Store.putSong(song).then(reloadData).then(function(){
       toast(editing ? 'Zmeny uložené.' : 'Pieseň pridaná.');
       App.stack = App.tab==='admin' ? [{name:'admin-root'}] : [{name:'songs-root'}];
@@ -379,7 +490,8 @@ function renderPlaylistDetail(top){
     songs.forEach(function(s){
       html += '<div class="song-card">';
       html += '<div class="meta" data-open-song="'+s.id+'"><div class="song-title">'+escapeHtml(s.title)+'</div>';
-      if (s.category) html += '<div class="song-sub">'+escapeHtml(s.category)+'</div>';
+      var plTagNames = tagNamesForSong(s);
+      if (plTagNames.length) html += '<div class="song-sub">'+escapeHtml(plTagNames.join(' · '))+'</div>';
       html += '</div>';
       html += '<button class="icon-btn" style="background:#fdeceb;color:#b3382c;" data-remove-song="'+s.id+'" aria-label="Odstrániť z playlistu">✕</button>';
       html += '</div>';
@@ -511,24 +623,37 @@ function renderAdminRoot(){
   topbarTitle.textContent = 'Spravovať';
   var html = '';
   html += '<div class="section-title">Pridávanie piesní</div>';
-  html += '<button class="btn btn-primary btn-block" id="addSongBtn">➕ Pridať jednu pieseň</button>';
+  html += '<button class="btn btn-secondary btn-block" id="addSongBtn">➕ Pridať jednu pieseň</button>';
   html += '<button class="btn btn-secondary btn-block" id="importBtn" style="margin-top:10px;">📥 Hromadný import (CSV / Excel)</button>';
   html += '<input type="file" id="csvFile" accept=".csv,text/csv" hidden>';
   html += '<div class="btn-row">';
   html += '<button class="btn btn-secondary" id="templateBtn" style="flex:1;">📄 Stiahnuť šablónu</button>';
   html += '<button class="btn btn-secondary" id="exportBtn" style="flex:1;">💾 Exportovať všetko</button>';
   html += '</div>';
-  html += '<div class="hint">Šablóna obsahuje stĺpce <b>Nazov</b>, <b>Kategoria</b>, <b>Text</b>. Vyplň ju v Exceli / Tabuľkách Google a import ju nahraje naraz — piesne s rovnakým názvom sa aktualizujú, nové sa pridajú.</div>';
+  html += '<div class="hint">Šablóna obsahuje stĺpce <b>Nazov</b>, <b>Tagy</b>, <b>Text</b>. Viac tagov v jednej bunke oddeľ bodkočiarkou (napr. „Milostné; Tanečné“) — nové tagy sa pri importe vytvoria automaticky. Piesne s rovnakým názvom sa aktualizujú, nové sa pridajú.</div>';
   html += '<div id="importSummary"></div>';
 
-  html += '<div class="section-title" style="margin-top:24px;">Všetky piesne ('+App.songs.length+')</div>';
+  html += '<div class="section-title" style="margin-top:26px;">Tagy</div>';
+  if (App.tags.length === 0){
+    html += '<div class="hint" style="margin-bottom:10px;">Tagmi si vieš roztriediť piesne podľa žánru, príležitosti, kraja a podobne.</div>';
+  } else {
+    html += '<div class="chip-row" id="tagManageRow">';
+    App.tags.forEach(function(t){
+      html += '<span class="chip chip-removable" data-rename-tag="'+t.id+'">'+escapeHtml(t.name)+'<span class="chip-x" data-delete-tag="'+t.id+'">✕</span></span>';
+    });
+    html += '</div>';
+  }
+  html += '<button class="btn btn-secondary btn-block" id="newTagBtn" style="margin-top:10px;">+ Nový tag</button>';
+
+  html += '<div class="section-title" style="margin-top:26px;">Všetky piesne ('+App.songs.length+')</div>';
   if (App.songs.length === 0){
     html += '<div class="empty-state"><span class="big">🎻</span>Zatiaľ žiadne piesne.</div>';
   } else {
     App.songs.forEach(function(s){
       html += '<div class="song-card" data-edit-song="'+s.id+'">';
       html += '<div class="meta"><div class="song-title">'+escapeHtml(s.title)+'</div>';
-      if (s.category) html += '<div class="song-sub">'+escapeHtml(s.category)+'</div>';
+      var tagNames = tagNamesForSong(s);
+      if (tagNames.length) html += '<div class="song-sub">'+escapeHtml(tagNames.join(' · '))+'</div>';
       html += '</div><div class="chev">✏️</div></div>';
     });
   }
@@ -537,6 +662,39 @@ function renderAdminRoot(){
   document.getElementById('addSongBtn').onclick = function(){ push({name:'song-form'}); };
   view.querySelectorAll('[data-edit-song]').forEach(function(el){
     el.onclick = function(){ push({name:'song-form', id: el.dataset.editSong}); };
+  });
+  document.getElementById('newTagBtn').onclick = function(){
+    promptDialog('Nový tag', 'Názov tagu (napr. Vianočné, Svadobné…)', '').then(function(name){
+      if (!name) return;
+      var norm = normalizeStr(name);
+      if (App.tags.some(function(t){ return normalizeStr(t.name) === norm; })){
+        toast('Tento tag už existuje.');
+        return;
+      }
+      Store.putTag({id: uid('t'), name: name.trim(), createdAt: Date.now()}).then(reloadData).then(render);
+    });
+  };
+  view.querySelectorAll('[data-delete-tag]').forEach(function(el){
+    el.onclick = function(e){
+      e.stopPropagation();
+      var t = tagById(el.dataset.deleteTag);
+      if (!t) return;
+      confirmDialog('Odstrániť tag „'+escapeHtml(t.name)+'“? Odstráni sa zo všetkých piesní, ktoré ho majú priradený.').then(function(ok){
+        if (!ok) return;
+        Store.deleteTag(t.id).then(reloadData).then(render);
+      });
+    };
+  });
+  view.querySelectorAll('[data-rename-tag]').forEach(function(el){
+    el.onclick = function(){
+      var t = tagById(el.dataset.renameTag);
+      if (!t) return;
+      promptDialog('Premenovať tag', 'Nový názov', t.name).then(function(name){
+        if (!name) return;
+        t.name = name.trim();
+        Store.putTag(t).then(reloadData).then(render);
+      });
+    };
   });
   document.getElementById('importBtn').onclick = function(){ document.getElementById('csvFile').click(); };
   document.getElementById('csvFile').onchange = function(e){
@@ -563,8 +721,8 @@ function renderAdminRoot(){
     e.target.value = '';
   };
   document.getElementById('templateBtn').onclick = function(){
-    var csv = '﻿Nazov,Kategoria,Text\n' +
-      '"Príklad názvu piesne","Milostné","Prvý riadok textu\nDruhý riadok textu\nTretí riadok textu"\n';
+    var csv = '﻿Nazov,Tagy,Text\n' +
+      '"Príklad názvu piesne","Milostné; Tanečné","Prvý riadok textu\nDruhý riadok textu\nTretí riadok textu"\n';
     saveTextFile('sablona-import.csv', csv, 'text/csv');
   };
   document.getElementById('exportBtn').onclick = function(){
@@ -607,7 +765,7 @@ function parseCsv(text){
 
 var HEADER_ALIASES = {
   title: ['title','nazov','názov','meno','name'],
-  category: ['category','kategoria','kategória','zaradenie','tag'],
+  tags: ['tags','tagy','tag','štítky','stitky','category','kategoria','kategória'],
   lyrics: ['lyrics','text','texty','text piesne','words','obsah']
 };
 function matchHeader(h){
@@ -627,6 +785,23 @@ function importCsv(text){
   }
   var byTitle = {};
   App.songs.forEach(function(s){ byTitle[normalizeStr(s.title)] = s; });
+  var byTagName = {};
+  App.tags.forEach(function(t){ byTagName[normalizeStr(t.name)] = t; });
+
+  function resolveTagIds(tagsField){
+    if (!tagsField) return null; // null = "column blank, leave existing tags untouched"
+    var names = tagsField.split(/[;,]/).map(function(x){ return x.trim(); }).filter(Boolean);
+    return names.map(function(name){
+      var key = normalizeStr(name);
+      var tag = byTagName[key];
+      if (!tag){
+        tag = {id: uid('t'), name: name, createdAt: Date.now()};
+        byTagName[key] = tag;
+        Store.putTag(tag);
+      }
+      return tag.id;
+    });
+  }
 
   var added=0, updated=0, skipped=0;
   var now = Date.now();
@@ -637,13 +812,15 @@ function importCsv(text){
     header.forEach(function(key, idx){ if (key) rec[key] = (cells[idx]||'').trim(); });
     if (!rec.title){ skipped++; continue; }
     var existing = byTitle[normalizeStr(rec.title)];
+    var tagIds = resolveTagIds(rec.tags);
     if (existing){
-      existing.category = rec.category || existing.category || '';
+      if (tagIds !== null) existing.tagIds = tagIds;
+      else if (!existing.tagIds) existing.tagIds = [];
       existing.lyrics = rec.lyrics || existing.lyrics;
       Store.putSong(existing);
       updated++;
     } else {
-      var song = {id: uid('s'), title: rec.title, category: rec.category||'', lyrics: rec.lyrics||'', createdAt: now+r};
+      var song = {id: uid('s'), title: rec.title, tagIds: tagIds || [], lyrics: rec.lyrics||'', createdAt: now+r};
       byTitle[normalizeStr(song.title)] = song;
       Store.putSong(song);
       added++;
@@ -658,9 +835,9 @@ function csvEscape(v){
   return v;
 }
 function songsToCsv(songs){
-  var lines = ['﻿Nazov,Kategoria,Text'];
+  var lines = ['﻿Nazov,Tagy,Text'];
   songs.forEach(function(s){
-    lines.push([csvEscape(s.title), csvEscape(s.category), csvEscape(s.lyrics)].join(','));
+    lines.push([csvEscape(s.title), csvEscape(tagNamesForSong(s).join('; ')), csvEscape(s.lyrics)].join(','));
   });
   return lines.join('\n');
 }
@@ -738,7 +915,7 @@ window.appGoBack = pop; // called from Android's hardware/gesture back button
 
 /* ------------------------------------------------------------------ init */
 
-openDB().then(Store.seedIfEmpty).then(reloadData).then(render).catch(function(err){
+openDB().then(Store.seedIfEmpty).then(Store.migrateCategoriesToTags).then(reloadData).then(render).catch(function(err){
   document.getElementById('view').innerHTML = '<div class="empty-state">Chyba pri načítaní databázy: '+escapeHtml(err.message||String(err))+'</div>';
 });
 

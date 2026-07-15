@@ -13,14 +13,17 @@
   <button class="icon-btn" id="backBtn" hidden aria-label="Späť">←</button>
 </header>
 
+<div id="songReaderBg" class="song-reader-bg"></div>
 <main id="view"></main>
 
 <nav class="bottomnav">
   <button class="navbtn active" data-tab="songs">
-    <span class="navicon">🎵</span><span>Piesne</span>
+    <svg class="navicon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+    <span>Piesne</span>
   </button>
   <button class="navbtn" data-tab="playlists">
-    <span class="navicon">📁</span><span>Playlisty</span>
+    <svg class="navicon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h6l2 2.5h10a1 1 0 0 1 1 1V18a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1Z"/></svg>
+    <span>Playlisty</span>
   </button>
   <button class="navbtn" data-tab="admin">
     <span class="navicon">➕</span><span>Spravovať</span>

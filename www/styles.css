@@ -12,13 +12,16 @@
   --radius:14px;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
+  --song-blue:#3e5f82;
+  --song-blue-dark:#324c68;
+  --song-blue-flat:#7fa0c4;
 }
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 
 html,body{
   margin:0;padding:0;height:100%;
-  background:var(--cream);
+  background:var(--song-blue);
   color:var(--ink);
   font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
   overflow:hidden;
@@ -30,36 +33,58 @@ body{display:flex;flex-direction:column;height:100vh;}
   flex:0 0 auto;
   display:flex;align-items:center;gap:8px;
   padding:calc(14px + var(--safe-top)) 16px 14px;
-  background:linear-gradient(135deg,var(--red),var(--red-dark));
+  background:var(--song-blue-flat);
   color:#fff;
   box-shadow:0 2px 8px rgba(0,0,0,.12);
   position:relative;z-index:5;
 }
 .topbar-title{font-size:20px;font-weight:700;letter-spacing:.3px;flex:1;}
 .icon-btn{
-  background:rgba(255,255,255,.15);border:none;color:#fff;
+  background:rgba(255,255,255,.22);border:none;color:#fff;
   width:36px;height:36px;border-radius:50%;font-size:18px;
   display:flex;align-items:center;justify-content:center;
 }
-.icon-btn:active{background:rgba(255,255,255,.3);}
+.icon-btn:active{background:rgba(255,255,255,.38);}
 
 main#view{
   flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;
   padding:14px 14px calc(14px + var(--safe-bottom));
+  position:relative;z-index:1;
+  background:transparent;
+}
+
+/* App-wide backdrop: deep pastel blue with a faint Slovak folk ornament motif,
+   fixed behind everything so scrolling content never scrolls the pattern itself. */
+.song-reader-bg{
+  position:fixed;inset:0;z-index:0;
+  background-color:var(--song-blue);
+  background-image:url('ornament.svg');
+  background-repeat:repeat;
+  background-size:120px 120px;
+}
+
+/* Song "reader mode" — the lyrics screen additionally gets extra top/bottom
+   breathing room and a fade mask so text appears to scroll into the backdrop. */
+body.song-detail-mode main#view{
+  padding-top:26px;
+  padding-bottom:56px;
+  -webkit-mask-image:linear-gradient(to bottom, transparent 0, #000 42px, #000 calc(100% - 42px), transparent 100%);
+  mask-image:linear-gradient(to bottom, transparent 0, #000 42px, #000 calc(100% - 42px), transparent 100%);
 }
 
 .bottomnav{
   flex:0 0 auto;display:flex;
-  background:#fff;border-top:1px solid var(--border);
+  background:var(--song-blue-flat);border-top:1px solid rgba(255,255,255,.18);
   padding-bottom:var(--safe-bottom);
 }
 .navbtn{
   flex:1;display:flex;flex-direction:column;align-items:center;gap:2px;
   background:none;border:none;padding:9px 4px 8px;
-  color:var(--ink-soft);font-size:11.5px;font-family:inherit;
+  color:rgba(255,255,255,.68);font-size:11.5px;font-family:inherit;
 }
 .navbtn .navicon{font-size:19px;line-height:1;}
-.navbtn.active{color:var(--red);font-weight:700;}
+.navbtn .navicon-svg{width:22px;height:22px;}
+.navbtn.active{color:#ffffff;font-weight:700;}
 
 /* Search */
 .searchbox{
@@ -73,7 +98,7 @@ main#view{
 .searchbox .clear-x{background:none;border:none;color:var(--ink-soft);font-size:16px;padding:0 2px;}
 
 .section-title{
-  font-size:13px;font-weight:700;color:var(--ink-soft);
+  font-size:13px;font-weight:700;color:rgba(255,255,255,.72);
   text-transform:uppercase;letter-spacing:.6px;margin:18px 2px 8px;
 }
 .section-title:first-child{margin-top:2px;}
@@ -91,7 +116,7 @@ main#view{
 .song-card mark{background:#f6dfa0;color:inherit;border-radius:3px;padding:0 1px;}
 
 .empty-state{
-  text-align:center;color:var(--ink-soft);padding:40px 20px;font-size:14px;line-height:1.6;
+  text-align:center;color:rgba(255,255,255,.8);padding:40px 20px;font-size:14px;line-height:1.6;
 }
 .empty-state .big{font-size:34px;display:block;margin-bottom:10px;}
 
@@ -117,7 +142,7 @@ main#view{
 
 /* Forms */
 .field{margin-bottom:14px;}
-.field label{display:block;font-size:12.5px;font-weight:700;color:var(--ink-soft);margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px;}
+.field label{display:block;font-size:12.5px;font-weight:700;color:rgba(255,255,255,.72);margin-bottom:6px;text-transform:uppercase;letter-spacing:.4px;}
 .field input[type=text], .field select, .field textarea{
   width:100%;border:1px solid var(--border);border-radius:11px;padding:12px 13px;
   font-size:15px;font-family:inherit;background:#fff;color:var(--ink);resize:vertical;
@@ -126,7 +151,7 @@ main#view{
 
 /* Song detail */
 .detail-header{margin-bottom:16px;}
-.detail-title{font-size:22px;font-weight:700;color:var(--ink);}
+.detail-title{font-size:22px;font-weight:700;color:#fff;}
 .detail-category{
   display:inline-block;margin-top:6px;background:var(--cream-2);color:var(--red-dark);
   font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;
@@ -135,6 +160,21 @@ main#view{
   white-space:pre-wrap;font-size:16px;line-height:1.75;color:var(--ink);
   background:#fff;border:1px solid var(--border);border-radius:var(--radius);
   padding:16px 16px;margin-top:14px;
+}
+body.song-detail-mode .detail-lyrics{
+  background:transparent;border:none;border-radius:0;
+  color:#ffffff;font-weight:700;font-size:17px;line-height:1.9;
+  padding:10px 4px 10px;margin-top:18px;
+  text-shadow:0 1px 4px rgba(0,0,0,.18);
+}
+body.song-detail-mode .detail-category{
+  background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.35);
+}
+body.song-detail-mode .chip-row .chip{
+  background:rgba(255,255,255,.16);color:#fff;border:1px solid rgba(255,255,255,.32);
+}
+body.song-detail-mode .btn-secondary{
+  background:rgba(255,255,255,.85);
 }
 
 /* Playlists */
@@ -179,7 +219,7 @@ main#view{
   line-height:1.6;color:var(--ink);margin-top:12px;white-space:pre-wrap;
 }
 
-.hint{font-size:12.5px;color:var(--ink-soft);line-height:1.5;margin-top:4px;}
+.hint{font-size:12.5px;color:rgba(255,255,255,.72);line-height:1.5;margin-top:4px;}
 
 a.filelink{color:var(--red);text-decoration:underline;}
 
@@ -187,4 +227,17 @@ a.filelink{color:var(--red);text-decoration:underline;}
 .chip{
   background:var(--cream-2);color:var(--ink);border-radius:999px;padding:6px 12px;
   font-size:12.5px;border:1px solid var(--border);
+}
+
+/* Tag chips: selectable (song form) and removable (admin tag management) */
+.chip-toggle{
+  cursor:pointer;font-family:inherit;background:rgba(255,255,255,.85);color:var(--ink);
+  border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:7px 13px;font-size:13px;
+}
+.chip-toggle.chip-active{background:var(--red);color:#fff;border-color:var(--red);}
+.chip-removable{display:inline-flex;align-items:center;gap:7px;cursor:pointer;}
+.chip-removable .chip-x{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:16px;height:16px;border-radius:50%;background:rgba(0,0,0,.08);
+  font-size:10px;line-height:1;color:var(--ink-soft);
 }
