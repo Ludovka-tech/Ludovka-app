@@ -135,10 +135,10 @@ body.song-detail-mode main#view{
 .btn-block{width:100%;}
 .btn-row{display:flex;gap:10px;margin-top:14px;}
 .fab{
-  position:absolute;right:18px;bottom:calc(18px + var(--safe-bottom));
+  position:fixed;right:18px;bottom:84px;
   width:54px;height:54px;border-radius:50%;background:var(--red);color:#fff;
-  border:none;font-size:26px;box-shadow:0 4px 14px rgba(168,59,50,.4);
-  display:flex;align-items:center;justify-content:center;z-index:4;
+  border:none;font-size:26px;box-shadow:0 4px 14px rgba(0,0,0,.3);
+  display:flex;align-items:center;justify-content:center;z-index:6;
 }
 
 /* Forms */

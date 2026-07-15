@@ -21,6 +21,7 @@ function escapeHtml(s){
     return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
   });
 }
+var SEARCH_ICON = '<svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex:0 0 auto;color:var(--ink-soft);"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
 function uid(prefix){
   return prefix + '_' + Date.now().toString(36) + Math.random().toString(36).slice(2,8);
 }
@@ -267,6 +268,13 @@ function render(){
   var fn = renderers[top.name] || renderSongsRoot;
   fn(top);
   view.scrollTop = 0;
+
+  var fab = document.getElementById('newPlaylistFab');
+  fab.hidden = top.name !== 'playlists-root';
+  if (!fab.hidden){
+    var navEl = document.querySelector('.bottomnav');
+    fab.style.bottom = ((navEl ? navEl.offsetHeight : 64) + 18) + 'px';
+  }
 }
 
 /* ---- Songs tab ---- */
@@ -283,7 +291,7 @@ function renderSongsRoot(){
   }
 
   var html = '';
-  html += '<div class="searchbox">🔍 <input id="searchInput" type="text" placeholder="Hľadať podľa názvu alebo textu…" value="'+escapeHtml(q)+'">';
+  html += '<div class="searchbox">'+SEARCH_ICON+'<input id="searchInput" type="text" placeholder="Hľadať podľa názvu alebo textu…" value="'+escapeHtml(q)+'">';
   if (q) html += '<button class="clear-x" id="clearSearch">✕</button>';
   html += '</div>';
 
@@ -442,7 +450,7 @@ function renderSongForm(top){
 
 function renderPlaylistsRoot(){
   topbarTitle.textContent = 'Playlisty';
-  var html = '<div style="position:relative;min-height:60vh;">';
+  var html = '';
   if (App.playlists.length === 0){
     html += '<div class="empty-state"><span class="big">📁</span>Zatiaľ nemáš žiadne playlisty.<br>Vytvor si prvý tlačidlom „+“.</div>';
   } else {
@@ -454,19 +462,11 @@ function renderPlaylistsRoot(){
       html += '</div><div class="chev">›</div></div>';
     });
   }
-  html += '<button class="fab" id="newPlaylistBtn" aria-label="Nový playlist">+</button>';
-  html += '</div>';
   view.innerHTML = html;
 
   view.querySelectorAll('[data-open-playlist]').forEach(function(el){
     el.onclick = function(){ push({name:'playlist-detail', id: el.dataset.openPlaylist}); };
   });
-  document.getElementById('newPlaylistBtn').onclick = function(){
-    promptDialog('Nový playlist', 'Názov playlistu', '').then(function(name){
-      if (!name) return;
-      Store.putPlaylist({id: uid('p'), name:name.trim(), songIds:[], createdAt: Date.now()}).then(reloadData).then(render);
-    });
-  };
 }
 
 function renderPlaylistDetail(top){
@@ -580,7 +580,7 @@ function openSongPickerForPlaylist(playlistId){
     var normQ = normalizeStr(query);
     var list = App.songs.filter(function(s){ return !normQ || normalizeStr(s.title).indexOf(normQ)>=0; });
     var html = '<div class="sheet-title">Pridať piesne do „'+escapeHtml(p.name)+'“</div>';
-    html += '<div class="searchbox" style="margin-bottom:10px;">🔍 <input id="pickerSearch" type="text" placeholder="Hľadať pieseň…" value="'+escapeHtml(query)+'"></div>';
+    html += '<div class="searchbox" style="margin-bottom:10px;">'+SEARCH_ICON+'<input id="pickerSearch" type="text" placeholder="Hľadať pieseň…" value="'+escapeHtml(query)+'"></div>';
     if (list.length===0){
       html += '<div class="hint">Žiadne piesne nenájdené.</div>';
     } else {
@@ -912,6 +912,13 @@ document.querySelectorAll('.navbtn').forEach(function(b){
 });
 backBtn.addEventListener('click', pop);
 window.appGoBack = pop; // called from Android's hardware/gesture back button
+
+document.getElementById('newPlaylistFab').onclick = function(){
+  promptDialog('Nový playlist', 'Názov playlistu', '').then(function(name){
+    if (!name) return;
+    Store.putPlaylist({id: uid('p'), name:name.trim(), songIds:[], createdAt: Date.now()}).then(reloadData).then(render);
+  });
+};
 
 /* ------------------------------------------------------------------ init */
 
