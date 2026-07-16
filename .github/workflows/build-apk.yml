@@ -41,6 +41,8 @@ jobs:
 
       - name: Build debug APK
         working-directory: android
+        env:
+          LUDOVKA_VERSION_CODE: ${{ github.run_number }}
         run: gradle assembleDebug --no-daemon --stacktrace
 
       - name: Collect APK

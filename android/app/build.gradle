@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 
+// CI passes the GitHub Actions run number in as LUDOVKA_VERSION_CODE so every
+// build gets a higher versionCode than the last. Locally this just falls back
+// to 1 — only matters for reproducing a CI build exactly, not for dev builds.
+def ludovkaVersionCode = (System.getenv("LUDOVKA_VERSION_CODE") ?: "1").toInteger()
+
 android {
     namespace 'sk.ludovka.app'
     compileSdk 34
@@ -8,17 +13,36 @@ android {
         applicationId "sk.ludovka.app"
         minSdk 26
         targetSdk 34
-        versionCode 1
-        versionName "1.0"
+        versionCode ludovkaVersionCode
+        versionName "1.0.${ludovkaVersionCode}"
+    }
+
+    // Fixed, checked-in debug keystore (debug.keystore, alongside this file) so
+    // every build — today, tomorrow, from any machine — is signed with the same
+    // certificate. Without this, Gradle auto-generates a brand-new random debug
+    // key on every fresh CI run, so each new APK is signed differently and
+    // Android refuses to install it "on top of" the previous one (signature
+    // mismatch) — the exact "update always fails" symptom this fixes. It also
+    // means every failed update forced an uninstall first, wiping the app's
+    // IndexedDB and with it every previously imported song.
+    signingConfigs {
+        debug {
+            storeFile file('debug.keystore')
+            storePassword 'android'
+            keyAlias 'androiddebugkey'
+            keyPassword 'android'
+        }
     }
 
     buildTypes {
         debug {
             debuggable true
+            signingConfig signingConfigs.debug
         }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
         }
     }
 
