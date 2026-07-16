@@ -844,6 +844,12 @@ function openPlaylistPicker(songId){
 function openSongPickerForPlaylist(playlistId){
   var p = playlistById(playlistId);
   var query = '';
+  // Checking/unchecking only edits this local working copy — nothing is saved
+  // until "Pridať" is tapped. That way closing the sheet any other way (tap
+  // outside, the phone's back button) just discards the picks instead of
+  // silently committing them.
+  var pendingIds = p.songIds.slice();
+
   function body(){
     var normQ = normalizeStr(query);
     var list = App.songs.filter(function(s){ return !normQ || normalizeStr(s.title).indexOf(normQ)>=0; });
@@ -853,26 +859,31 @@ function openSongPickerForPlaylist(playlistId){
       html += '<div class="hint">Žiadne piesne nenájdené.</div>';
     } else {
       list.forEach(function(s){
-        var checked = p.songIds.indexOf(s.id)>=0 ? 'checked':'';
+        var checked = pendingIds.indexOf(s.id)>=0 ? 'checked':'';
         html += '<label class="checkrow"><input type="checkbox" data-song="'+s.id+'" '+checked+'><span class="label">'+escapeHtml(s.title)+'</span></label>';
       });
     }
-    html += '<button class="btn btn-primary btn-block" id="doneAddSongs" style="margin-top:10px;">Hotovo</button>';
+    html += '<button class="btn btn-primary btn-block" id="doneAddSongs" style="margin-top:10px;">Pridať</button>';
     return html;
   }
   var close = showSheet(body(), wire);
   function wire(root){
     root.querySelectorAll('[data-song]').forEach(function(cb){
       cb.onchange = function(){
-        var idx = p.songIds.indexOf(cb.dataset.song);
-        if (cb.checked && idx<0) p.songIds.push(cb.dataset.song);
-        if (!cb.checked && idx>=0) p.songIds.splice(idx,1);
-        Store.putPlaylist(p).then(reloadData);
+        var idx = pendingIds.indexOf(cb.dataset.song);
+        if (cb.checked && idx<0) pendingIds.push(cb.dataset.song);
+        if (!cb.checked && idx>=0) pendingIds.splice(idx,1);
       };
     });
     var search = root.querySelector('#pickerSearch');
     search.oninput = debounce(function(){ query = search.value; refresh(); }, 150);
-    root.querySelector('#doneAddSongs').onclick = function(){ closeSheet(); render(); };
+    root.querySelector('#doneAddSongs').onclick = function(){
+      p.songIds = pendingIds;
+      Store.putPlaylist(p).then(reloadData).then(function(){
+        closeSheet();
+        render();
+      });
+    };
   }
   function refresh(){
     var root = document.querySelector('.sheet');
@@ -1223,7 +1234,14 @@ document.querySelectorAll('.navbtn').forEach(function(b){
   });
 });
 backBtn.addEventListener('click', pop);
-window.appGoBack = pop; // called from Android's hardware/gesture back button
+// Called from Android's hardware/gesture back button (see MainActivity.onBackPressed).
+// If a sheet (playlist/song picker, confirm dialog, etc.) is open on top, close
+// that first — otherwise the button was popping the page underneath while the
+// sheet stayed stranded on screen, showing both at once.
+window.appGoBack = function(){
+  if (document.querySelector('.overlay')){ closeSheet(); return; }
+  pop();
+};
 
 document.getElementById('newPlaylistFab').onclick = function(){
   promptDialog('Nový playlist', 'Názov playlistu', '').then(function(name){
