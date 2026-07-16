@@ -168,6 +168,10 @@ body.song-detail-mode main#view{
   border:none;font-size:26px;box-shadow:0 4px 14px rgba(0,0,0,.3);
   display:flex;align-items:center;justify-content:center;z-index:6;
 }
+/* Author CSS (the display:flex above) always wins over the browser's default
+   [hidden]{display:none}, regardless of selector specificity — so without
+   this override, setting fab.hidden = true in JS never actually hid it. */
+.fab[hidden]{display:none;}
 
 /* Forms */
 .field{margin-bottom:14px;}
@@ -228,6 +232,7 @@ body.song-detail-mode .btn-secondary{
 }
 .checkrow input{width:19px;height:19px;flex:0 0 auto;}
 .checkrow .label{flex:1;font-size:14.5px;}
+.picker-scroll{overflow-y:auto;-webkit-overflow-scrolling:touch;flex:1 1 auto;min-height:0;}
 
 /* Modal / sheet */
 .overlay{

@@ -415,9 +415,17 @@ function render(){
   fn(top);
   view.scrollTop = top.scrollY || 0;
 
+  // Doubles as "new playlist" on Playlisty and "add a song" on Piesne (open to
+  // any user, no admin password — separate from the gated Spravovať tools).
+  // Hidden everywhere else (playlist-detail, song-detail, forms, admin).
   var fab = document.getElementById('newPlaylistFab');
-  fab.hidden = top.name !== 'playlists-root';
+  var fabMode = top.name === 'playlists-root' ? 'playlist'
+    : (top.name === 'songs-root' || top.name === 'songs-all') ? 'song'
+    : null;
+  fab.hidden = !fabMode;
   if (!fab.hidden){
+    fab.dataset.fabMode = fabMode;
+    fab.setAttribute('aria-label', fabMode === 'playlist' ? 'Nový playlist' : 'Pridať pieseň');
     var navEl = document.querySelector('.bottomnav');
     fab.style.bottom = ((navEl ? navEl.offsetHeight : 64) + 18) + 'px';
   }
@@ -850,11 +858,18 @@ function openSongPickerForPlaylist(playlistId){
   // silently committing them.
   var pendingIds = p.songIds.slice();
 
+  function doneLabel(){ return 'Pridať' + (pendingIds.length ? ' (' + pendingIds.length + ')' : ''); }
+
   function body(){
     var normQ = normalizeStr(query);
     var list = App.songs.filter(function(s){ return !normQ || normalizeStr(s.title).indexOf(normQ)>=0; });
+    // The checkbox list scrolls in its own inner area; the title, search box,
+    // and "Pridať" button stay pinned outside it (via the flex layout applied
+    // in wire()) so the button is always reachable without scrolling past a
+    // library that can run into the hundreds of songs.
     var html = '<div class="sheet-title">Pridať piesne do „'+escapeHtml(p.name)+'“</div>';
     html += '<div class="searchbox" style="margin-bottom:10px;">'+SEARCH_ICON+'<input id="pickerSearch" type="text" placeholder="Hľadať pieseň…" value="'+escapeHtml(query)+'"></div>';
+    html += '<div class="picker-scroll" id="pickerScroll">';
     if (list.length===0){
       html += '<div class="hint">Žiadne piesne nenájdené.</div>';
     } else {
@@ -863,16 +878,22 @@ function openSongPickerForPlaylist(playlistId){
         html += '<label class="checkrow"><input type="checkbox" data-song="'+s.id+'" '+checked+'><span class="label">'+escapeHtml(s.title)+'</span></label>';
       });
     }
-    html += '<button class="btn btn-primary btn-block" id="doneAddSongs" style="margin-top:10px;">Pridať</button>';
+    html += '</div>';
+    html += '<button class="btn btn-primary btn-block" id="doneAddSongs" style="margin-top:10px;">'+doneLabel()+'</button>';
     return html;
   }
   var close = showSheet(body(), wire);
   function wire(root){
+    root.style.display = 'flex';
+    root.style.flexDirection = 'column';
+    root.style.overflowY = 'hidden';
     root.querySelectorAll('[data-song]').forEach(function(cb){
       cb.onchange = function(){
         var idx = pendingIds.indexOf(cb.dataset.song);
         if (cb.checked && idx<0) pendingIds.push(cb.dataset.song);
         if (!cb.checked && idx>=0) pendingIds.splice(idx,1);
+        var btn = document.getElementById('doneAddSongs');
+        if (btn) btn.textContent = doneLabel();
       };
     });
     var search = root.querySelector('#pickerSearch');
@@ -1244,6 +1265,11 @@ window.appGoBack = function(){
 };
 
 document.getElementById('newPlaylistFab').onclick = function(){
+  var top = App.stack[App.stack.length-1];
+  if (top.name === 'songs-root' || top.name === 'songs-all'){
+    push({name:'song-form'}); // any user — intentionally not behind ensureAdminUnlocked()
+    return;
+  }
   promptDialog('Nový playlist', 'Názov playlistu', '').then(function(name){
     if (!name) return;
     Store.putPlaylist({id: uid('p'), name:name.trim(), songIds:[], createdAt: Date.now()}).then(reloadData).then(render);
