@@ -381,6 +381,16 @@ var view = document.getElementById('view');
 var topbarTitle = document.getElementById('topbarTitle');
 var backBtn = document.getElementById('backBtn');
 
+// Remember each stack frame's own scroll position (e.g. how far down the
+// "všetky piesne" or playlist song list you'd scrolled) so going back to it
+// — from a song you tapped into, say — lands you where you left off instead
+// of snapping back to the top. Forward navigation still starts a fresh page
+// at the top, since the new stack frame has no recorded scrollY yet.
+view.addEventListener('scroll', function(){
+  var top = App.stack[App.stack.length-1];
+  if (top) top.scrollY = view.scrollTop;
+});
+
 function render(){
   var top = App.stack[App.stack.length-1];
   backBtn.hidden = App.stack.length <= 1;
@@ -403,7 +413,7 @@ function render(){
   };
   var fn = renderers[top.name] || renderSongsRoot;
   fn(top);
-  view.scrollTop = 0;
+  view.scrollTop = top.scrollY || 0;
 
   var fab = document.getElementById('newPlaylistFab');
   fab.hidden = top.name !== 'playlists-root';
