@@ -50,6 +50,40 @@ function toast(msg){
   toast._t = setTimeout(function(){ el.hidden = true; }, 2400);
 }
 
+/* --------------------------------------------------------------- history
+ * "Recently searched" and "recently opened" are local-only UI convenience
+ * state (not exported/imported with the songs), so plain localStorage is
+ * enough — no need to route through IndexedDB.
+ */
+var HISTORY_SEARCHES_KEY = 'ludovka_recent_searches';
+var HISTORY_SONGS_KEY = 'ludovka_recent_songs';
+var HISTORY_MAX = 10;
+
+function readJsonLS(key){
+  try { var v = JSON.parse(localStorage.getItem(key)); return Array.isArray(v) ? v : []; }
+  catch(e){ return []; }
+}
+function getRecentSearches(){ return readJsonLS(HISTORY_SEARCHES_KEY); }
+function addRecentSearch(q){
+  q = (q||'').trim();
+  if (q.length < 2) return;
+  var norm = normalizeStr(q);
+  var list = getRecentSearches().filter(function(x){ return normalizeStr(x) !== norm; });
+  list.unshift(q);
+  if (list.length > HISTORY_MAX) list.length = HISTORY_MAX;
+  localStorage.setItem(HISTORY_SEARCHES_KEY, JSON.stringify(list));
+}
+function clearRecentSearches(){ localStorage.removeItem(HISTORY_SEARCHES_KEY); }
+
+function getRecentSongIds(){ return readJsonLS(HISTORY_SONGS_KEY); }
+function addRecentSong(id){
+  var list = getRecentSongIds().filter(function(x){ return x !== id; });
+  list.unshift(id);
+  if (list.length > HISTORY_MAX) list.length = HISTORY_MAX;
+  localStorage.setItem(HISTORY_SONGS_KEY, JSON.stringify(list));
+}
+function clearRecentSongs(){ localStorage.removeItem(HISTORY_SONGS_KEY); }
+
 /* Returns {before, match, after} snippet around first hit of query inside text, or null. */
 function findSnippet(text, normQuery){
   if (!normQuery) return null;
@@ -267,9 +301,53 @@ function tagNamesForSong(s){
   return (s.tagIds || []).map(tagById).filter(Boolean).map(function(t){ return t.name; });
 }
 
-function push(view){ App.stack.push(view); render(); }
-function pop(){ App.stack.pop(); render(); }
-function resetTab(tab){ App.tab = tab; App.stack = [{name: tab+'-root'}]; render(); }
+/* ---- navigation + animated transitions ----
+ * Every real page change (push/pop/tab switch) goes through navigate(), which
+ * wraps the DOM mutation in document.startViewTransition() when the browser
+ * supports it (modern Android WebView does), producing a smooth slide/fade
+ * between screens instead of an instant flash. Older WebViews fall back to
+ * the previous instant behaviour automatically. In-place refreshes (typing
+ * in a search box, toggling a checkbox, etc.) should keep calling render()
+ * directly — they don't go through here, and shouldn't.
+ */
+function navigate(mutateFn, opts){
+  opts = opts || {};
+  if (typeof document.startViewTransition !== 'function'){
+    mutateFn(); render();
+    return;
+  }
+  var html = document.documentElement;
+  html.dataset.navDir = opts.dir || 'forward';
+  if (opts.sourceEl) opts.sourceEl.style.viewTransitionName = 'song-morph';
+
+  var transition = document.startViewTransition(function(){
+    mutateFn();
+    render();
+    if (opts.morph){
+      var hero = view.querySelector('[data-morph-target]');
+      if (hero) hero.style.viewTransitionName = 'song-morph';
+    }
+  });
+
+  transition.finished.catch(function(){}).then(function(){
+    delete html.dataset.navDir;
+    if (opts.sourceEl) opts.sourceEl.style.viewTransitionName = '';
+    var hero = view.querySelector('[data-morph-target]');
+    if (hero) hero.style.viewTransitionName = '';
+  });
+}
+
+function push(view, opts){
+  navigate(function(){ App.stack.push(view); }, Object.assign({dir:'forward'}, opts));
+}
+// Opens a song with a "dive in" morph: the tapped title grows into the
+// reader-mode title instead of the screen just cutting to the new content.
+function openSong(sourceEl, id){
+  var titleEl = sourceEl && (sourceEl.classList.contains('song-title') ? sourceEl : sourceEl.querySelector('.song-title'));
+  push({name:'song-detail', id: id}, {sourceEl: titleEl, morph: true});
+}
+function pop(){ navigate(function(){ App.stack.pop(); }, {dir:'back'}); }
+function resetTab(tab){ navigate(function(){ App.tab = tab; App.stack = [{name: tab+'-root'}]; }, {dir:'cross'}); }
 
 /* ------------------------------------------------------------ rendering */
 
@@ -290,6 +368,7 @@ function render(){
 
   var renderers = {
     'songs-root': renderSongsRoot,
+    'songs-all': renderSongsAll,
     'song-detail': renderSongDetail,
     'song-form': renderSongForm,
     'playlists-root': renderPlaylistsRoot,
@@ -310,9 +389,115 @@ function render(){
 
 /* ---- Songs tab ---- */
 
+function songCardHtml(s, normQ){
+  var snippet = null;
+  var titleHit = normQ && normalizeStr(s.title).indexOf(normQ) >= 0;
+  if (normQ && !titleHit) snippet = findSnippet(s.lyrics, normQ);
+  var html = '<div class="song-card" data-open-song="'+s.id+'">';
+  html += '<div class="meta">';
+  html += '<div class="song-title">'+(normQ ? highlightTitle(s.title, normQ) : escapeHtml(s.title))+'</div>';
+  var tagNames = tagNamesForSong(s);
+  if (tagNames.length) html += '<div class="song-sub">'+escapeHtml(tagNames.join(' · '))+'</div>';
+  if (snippet) html += '<div class="song-snippet">'+snippet.before+'<mark>'+snippet.match+'</mark>'+snippet.after+'</div>';
+  html += '</div><div class="chev">›</div></div>';
+  return html;
+}
+function wireSongCardOpens(root, onOpen){
+  root.querySelectorAll('[data-open-song]').forEach(function(el){
+    el.onclick = function(){
+      if (onOpen) onOpen(el.dataset.openSong);
+      openSong(el, el.dataset.openSong);
+    };
+  });
+}
+
 function renderSongsRoot(){
   topbarTitle.textContent = 'Ľudovka';
   var q = App.searchQuery;
+  var normQ = normalizeStr(q);
+
+  var html = '';
+  html += '<div class="searchbox">'+SEARCH_ICON+'<input id="searchInput" type="text" placeholder="Hľadať podľa názvu alebo textu…" value="'+escapeHtml(q)+'">';
+  if (q) html += '<button class="clear-x" id="clearSearch">✕</button>';
+  html += '</div>';
+
+  if (App.songs.length === 0){
+    html += '<div class="empty-state"><span class="big">'+iconMusic(40)+'</span>Zatiaľ tu nie sú žiadne piesne.<br>Pridaj ich v sekcii „Spravovať“.</div>';
+    view.innerHTML = html;
+    wireSongsRootSearch();
+    return;
+  }
+
+  if (normQ){
+    // Actively searching: show live results across the whole library.
+    var results = App.songs.filter(function(s){
+      return normalizeStr(s.title).indexOf(normQ) >= 0 || normalizeStr(s.lyrics).indexOf(normQ) >= 0;
+    });
+    if (results.length === 0){
+      html += '<div class="empty-state"><span class="big">'+iconSearchBig(40)+'</span>Nič sa nenašlo pre „'+escapeHtml(q)+'“.</div>';
+    } else {
+      html += '<div class="section-title">'+results.length+' výsledkov</div>';
+      results.forEach(function(s){ html += songCardHtml(s, normQ); });
+    }
+    view.innerHTML = html;
+    wireSongsRootSearch();
+    wireSongCardOpens(view, function(){ addRecentSearch(App.searchQuery); });
+    return;
+  }
+
+  // No active query: default view is history, not the full library.
+  var recentSearches = getRecentSearches();
+  var recentSongs = getRecentSongIds().map(songById).filter(Boolean);
+
+  if (recentSearches.length === 0 && recentSongs.length === 0){
+    html += '<div class="empty-state"><span class="big">'+iconSearchBig(40)+'</span>Zatiaľ tu nie je žiadna história.<br>Vyhľadaj alebo si prezri pieseň a nájdeš ju tu nabudúce.</div>';
+  } else {
+    if (recentSearches.length){
+      html += '<div class="section-title">Naposledy vyhľadávané</div>';
+      html += '<div class="chip-row" id="recentSearchRow">';
+      recentSearches.forEach(function(term){
+        html += '<button type="button" class="chip-search" data-recent-search="'+escapeHtml(term)+'">'+SEARCH_ICON+escapeHtml(term)+'</button>';
+      });
+      html += '</div>';
+    }
+    if (recentSongs.length){
+      html += '<div class="section-title" style="margin-top:'+(recentSearches.length?'22px':'18px')+';">Naposledy otvorené</div>';
+      recentSongs.forEach(function(s){ html += songCardHtml(s, ''); });
+    }
+    html += '<button type="button" class="history-clear" id="clearHistoryBtn">Vymazať históriu</button>';
+  }
+  html += '<button type="button" class="browse-all-link" id="browseAllBtn">'+iconMusic(16)+' Zobraziť všetky piesne ('+App.songs.length+')</button>';
+  view.innerHTML = html;
+
+  wireSongsRootSearch();
+  wireSongCardOpens(view);
+  view.querySelectorAll('[data-recent-search]').forEach(function(el){
+    el.onclick = function(){ App.searchQuery = el.dataset.recentSearch; render(); };
+  });
+  var clearHistoryBtn = document.getElementById('clearHistoryBtn');
+  if (clearHistoryBtn) clearHistoryBtn.onclick = function(){ clearRecentSearches(); clearRecentSongs(); render(); };
+  document.getElementById('browseAllBtn').onclick = function(){ push({name:'songs-all', query:''}); };
+}
+
+function wireSongsRootSearch(){
+  var input = document.getElementById('searchInput');
+  input.oninput = debounce(function(){
+    App.searchQuery = input.value;
+    render();
+    var i2 = document.getElementById('searchInput');
+    i2.focus();
+    i2.selectionStart = i2.selectionEnd = i2.value.length;
+  }, 150);
+  input.addEventListener('keydown', function(e){ if (e.key === 'Enter') addRecentSearch(input.value); });
+  var clearBtn = document.getElementById('clearSearch');
+  if (clearBtn) clearBtn.onclick = function(){ App.searchQuery=''; render(); };
+}
+
+/* ---- Full song library (reached via "Zobraziť všetky piesne") ---- */
+
+function renderSongsAll(top){
+  topbarTitle.textContent = 'Všetky piesne';
+  var q = top.query || '';
   var normQ = normalizeStr(q);
   var results = App.songs;
   if (normQ){
@@ -322,47 +507,41 @@ function renderSongsRoot(){
   }
 
   var html = '';
-  html += '<div class="searchbox">'+SEARCH_ICON+'<input id="searchInput" type="text" placeholder="Hľadať podľa názvu alebo textu…" value="'+escapeHtml(q)+'">';
-  if (q) html += '<button class="clear-x" id="clearSearch">✕</button>';
+  html += '<div class="searchbox">'+SEARCH_ICON+'<input id="allSearchInput" type="text" placeholder="Hľadať podľa názvu alebo textu…" value="'+escapeHtml(q)+'">';
+  if (q) html += '<button class="clear-x" id="allClearSearch">✕</button>';
   html += '</div>';
 
-  if (App.songs.length === 0){
-    html += '<div class="empty-state"><span class="big">'+iconMusic(40)+'</span>Zatiaľ tu nie sú žiadne piesne.<br>Pridaj ich v sekcii „Spravovať“.</div>';
-  } else if (results.length === 0){
+  if (results.length === 0){
     html += '<div class="empty-state"><span class="big">'+iconSearchBig(40)+'</span>Nič sa nenašlo pre „'+escapeHtml(q)+'“.</div>';
   } else {
     html += '<div class="section-title">'+(q ? results.length+' výsledkov' : 'Všetky piesne ('+results.length+')')+'</div>';
-    results.forEach(function(s){
-      var snippet = null;
-      var titleHit = normalizeStr(s.title).indexOf(normQ) >= 0;
-      if (normQ && !titleHit) snippet = findSnippet(s.lyrics, normQ);
-      html += '<div class="song-card" data-open-song="'+s.id+'">';
-      html += '<div class="meta">';
-      html += '<div class="song-title">'+highlightTitle(s.title, normQ)+'</div>';
-      var tagNames = tagNamesForSong(s);
-      if (tagNames.length) html += '<div class="song-sub">'+escapeHtml(tagNames.join(' · '))+'</div>';
-      if (snippet) html += '<div class="song-snippet">'+snippet.before+'<mark>'+snippet.match+'</mark>'+snippet.after+'</div>';
-      html += '</div><div class="chev">›</div></div>';
-    });
+    results.forEach(function(s){ html += songCardHtml(s, normQ); });
   }
   view.innerHTML = html;
 
-  var input = document.getElementById('searchInput');
-  input.oninput = debounce(function(){ App.searchQuery = input.value; render(); document.getElementById('searchInput').focus(); document.getElementById('searchInput').selectionStart = document.getElementById('searchInput').value.length; }, 150);
-  var clearBtn = document.getElementById('clearSearch');
-  if (clearBtn) clearBtn.onclick = function(){ App.searchQuery=''; render(); };
-  view.querySelectorAll('[data-open-song]').forEach(function(el){
-    el.onclick = function(){ push({name:'song-detail', id: el.dataset.openSong, from:'songs'}); };
-  });
+  var input = document.getElementById('allSearchInput');
+  input.oninput = debounce(function(){
+    top.query = input.value;
+    render();
+    var i2 = document.getElementById('allSearchInput');
+    i2.focus();
+    i2.selectionStart = i2.selectionEnd = i2.value.length;
+  }, 150);
+  input.addEventListener('keydown', function(e){ if (e.key === 'Enter') addRecentSearch(input.value); });
+  var clearBtn = document.getElementById('allClearSearch');
+  if (clearBtn) clearBtn.onclick = function(){ top.query=''; render(); };
+  wireSongCardOpens(view, function(){ if (top.query) addRecentSearch(top.query); });
 }
 
 function renderSongDetail(top){
   var s = songById(top.id);
   if (!s){ pop(); return; }
   topbarTitle.textContent = s.title;
+  addRecentSong(s.id);
   var inPlaylists = App.playlists.filter(function(p){ return p.songIds.indexOf(s.id)>=0; });
 
   var html = '';
+  html += '<div class="detail-header" data-morph-target><div class="detail-title">'+escapeHtml(s.title)+'</div></div>';
   var songTagNames = tagNamesForSong(s);
   if (songTagNames.length){
     html += '<div class="chip-row" style="margin-bottom:14px;">'+songTagNames.map(function(n){return '<span class="chip">'+escapeHtml(n)+'</span>';}).join('')+'</div>';
@@ -534,7 +713,7 @@ function renderPlaylistDetail(top){
   view.innerHTML = html;
 
   view.querySelectorAll('[data-open-song]').forEach(function(el){
-    el.onclick = function(){ push({name:'song-detail', id: el.dataset.openSong}); };
+    el.onclick = function(){ openSong(el, el.dataset.openSong); };
   });
   view.querySelectorAll('[data-remove-song]').forEach(function(el){
     el.onclick = function(e){
@@ -908,8 +1087,14 @@ function showSheet(innerHtml, onMount){
   overlay.className = 'overlay';
   overlay.innerHTML = '<div class="sheet">'+innerHtml+'</div>';
   document.body.appendChild(overlay);
+  // Start below/transparent, then trigger the CSS transition to slide+fade in.
+  requestAnimationFrame(function(){ requestAnimationFrame(function(){ overlay.classList.add('overlay-active'); }); });
   overlay.addEventListener('click', function(e){ if (e.target === overlay) close(); });
-  function close(){ if (overlay.parentNode) overlay.parentNode.removeChild(overlay); }
+  function close(){
+    if (!overlay.parentNode) return;
+    overlay.classList.remove('overlay-active');
+    setTimeout(function(){ if (overlay.parentNode) overlay.parentNode.removeChild(overlay); }, 260);
+  }
   if (onMount) onMount(overlay.querySelector('.sheet'));
   window._closeActiveSheet = close;
   return close;

@@ -51,7 +51,35 @@ main#view{
   padding:14px 14px calc(14px + var(--safe-bottom));
   position:relative;z-index:1;
   background:transparent;
+  view-transition-name:page-content;
 }
+
+/* ---------------- Page transition animations (View Transitions API) ---------------- */
+@keyframes ludovka-slide-in-right{ from{ transform:translateX(36px); opacity:0; } to{ transform:translateX(0); opacity:1; } }
+@keyframes ludovka-slide-out-left{ from{ transform:translateX(0); opacity:1; } to{ transform:translateX(-36px); opacity:0; } }
+@keyframes ludovka-slide-in-left{ from{ transform:translateX(-36px); opacity:0; } to{ transform:translateX(0); opacity:1; } }
+@keyframes ludovka-slide-out-right{ from{ transform:translateX(0); opacity:1; } to{ transform:translateX(36px); opacity:0; } }
+@keyframes ludovka-fade-in{ from{ opacity:0; } to{ opacity:1; } }
+@keyframes ludovka-fade-out{ from{ opacity:1; } to{ opacity:0; } }
+
+::view-transition-group(*){
+  animation-duration:320ms;
+  animation-timing-function:cubic-bezier(.22,1,.36,1);
+}
+::view-transition-old(root), ::view-transition-new(root){
+  animation-duration:180ms;
+}
+
+html[data-nav-dir="forward"]::view-transition-old(page-content){ animation:ludovka-slide-out-left 300ms both cubic-bezier(.22,1,.36,1); }
+html[data-nav-dir="forward"]::view-transition-new(page-content){ animation:ludovka-slide-in-right 300ms both cubic-bezier(.22,1,.36,1); }
+html[data-nav-dir="back"]::view-transition-old(page-content){ animation:ludovka-slide-out-right 300ms both cubic-bezier(.22,1,.36,1); }
+html[data-nav-dir="back"]::view-transition-new(page-content){ animation:ludovka-slide-in-left 300ms both cubic-bezier(.22,1,.36,1); }
+html[data-nav-dir="cross"]::view-transition-old(page-content){ animation:ludovka-fade-out 160ms both; }
+html[data-nav-dir="cross"]::view-transition-new(page-content){ animation:ludovka-fade-in 220ms both; }
+
+/* Song "dive in": the tapped title morphs into the song's reader-mode title. */
+::view-transition-group(song-morph){ animation-duration:420ms; animation-timing-function:cubic-bezier(.22,1,.36,1); }
+::view-transition-old(song-morph), ::view-transition-new(song-morph){ animation-duration:420ms; }
 
 /* App-wide backdrop: deep pastel blue with a faint Slovak folk ornament motif,
    fixed behind everything so scrolling content never scrolls the pattern itself. */
@@ -201,11 +229,17 @@ body.song-detail-mode .btn-secondary{
 .overlay{
   position:fixed;inset:0;background:rgba(30,20,14,.45);z-index:20;
   display:flex;align-items:flex-end;
+  opacity:0;
+  transition:opacity .24s ease;
 }
+.overlay.overlay-active{opacity:1;}
 .sheet{
   background:#fff;width:100%;max-height:82vh;border-radius:18px 18px 0 0;
   padding:18px 18px calc(18px + var(--safe-bottom));overflow-y:auto;
+  transform:translateY(100%);
+  transition:transform .3s cubic-bezier(.22,1,.36,1);
 }
+.overlay.overlay-active .sheet{transform:translateY(0);}
 .sheet-title{font-size:17px;font-weight:700;margin-bottom:14px;}
 
 .toast{
@@ -229,6 +263,24 @@ a.filelink{color:var(--red);text-decoration:underline;}
   background:var(--cream-2);color:var(--ink);border-radius:999px;padding:6px 12px;
   font-size:12.5px;border:1px solid var(--border);
 }
+
+/* History (songs-root default view) */
+.chip-search{
+  background:rgba(255,255,255,.85);color:var(--ink);border:1px solid rgba(255,255,255,.5);
+  border-radius:999px;padding:7px 13px;font-size:13px;font-family:inherit;cursor:pointer;
+  display:inline-flex;align-items:center;gap:6px;
+}
+.chip-search:active{background:#fff;}
+.history-clear{
+  background:none;border:none;color:rgba(255,255,255,.75);font-size:12.5px;font-family:inherit;
+  text-decoration:underline;padding:6px 2px 2px;
+}
+.browse-all-link{
+  display:flex;align-items:center;justify-content:center;gap:6px;width:100%;
+  background:rgba(255,255,255,.14);color:#fff;border:1px solid rgba(255,255,255,.32);
+  border-radius:11px;padding:13px 16px;font-size:14.5px;font-weight:600;font-family:inherit;margin-top:22px;
+}
+.browse-all-link:active{background:rgba(255,255,255,.24);}
 
 /* Tag chips: selectable (song form) and removable (admin tag management) */
 .chip-toggle{
