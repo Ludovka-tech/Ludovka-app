@@ -35,7 +35,6 @@ function iconUpload(size){ return iconTag('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2
 function iconDownload(size){ return iconTag('<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/>', size); }
 function iconFile(size){ return iconTag('<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/>', size); }
 function iconSearchBig(size){ return iconTag('<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>', size); }
-function iconLock(size){ return iconTag('<rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/>', size); }
 function uid(prefix){
   return prefix + '_' + Date.now().toString(36) + Math.random().toString(36).slice(2,8);
 }
@@ -283,25 +282,8 @@ var App = {
   tags: [],
   tab: 'songs',
   stack: [{name:'songs-root'}],
-  searchQuery: '',
-  adminUnlocked: false
+  searchQuery: ''
 };
-
-// Gates access to Spravovať / song editing. Unlocks only for the current app
-// session (in memory only) — closing or reloading the app locks it again.
-var ADMIN_PASSWORD = 'tookoolforskool';
-function ensureAdminUnlocked(){
-  if (App.adminUnlocked) return Promise.resolve(true);
-  return passwordDialog().then(function(pw){
-    if (pw === null) return false;
-    if (pw === ADMIN_PASSWORD){
-      App.adminUnlocked = true;
-      return true;
-    }
-    toast('Nesprávne heslo.');
-    return false;
-  });
-}
 
 function reloadData(){
   return Promise.all([Store.allSongs(), Store.allPlaylists(), Store.allTags()]).then(function(r){
@@ -415,8 +397,7 @@ function render(){
   fn(top);
   view.scrollTop = top.scrollY || 0;
 
-  // Doubles as "new playlist" on Playlisty and "add a song" on Piesne (open to
-  // any user, no admin password — separate from the gated Spravovať tools).
+  // Doubles as "new playlist" on Playlisty and "add a song" on Piesne.
   // Hidden everywhere else (playlist-detail, song-detail, forms, admin).
   var fab = document.getElementById('newPlaylistFab');
   var fabMode = top.name === 'playlists-root' ? 'playlist'
@@ -604,7 +585,7 @@ function renderSongDetail(top){
 
   document.getElementById('addToPlaylistBtn').onclick = function(){ openPlaylistPicker(s.id); };
   document.getElementById('editSongBtn').onclick = function(){
-    ensureAdminUnlocked().then(function(ok){ if (ok) push({name:'song-form', id: s.id}); });
+    push({name:'song-form', id: s.id});
   };
 }
 
@@ -1222,36 +1203,11 @@ function promptDialog(title, placeholder, value){
     );
   });
 }
-function passwordDialog(){
-  return new Promise(function(resolve){
-    showSheet(
-      '<div class="sheet-title">'+iconLock(18)+' Prístup pre správcu</div>'+
-      '<div class="field"><input type="password" id="pwInput" placeholder="Heslo" autocomplete="off"></div>'+
-      '<div class="btn-row">'+
-      '<button class="btn btn-secondary" style="flex:1;" id="pwCancel">Zrušiť</button>'+
-      '<button class="btn btn-primary" style="flex:1;" id="pwOk">Vstúpiť</button>'+
-      '</div>',
-      function(root){
-        var input = root.querySelector('#pwInput');
-        input.focus();
-        var submit = function(){ var v=input.value; closeSheet(); resolve(v||null); };
-        root.querySelector('#pwCancel').onclick = function(){ closeSheet(); resolve(null); };
-        root.querySelector('#pwOk').onclick = submit;
-        input.addEventListener('keydown', function(e){ if (e.key==='Enter') submit(); });
-      }
-    );
-  });
-}
-
 /* ------------------------------------------------------------------ nav */
 
 document.querySelectorAll('.navbtn').forEach(function(b){
   b.addEventListener('click', function(){
-    if (b.dataset.tab === 'admin'){
-      ensureAdminUnlocked().then(function(ok){ if (ok) resetTab('admin'); });
-    } else {
-      resetTab(b.dataset.tab);
-    }
+    resetTab(b.dataset.tab);
   });
 });
 backBtn.addEventListener('click', pop);
@@ -1267,7 +1223,7 @@ window.appGoBack = function(){
 document.getElementById('newPlaylistFab').onclick = function(){
   var top = App.stack[App.stack.length-1];
   if (top.name === 'songs-root' || top.name === 'songs-all'){
-    push({name:'song-form'}); // any user — intentionally not behind ensureAdminUnlocked()
+    push({name:'song-form'});
     return;
   }
   promptDialog('Nový playlist', 'Názov playlistu', '').then(function(name){
