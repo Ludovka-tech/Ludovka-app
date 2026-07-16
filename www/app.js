@@ -662,13 +662,29 @@ function renderSongForm(top){
     var lyrics = document.getElementById('fLyrics').value.trim();
     if (!title){ toast('Zadaj názov piesne.'); return; }
     if (!lyrics){ toast('Zadaj text piesne.'); return; }
-    var song = editing ? Object.assign({}, s, {title:title, lyrics:lyrics, tagIds:selectedTagIds}) :
-      {id: uid('s'), title:title, lyrics:lyrics, tagIds:selectedTagIds, createdAt: Date.now()};
-    Store.putSong(song).then(reloadData).then(function(){
-      toast(editing ? 'Zmeny uložené.' : 'Pieseň pridaná.');
-      App.stack = App.tab==='admin' ? [{name:'admin-root'}] : [{name:'songs-root'}];
-      render();
-    });
+
+    function doSave(){
+      var song = editing ? Object.assign({}, s, {title:title, lyrics:lyrics, tagIds:selectedTagIds}) :
+        {id: uid('s'), title:title, lyrics:lyrics, tagIds:selectedTagIds, createdAt: Date.now()};
+      Store.putSong(song).then(reloadData).then(function(){
+        toast(editing ? 'Zmeny uložené.' : 'Pieseň pridaná.');
+        App.stack = App.tab==='admin' ? [{name:'admin-root'}] : [{name:'songs-root'}];
+        render();
+      });
+    }
+
+    // Unlike bulk import (which merges rows onto an existing title), adding/
+    // renaming one song by hand doesn't otherwise check for a name clash —
+    // warn so the user doesn't end up with two separate songs sharing a title.
+    var normTitle = normalizeStr(title);
+    var dup = App.songs.find(function(x){ return normalizeStr(x.title) === normTitle && (!editing || x.id !== s.id); });
+    if (dup){
+      confirmDialog('Pieseň s názvom „'+escapeHtml(title)+'“ už v knižnici existuje. Uložiť aj tak ako samostatnú pieseň?').then(function(ok){
+        if (ok) doSave();
+      });
+    } else {
+      doSave();
+    }
   };
   if (editing){
     document.getElementById('deleteSongBtn').onclick = function(){
