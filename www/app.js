@@ -832,11 +832,11 @@ function openPlaylistPicker(songId){
       };
     });
     root.querySelector('#newPlFromPicker').onclick = function(){
+      closeSheet();
       promptDialog('Nový playlist', 'Názov playlistu', '').then(function(name){
-        if (!name) return;
+        if (!name){ openPlaylistPicker(songId); return; }
         var pl = {id: uid('p'), name:name.trim(), songIds:[songId], createdAt: Date.now()};
         Store.putPlaylist(pl).then(reloadData).then(function(){
-          closeSheet();
           openPlaylistPicker(songId);
         });
       });
@@ -1168,6 +1168,14 @@ function saveTextFile(filename, content, mime){
 
 /* --------------------------------------------------------- sheet/dialogs */
 
+// Sheets can legitimately nest (e.g. a promptDialog opened from inside an
+// already-open picker), so a single "active sheet" reference isn't enough —
+// opening the nested one used to silently clobber the reference to the outer
+// one, which then had no way to ever close and was stranded on screen even
+// after later sheets were dismissed. A stack fixes that: closeSheet() always
+// closes whichever sheet is currently on top, and each sheet removes itself
+// from the stack once closed (however it was closed).
+window._sheetStack = window._sheetStack || [];
 function showSheet(innerHtml, onMount){
   var overlay = document.createElement('div');
   overlay.className = 'overlay';
@@ -1180,12 +1188,17 @@ function showSheet(innerHtml, onMount){
     if (!overlay.parentNode) return;
     overlay.classList.remove('overlay-active');
     setTimeout(function(){ if (overlay.parentNode) overlay.parentNode.removeChild(overlay); }, 420);
+    var idx = window._sheetStack.indexOf(close);
+    if (idx >= 0) window._sheetStack.splice(idx, 1);
   }
   if (onMount) onMount(overlay.querySelector('.sheet'));
-  window._closeActiveSheet = close;
+  window._sheetStack.push(close);
   return close;
 }
-function closeSheet(){ if (window._closeActiveSheet) window._closeActiveSheet(); }
+function closeSheet(){
+  var top = window._sheetStack[window._sheetStack.length - 1];
+  if (top) top();
+}
 
 function confirmDialog(message){
   return new Promise(function(resolve){
