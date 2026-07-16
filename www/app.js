@@ -719,8 +719,12 @@ function renderPlaylistDetail(top){
     el.onclick = function(e){
       e.stopPropagation();
       var songId = el.dataset.removeSong;
-      p.songIds = p.songIds.filter(function(id){ return id!==songId; });
-      Store.putPlaylist(p).then(reloadData).then(render);
+      var song = songById(songId);
+      confirmDialog('Odstrániť pieseň „'+escapeHtml(song ? song.title : '')+'“ z playlistu „'+escapeHtml(p.name)+'“?').then(function(ok){
+        if (!ok) return;
+        p.songIds = p.songIds.filter(function(id){ return id!==songId; });
+        Store.putPlaylist(p).then(reloadData).then(render);
+      });
     };
   });
   document.getElementById('addSongsBtn').onclick = function(){ openSongPickerForPlaylist(p.id); };
@@ -1093,7 +1097,7 @@ function showSheet(innerHtml, onMount){
   function close(){
     if (!overlay.parentNode) return;
     overlay.classList.remove('overlay-active');
-    setTimeout(function(){ if (overlay.parentNode) overlay.parentNode.removeChild(overlay); }, 260);
+    setTimeout(function(){ if (overlay.parentNode) overlay.parentNode.removeChild(overlay); }, 420);
   }
   if (onMount) onMount(overlay.querySelector('.sheet'));
   window._closeActiveSheet = close;

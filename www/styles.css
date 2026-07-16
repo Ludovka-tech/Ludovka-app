@@ -55,31 +55,31 @@ main#view{
 }
 
 /* ---------------- Page transition animations (View Transitions API) ---------------- */
-@keyframes ludovka-slide-in-right{ from{ transform:translateX(36px); opacity:0; } to{ transform:translateX(0); opacity:1; } }
-@keyframes ludovka-slide-out-left{ from{ transform:translateX(0); opacity:1; } to{ transform:translateX(-36px); opacity:0; } }
-@keyframes ludovka-slide-in-left{ from{ transform:translateX(-36px); opacity:0; } to{ transform:translateX(0); opacity:1; } }
-@keyframes ludovka-slide-out-right{ from{ transform:translateX(0); opacity:1; } to{ transform:translateX(36px); opacity:0; } }
+@keyframes ludovka-slide-in-right{ from{ transform:translateX(44px); opacity:0; } to{ transform:translateX(0); opacity:1; } }
+@keyframes ludovka-slide-out-left{ from{ transform:translateX(0); opacity:1; } to{ transform:translateX(-44px); opacity:0; } }
+@keyframes ludovka-slide-in-left{ from{ transform:translateX(-44px); opacity:0; } to{ transform:translateX(0); opacity:1; } }
+@keyframes ludovka-slide-out-right{ from{ transform:translateX(0); opacity:1; } to{ transform:translateX(44px); opacity:0; } }
 @keyframes ludovka-fade-in{ from{ opacity:0; } to{ opacity:1; } }
 @keyframes ludovka-fade-out{ from{ opacity:1; } to{ opacity:0; } }
 
 ::view-transition-group(*){
-  animation-duration:320ms;
+  animation-duration:480ms;
   animation-timing-function:cubic-bezier(.22,1,.36,1);
 }
 ::view-transition-old(root), ::view-transition-new(root){
-  animation-duration:180ms;
+  animation-duration:320ms;
 }
 
-html[data-nav-dir="forward"]::view-transition-old(page-content){ animation:ludovka-slide-out-left 300ms both cubic-bezier(.22,1,.36,1); }
-html[data-nav-dir="forward"]::view-transition-new(page-content){ animation:ludovka-slide-in-right 300ms both cubic-bezier(.22,1,.36,1); }
-html[data-nav-dir="back"]::view-transition-old(page-content){ animation:ludovka-slide-out-right 300ms both cubic-bezier(.22,1,.36,1); }
-html[data-nav-dir="back"]::view-transition-new(page-content){ animation:ludovka-slide-in-left 300ms both cubic-bezier(.22,1,.36,1); }
-html[data-nav-dir="cross"]::view-transition-old(page-content){ animation:ludovka-fade-out 160ms both; }
-html[data-nav-dir="cross"]::view-transition-new(page-content){ animation:ludovka-fade-in 220ms both; }
+html[data-nav-dir="forward"]::view-transition-old(page-content){ animation:ludovka-slide-out-left 460ms both cubic-bezier(.22,1,.36,1); }
+html[data-nav-dir="forward"]::view-transition-new(page-content){ animation:ludovka-slide-in-right 460ms both cubic-bezier(.22,1,.36,1); }
+html[data-nav-dir="back"]::view-transition-old(page-content){ animation:ludovka-slide-out-right 460ms both cubic-bezier(.22,1,.36,1); }
+html[data-nav-dir="back"]::view-transition-new(page-content){ animation:ludovka-slide-in-left 460ms both cubic-bezier(.22,1,.36,1); }
+html[data-nav-dir="cross"]::view-transition-old(page-content){ animation:ludovka-fade-out 280ms both; }
+html[data-nav-dir="cross"]::view-transition-new(page-content){ animation:ludovka-fade-in 380ms both; }
 
 /* Song "dive in": the tapped title morphs into the song's reader-mode title. */
-::view-transition-group(song-morph){ animation-duration:420ms; animation-timing-function:cubic-bezier(.22,1,.36,1); }
-::view-transition-old(song-morph), ::view-transition-new(song-morph){ animation-duration:420ms; }
+::view-transition-group(song-morph){ animation-duration:620ms; animation-timing-function:cubic-bezier(.22,1,.36,1); }
+::view-transition-old(song-morph), ::view-transition-new(song-morph){ animation-duration:620ms; }
 
 /* App-wide backdrop: deep pastel blue with a faint Slovak folk ornament motif,
    fixed behind everything so scrolling content never scrolls the pattern itself. */
@@ -230,14 +230,14 @@ body.song-detail-mode .btn-secondary{
   position:fixed;inset:0;background:rgba(30,20,14,.45);z-index:20;
   display:flex;align-items:flex-end;
   opacity:0;
-  transition:opacity .24s ease;
+  transition:opacity .38s ease;
 }
 .overlay.overlay-active{opacity:1;}
 .sheet{
   background:#fff;width:100%;max-height:82vh;border-radius:18px 18px 0 0;
   padding:18px 18px calc(18px + var(--safe-bottom));overflow-y:auto;
   transform:translateY(100%);
-  transition:transform .3s cubic-bezier(.22,1,.36,1);
+  transition:transform .42s cubic-bezier(.22,1,.36,1);
 }
 .overlay.overlay-active .sheet{transform:translateY(0);}
 .sheet-title{font-size:17px;font-weight:700;margin-bottom:14px;}
