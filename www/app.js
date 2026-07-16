@@ -259,14 +259,31 @@ var Store = {
       return chain;
     });
   },
+  // Supports two SEED_SONGS shapes: the newer `tags: [name, ...]` (multiple
+  // tags, auto-created like the CSV/Excel bulk importer does) and the older
+  // single free-text `category` (kept for backward compatibility).
   seedIfEmpty: function(){
-    return Store.allSongs().then(function(songs){
+    return Promise.all([Store.allSongs(), Store.allTags()]).then(function(r){
+      var songs = r[0], existingTags = r[1];
       if (songs.length > 0 || !window.SEED_SONGS) return;
       var now = Date.now();
+      var byTagName = {};
+      existingTags.forEach(function(t){ byTagName[normalizeStr(t.name)] = t; });
       var chain = Promise.resolve();
       window.SEED_SONGS.forEach(function(s, i){
+        var tagNames = (s.tags && s.tags.length) ? s.tags : (s.category ? [s.category] : []);
+        var tagIds = tagNames.map(function(name){
+          var key = normalizeStr(name);
+          var tag = byTagName[key];
+          if (!tag){
+            tag = {id: uid('t'), name: name, createdAt: now};
+            byTagName[key] = tag;
+            chain = chain.then(function(){ return Store.putTag(tag); });
+          }
+          return tag.id;
+        });
         chain = chain.then(function(){
-          return Store.putSong({ id: uid('s'), title: s.title, category: s.category||'', lyrics: s.lyrics, createdAt: now+i });
+          return Store.putSong({ id: uid('s'), title: s.title, tagIds: tagIds, lyrics: s.lyrics, createdAt: now+i });
         });
       });
       return chain;

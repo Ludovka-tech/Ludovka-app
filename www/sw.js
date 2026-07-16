@@ -1,7 +1,7 @@
 // Ľudovka service worker — caches the whole app shell so it works fully offline
 // once it has been opened at least once. Bump CACHE_NAME whenever any of the
 // files below change, so returning visitors pick up the update.
-const CACHE_NAME = 'ludovka-v1';
+const CACHE_NAME = 'ludovka-v2';
 
 const APP_SHELL = [
   './',
