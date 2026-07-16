@@ -1,0 +1,37 @@
+name: Deploy Ľudovka PWA to GitHub Pages
+
+# Publishes the www/ folder (the actual app) as a free HTTPS site via GitHub
+# Pages, every time you push to main. This is what lets an iPhone open the app
+# in Safari and "Add to Home Screen" — no Apple developer account needed.
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Upload www/ as Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: www
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
