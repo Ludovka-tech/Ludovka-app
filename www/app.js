@@ -108,6 +108,22 @@ function highlightTitle(title, normQuery){
   return escapeHtml(title.substring(0,idx)) + '<mark>' + escapeHtml(title.substring(idx, idx+normQuery.length)) + '</mark>' + escapeHtml(title.substring(idx+normQuery.length));
 }
 
+/* Chorus / repeat markers. Traditional song sheets mark a repeated line or
+ * verse two ways depending on where the text came from: "[:like this:]"
+ * (square-bracket repeat sign) or the older "​:,: like this :,:" style already
+ * used in a couple of the seeded songs. Neither the CSV/Excel importer nor
+ * storage strip these — they're just characters in the lyrics text — so this
+ * only has to run at render time: find the marked spans and set them off
+ * with the standard musical repeat-dot glyphs (𝄆 … 𝄇) instead of showing the
+ * raw brackets/colons, so it actually reads as "repeat this" in the app.
+ */
+function markChoruses(escapedText){
+  return escapedText.replace(/\[:([\s\S]*?):\]|:,:([\s\S]*?):,:/g, function(m, g1, g2){
+    var inner = (g1 !== undefined ? g1 : g2).trim();
+    return '<span class="repeat-mark">𝄆 ' + inner + ' 𝄇</span>';
+  });
+}
+
 /* -------------------------------------------------------------- storage */
 
 var DB_NAME = 'ludovka';
@@ -347,7 +363,17 @@ function openSong(sourceEl, id){
   push({name:'song-detail', id: id}, {sourceEl: titleEl, morph: true});
 }
 function pop(){ navigate(function(){ App.stack.pop(); }, {dir:'back'}); }
-function resetTab(tab){ navigate(function(){ App.tab = tab; App.stack = [{name: tab+'-root'}]; }, {dir:'cross'}); }
+
+// Tabs sit side by side in a fixed order (Piesne, Playlisty, Spravovať), so
+// switching between them slides sideways in the matching direction — like
+// swiping across a row of pages — rather than just cross-fading.
+var TAB_ORDER = ['songs','playlists','admin'];
+function resetTab(tab){
+  var fromIdx = TAB_ORDER.indexOf(App.tab);
+  var toIdx = TAB_ORDER.indexOf(tab);
+  var dir = toIdx === fromIdx ? 'cross' : (toIdx > fromIdx ? 'forward' : 'back');
+  navigate(function(){ App.tab = tab; App.stack = [{name: tab+'-root'}]; }, {dir: dir});
+}
 
 /* ------------------------------------------------------------ rendering */
 
@@ -552,7 +578,7 @@ function renderSongDetail(top){
   if (inPlaylists.length){
     html += '<div class="chip-row" style="margin-top:10px;">'+inPlaylists.map(function(p){return '<span class="chip">'+escapeHtml(p.name)+'</span>';}).join('')+'</div>';
   }
-  html += '<div class="detail-lyrics">'+escapeHtml(s.lyrics)+'</div>';
+  html += '<div class="detail-lyrics">'+markChoruses(escapeHtml(s.lyrics))+'</div>';
   html += '<div class="btn-row">';
   html += '<button class="btn btn-secondary btn-block" id="editSongBtn">'+iconEdit(16)+' Upraviť pieseň</button>';
   html += '</div>';

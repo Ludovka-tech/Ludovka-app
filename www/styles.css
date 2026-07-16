@@ -206,6 +206,10 @@ body.song-detail-mode .btn-secondary{
   background:rgba(255,255,255,.85);
 }
 
+/* Repeat/chorus markers ("[:...:]" or ":,: ... :,:" in the source text) get
+   set off with the musical repeat-dot glyphs instead of raw punctuation. */
+.repeat-mark{ font-style:italic; opacity:.86; }
+
 /* Playlists */
 .playlist-card{
   background:#fff;border:1px solid var(--border);border-radius:var(--radius);
