@@ -390,6 +390,56 @@ view.addEventListener('scroll', function(){
   if (top) top.scrollY = view.scrollTop;
 });
 
+// Swipe left/right on the content area to move between the three tabs
+// (Piesne / Playlisty / Spravovať), same as tapping the bottom nav — works
+// identically on iOS Safari/PWA and the Android WebView since it's plain
+// touch events, no platform APIs. Only armed while sitting on a tab's own
+// root screen (not a pushed sub-page like song detail or a form, so a swipe
+// mid-edit can't blow away unsaved input) and only while no sheet/dialog is
+// open. Direction is decided from the first ~10px of movement so a normal
+// vertical scroll of the song list is never hijacked.
+(function(){
+  var startX = 0, startY = 0, tracking = false, horizontal = null;
+  var SWIPE_THRESHOLD = 60;   // px of horizontal travel to count as a page swipe
+  var DIRECTION_LOCK = 10;    // px of movement before deciding horizontal vs vertical
+
+  function swipeEnabled(){
+    return App.stack.length === 1 && (!window._sheetStack || !window._sheetStack.length);
+  }
+
+  view.addEventListener('touchstart', function(e){
+    if (e.touches.length !== 1 || !swipeEnabled()){ tracking = false; return; }
+    startX = e.touches[0].clientX;
+    startY = e.touches[0].clientY;
+    tracking = true;
+    horizontal = null;
+  }, {passive: true});
+
+  view.addEventListener('touchmove', function(e){
+    if (!tracking || e.touches.length !== 1) return;
+    var dx = e.touches[0].clientX - startX;
+    var dy = e.touches[0].clientY - startY;
+    if (horizontal === null && (Math.abs(dx) > DIRECTION_LOCK || Math.abs(dy) > DIRECTION_LOCK)){
+      horizontal = Math.abs(dx) > Math.abs(dy);
+    }
+    if (horizontal) e.preventDefault(); // own the gesture once it reads as a swipe
+  }, {passive: false});
+
+  view.addEventListener('touchend', function(e){
+    if (!tracking) return;
+    tracking = false;
+    if (!horizontal) return;
+    var dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) < SWIPE_THRESHOLD) return;
+    var idx = TAB_ORDER.indexOf(App.tab);
+    var toIdx = dx < 0 ? idx + 1 : idx - 1; // swipe left -> next tab, right -> previous
+    if (toIdx < 0 || toIdx >= TAB_ORDER.length) return;
+    resetTab(TAB_ORDER[toIdx]);
+  });
+
+  view.addEventListener('touchcancel', function(){ tracking = false; horizontal = null; });
+})();
+
 function render(){
   var top = App.stack[App.stack.length-1];
   backBtn.hidden = App.stack.length <= 1;
