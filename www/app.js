@@ -319,12 +319,14 @@ function tagById(id){ return App.tags.find(function(t){ return t.id===id; }); }
 function tagNamesForSong(s){
   return (s.tagIds || []).map(tagById).filter(Boolean).map(function(t){ return t.name; });
 }
-// Shared by both search screens (root + "Všetky piesne") so typing a tag
-// name (e.g. "Orava") finds its songs the same way title/lyrics text does.
+// Shared by both search screens (root + "Všetky piesne"). Title/lyrics only —
+// tags are deliberately excluded: finding songs by tag is handled by the
+// dedicated "Podľa tagu" chip browser instead, since matching tag text here
+// too could surface a song only because its tag name happens to overlap
+// with unrelated title/lyrics text.
 function songMatchesQuery(s, normQ){
   if (normalizeStr(s.title).indexOf(normQ) >= 0) return true;
   if (normalizeStr(s.lyrics).indexOf(normQ) >= 0) return true;
-  if (normalizeStr(tagNamesForSong(s).join(' ')).indexOf(normQ) >= 0) return true;
   return false;
 }
 
