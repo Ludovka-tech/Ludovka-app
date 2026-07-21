@@ -301,6 +301,10 @@ var App = {
   stack: [{name:'songs-root'}],
   searchQuery: ''
 };
+// Whether the "Podľa tagu" browser on the Piesne tab shows all tags or just
+// its 3-tag preview — session-only UI state, not per-song data, so it lives
+// outside App.
+var tagBrowseExpanded = false;
 
 function reloadData(){
   return Promise.all([Store.allSongs(), Store.allPlaylists(), Store.allTags()]).then(function(r){
@@ -565,14 +569,21 @@ function renderSongsRoot(){
 
   // Always-available tag browser, separate from the history below — lets you
   // find songs by tag (e.g. a region like "Orava") without having to know/type
-  // its exact spelling first.
+  // its exact spelling first. Collapsed to a 3-tag preview by default since
+  // the full list (21 tags) ate up half the screen; tagBrowseExpanded (a
+  // plain module-level flag, not per-render state) remembers the user opened
+  // it for the rest of the session.
   if (App.tags.length){
     html += '<div class="section-title">Podľa tagu</div>';
     html += '<div class="chip-row" id="tagBrowseRow">';
-    App.tags.forEach(function(t){
+    var visibleTags = tagBrowseExpanded ? App.tags : App.tags.slice(0, 3);
+    visibleTags.forEach(function(t){
       html += '<button type="button" class="chip-search" data-browse-tag="'+t.id+'">'+escapeHtml(t.name)+'</button>';
     });
     html += '</div>';
+    if (!tagBrowseExpanded && App.tags.length > 3){
+      html += '<button type="button" class="browse-all-link" id="expandTagsBtn">'+iconPlus(16)+' Zobraziť všetky tagy ('+App.tags.length+')</button>';
+    }
   }
 
   // No active query: default view is history, not the full library.
@@ -607,6 +618,8 @@ function renderSongsRoot(){
   view.querySelectorAll('[data-browse-tag]').forEach(function(el){
     el.onclick = function(){ push({name:'songs-by-tag', tagId: el.dataset.browseTag}); };
   });
+  var expandTagsBtn = document.getElementById('expandTagsBtn');
+  if (expandTagsBtn) expandTagsBtn.onclick = function(){ tagBrowseExpanded = true; render(); };
   var clearHistoryBtn = document.getElementById('clearHistoryBtn');
   if (clearHistoryBtn) clearHistoryBtn.onclick = function(){ clearRecentSearches(); clearRecentSongs(); render(); };
   document.getElementById('browseAllBtn').onclick = function(){ push({name:'songs-all', query:''}); };
