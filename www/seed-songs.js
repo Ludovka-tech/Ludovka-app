@@ -13258,15 +13258,17 @@ na dva prsty šnajderské.`
     tags: [],
     lyrics:
 `1.
-V mojej milej dvore,
-v mojej milej dvore stoja dva vrané kone,
+V mojej milej dvore, v mojej milej dvore
+stoja dva vrané kone,
 nikto na nich, šej, haj, nikto na nich, šej, haj,
 nikto na nich neorie.
 [:Oral na nich, oral na nich, ten prekrásny Janíček,
 čo preoral, čo preoral k svojej milej chodníček.:]
 2.
-Ešte on len, ešte, ešte on len ešte, jednu brázdu preoral
-a na svoju milú a na svoju milú prežalostne zavolal.
+Ešte on len, ešte, ešte on len ešte,
+jednu brázdu preoral
+a na svoju milú a na svoju milú
+prežalostne zavolal:
 [:Zbohom ostaň, moja milá, ja už viacej neprídem,
 zajtra ráno, zajtra ráno za vojačka rukujem.:]`
   },
@@ -13615,6 +13617,23 @@ tam se ňeco namlelo.:]
 tady bych chtěl hůl a pytel zahodit.:]
 [:Ve dne spolu mlíti, v noci s vámi spáti,
 ach, to by byl rajský cit.:]`
+  },
+  {
+    title: "V mojej milej dvore",
+    tags: [],
+    lyrics:
+`1.
+V mojej milej dvore,
+v mojej milej dvore stoja dva vrané kone,
+nikto na nich, šej, haj, nikto na nich, šej, haj,
+nikto na nich neorie.
+[:Oral na nich, oral na nich, ten prekrásny Janíček,
+čo preoral, čo preoral k svojej milej chodníček.:]
+2.
+Ešte on len, ešte, ešte on len ešte, jednu brázdu preoral
+a na svoju milú a na svoju milú prežalostne zavolal.
+[:Zbohom ostaň, moja milá, ja už viacej neprídem,
+zajtra ráno, zajtra ráno za vojačka rukujem.:]`
   },
   {
     title: "Varila som, varila, riedku kašu s octom",
@@ -15016,4 +15035,592 @@ zaplatíš postýlku, bábu i kňeze.
 Župajda, župajda, já tě mám ráda,
 župajda, župajda, já tě miluju._`
   },
+  {
+    title: "Horila Sosna, Palala",
+    tags: [],
+    lyrics:
+`Horila sosna, palala
+Horila sosna, palala
+Pid ňou ďivčina stojala
+Pid ňou ďivčina stojala
+Pid ňou ďivčina stojala
+Pid ňou ďivčina stojala
+Rusavu kosu česala
+Rusavu kosu česala
+Oj, kosy, kosy vy moji
+Oj, kosy, kosy vy moji
+Dovho služyľi vy meňi
+Dovho služyľi vy meňi
+Oj, kosy, kosy vy moji
+Dovho služyľi vy meňi
+Dovho služyľi vy meňi
+Bil še služit' ne budete
+Bil še služit' ne budete
+Pid bilyj šlajer pidete
+Pid bilyj šlajer pidete
+Pid bilyj šlajer pid chustku
+Pid bilyj šlajer pid chustku
+Už nepidete za družku
+Už nepidete za družku
+Pid bilyj šlajer pid chustku
+Už nepidete za družku
+`
+  },
+  {
+    title: "Beťár Som",
+    tags: [],
+    lyrics:
+`1. Beťár som, parobok
+Aj beťára koňa mám.
+[: Ešťe si ja k ňemu, 
+Ej, frajerku pohladám :]
+
+2. Dupňi, koňík dupňi.
+Hej, dupňi na čeremke.
+[: Bo ja iďem na fraj,
+Hej, ku mojej frajerke :]
+
+3. Frajeročka moja, 
+Ej, či si ma čakala?
+[: Alebo si na noc, 
+Ej, dvere zatvárala :]`
+  },
+  {
+    title: "Pidmanula",
+    tags: [],
+    lyrics:
+`Tys skazala v ponediľok
+Pidem razom na barvinok
+Ja prišov, tebe nema
+Pidmanula, pidvela
+Tys mene pidmanula, tys mene pidvela
+Tys mene molodoho z uma z rozumu zvela
+Tys skazala u vivtorok
+Pociluju razim v sorok
+Ja prišov, tebe nema
+Pidmanula, pidvela
+Tys mene pidmanula, tys mene pidvela
+Tys mene molodoho z uma z rozumu zvela
+Tys mene pidmanula, tys mene pidvela
+Tys mene molodoho z uma z rozumu zvela
+Tys kazala u seredu
+Pidem razom na čeredu
+Ja prišov, tebe nema
+Pidmanula, pidvela
+tys mene pidvela
+(Molodoho) Tys mene molodoho z uma z rozumu zvela
+Tys skazala u četver
+Pidem razom na koncert
+Ja prišov, tebe nema
+Pidmanula, pidvela
+tys mene pidvela
+(Molodoho) Tys mene molodoho z uma z rozumu zvela
+Tys skazala u piatnicu
+Pidem razom po pšenicu
+Ja prišov, tebe nema
+Pidmanula, pidvela
+tys mene pidvela
+(Molodoho) Tys mene molodoho z uma z rozumu zvela
+Tys skazala u sobotu
+Pidem razom na robotu
+Ja prišov, tebe nema
+Pidmanula, pidvela
+tys mene pidvela
+(Molodoho) Tys mene molodoho z uma z rozumu zvela
+Tys skazala u nediľu
+Pidem razom na vesiľu
+Ja prišov, tebe nema
+Pidmanula, pidvela
+tys mene pidvela
+(Molodoho) Tys mene molodoho z uma z rozumu zvela
+Tys mene pidmanula, tys mene pidvela
+Tys mene molodoho z uma z rozumu zvela`
+  },
+  {
+    title: "V tom Zvolene keď ma odobrali",
+    tags: [],
+    lyrics:
+`1.
+V tom Zvolene keď ma odobrali.
+[:V tom Zvolene keď ma odobrali,
+dvanásti mi muzikanti hrali.:]
+
+2.
+Nevedeli moju nôtu zahrať.
+[:Nevedeli moju nôtu zahrať,
+musel som ich do Očovej zahnať.:]
+
+3.
+V tej Očovej tam mi ju zahrali,
+[:v tej Očovej, tam mi ju zahrali,
+moje nôžky rezko tancovali.:]
+
+4.
+Moje nôžky pekne netancujte,
+[:moje nôžky pekne netancujte,
+veď vy zajtra pomaširujete.:]
+
+alebo:
+3
+A v Očovej tam mi ju zahrali.
+[:A v Očovej tam mi ju zahrali,
+dvanásti mi muzikanti hrali.:]1.
+V tom Zvolene keď ma odobrali.
+[:V tom Zvolene keď ma odobrali,
+dvanásti mi muzikanti hrali.:]
+
+2.
+Nevedeli moju nôtu zahrať.
+[:Nevedeli moju nôtu zahrať,
+musel som ich do Očovej zahnať.:]
+
+3.
+V tej Očovej tam mi ju zahrali,
+[:v tej Očovej, tam mi ju zahrali,
+moje nôžky rezko tancovali.:]
+
+4.
+Moje nôžky pekne netancujte,
+[:moje nôžky pekne netancujte,
+veď vy zajtra pomaširujete.:]
+
+alebo:
+3
+A v Očovej tam mi ju zahrali.
+[:A v Očovej tam mi ju zahrali,
+dvanásti mi muzikanti hrali.:]`
+  },
+  {
+    title: "Ameriku som zvandroval",
+    tags: [],
+    lyrics:
+`1.
+Ameriku som zvandroval, aňi som ňenašporoval,
+ani taľar, ani zlatku, šikuju me do New Yorku.
+
+2.
+A v New Yorku šif richtuju, co me na ňej došikuju,
+parobci še dohvaraju, dze najľepše karti maju.
+
+3.
+Ket sme prišli na štrid mora, pan kapitan na nas vola,
+chlapci, chlapci, modľice še, veľka burka, topime še.
+
+4.
+Jak som prišol do Berľina, dal som﻿ naľac pohar vina,
+pohar vina červeneho, až mi ľičko zrumeňelo.
+
+5.
+Ket som prišol do tej Prahy, pitaľi še, či som zdravi,
+zdravi, zdravi, chvalabohu, z Ameriki idzem domu.
+
+6.
+Ket som prišol do Prešova, vitala me matka moja,
+vitaj, vitaj čeľadňiku, ti slovenski vandrovňiku.
+
+7.
+V Raslavicoch na staňici, vitaľi me rovesňici,
+vitaj Ďuri, kamarat naš,či ši zdravi a﻿ jak še maš.
+
+8.
+Zdravi, zdravi chvalabohu, z Ameriki idzem domu,
+Netreba nam Ameriku, mame doma repubľiku.`
+  },
+  {
+    title: "Není také polečko",
+    tags: [],
+    lyrics:
+`1.
+Neny také polečko, neny také polečko,
+[:jak je to myjafské, jak je to myjafské.:]
+
+2.
+Zasjal som tam žitečko, zasjal som tam žitečko,
+[:rozmarín vyrostel, rozmarín vyrostel.:]
+
+3.
+Jaké je to žitečko, jaké je to žitečko,
+[:ket sa nyšt neklasí, ket sa nyšt neklasí.:]
+
+4.
+Ja mám takú frajerku, ja mám takú frajerku,
+[:za mnu sa nehlásí, za mnu sa nehlásí.:]`
+  },
+  {
+    title: "Pod Telgártom",
+    tags: [],
+    lyrics:
+`1.
+Pot Ťelgártom f tej doľiňe,
+[:čierni havran, čierni,
+čierni havran, čierni,
+vodu pije, vodu pije.:]
+
+2.
+Vodu pije v veľkom žaľu
+[:že mu joho miua,
+že mu joho miua,
+f cudzom kraju, f cudzom kraju.:]
+
+3.
+Chto ju viďeu, povecťe mi
+[:mojo srco, mojo,
+mojo srco, mojo,
+poťešťe mi, poťešťe mi.:]
+
+4.
+Ja ju viďeu jednim očkom,
+[:žaua travu, žaua,
+žaua travu, žaua,
+za jaročkom, za jaročkom.:]`
+  },
+  {
+    title: "Na Telgárte hrajú",
+    tags: [],
+    lyrics:
+`1.
+Na Telgárte hrajú, až čierna zem duní,
+[:spadla mi frajerka do hlbokej studni.:]
+
+2.
+Pani muzikanti, už teľo nehrajte,
+[:aľe mi frajerku zo studni ťahajte.:]
+
+3.
+Keď ju vytiahnete, potom hrať budete,
+[:kúpim vám pálenky, keľo vypijete.:]`
+  },
+  {
+    title: "Cesta hore, cesta dolu",
+    tags: [],
+    lyrics:
+`1.
+Cesta hore, cesta dolu,
+ponáhľaj sa milý domu,
+[:bo ti miuá ochoreua,
+hej, nedožije do večera.:]
+
+2.
+Čože sa jej, čo ti stali,
+veď sme ešte vedno spali,
+[:vedno spali, vedno vstali,
+hej, vedno sme sa milovali.:]
+
+
+alebo:
+1.
+Cesta hore, cesta douu,
+ponahľaj sa, miui domu,
+[:bo ťi miua ochoreua,
+hej, ňedožije do večera.:]
+
+2.
+Čože sa jej čorťi stali,
+veť sme ešťe vedno spali,
+[:vedno spali, vedno stali,
+hej, vedno sme sa milovali.:]
+
+3.
+Aňi mi do domu ňechoť,
+aňi mi muziku ňevoť,
+[:aňi ja ňebuďem tvoja,
+hej, ňeda mňa mamička moja.:]`
+  },
+  {
+    title: "Išlo dzifče do Hradok do mľina",
+    tags: [],
+    lyrics:
+`1.
+Išlo dzifče do Hradok do mľina,
+zaplakalo, že ňema frajira,
+[:ňeplač, dzifče, pouciraj oči,
+šak tvuj frajir služi u Levoči.:]
+
+2.
+Za dva ročki verňe ho čekala
+a na treci horko zaplakala,
+[:a na štvarti klope do oblačka,
+mila moja, ňebuj śe vojačka.:]
+
+3.
+S ľevu ručku dverka otvirala,
+s pravu ručku vojačka vitala,
+[:vitaj, vitaj draha dušo moja,
+ňedumala, že ja buďm tvoja.:]`
+  },
+  {
+    title: "Ej, zahraj mi hudačku",
+    tags: [],
+    lyrics:
+`1.
+Ej, zahraj mi hudačku, na cenku strunočku,
+[:nech sebe vytancujem tú moju frajerešku.:]
+
+2.
+Ej, išček mi ňezahral, ej, už še mi vykruca,
+[:ej, moja frajiročka, ej, či je na to suca.:]
+
+3.
+Ej, bo je na to suca, ej, na to naučena,
+[:ej, od maľučka šidac, ej, chlapcom na koľena.:]
+
+4.
+Ej, ked sebe zašpivam, ej, i zaplakac mušim,
+[:ej, šumni Ruskov valal, ej, zochabic ho mušim.:]
+
+
+alebo
+
+1.
+Zahraj mi hudačku na cenku strunočku,
+naj ja vitancujem svoju frajiročku.
+
+2.
+Išček mi ňezahral, už še mi vikruca,
+moja frajiročka, bo je na to suca.
+
+3.
+Bo je na to suca, na to naučena,
+od maľučka šidac chlapcom na koľena.
+
+4.
+Ked sebe zašpivam i zaplakac mušim.
+Šumni Ruskov valal, zochabic ho mušim.
+
+5.
+Veľo ja, preveľo sebe vibirala,
+ľem bi ja, Bože moj, ňepobanovala.
+
+6.
+Banuj dzivče teraz, ja banoval ňeraz,
+ti spala v komore a ja stal na dvore.
+
+7.
+Ti spala v komore, na bilej posceľi,
+a ja stal na dvore kolo vašej sceni.`
+  },
+  {
+    title: "Borovka, borovka",
+    tags: [],
+    lyrics:
+`1.
+[:Borovka, borovka, zelená je borovka,:]
+[:či sa ešte nevydáva tá moja frajerka?:]
+
+2.
+[:Ešte nie, ešte nie, ale už ju pýtaju,:]
+[:ponáhľaj sa môj kamarát, za teba ju dajú.:]
+
+3.
+[:Dosť som sa ponáhľau, no nemohou som prísti,:]
+[:musela tá moja milá za druhýho isti.:]
+`
+  },
+  {
+    title: "Ej, beťar ja dzivočka",
+    tags: [],
+    lyrics:
+`1.
+Ej, beťa, ja dzivočka, ej, mam beťarske očka,
+[:ej, kedz s ňima podžmurkam, frajir me pobočka.:]
+
+2.
+Ej, kedz ti me pobočkaš, ej, pobočkaj me naraz,
+[:ej, naj ja svojo ľičko ňeuciram dva raz.:]
+
+3.
+Ej, beťar, ja dzivočka, ej, i ňevesta budzem,
+[:ej, zvodzilam parobkoch, i ženačoch budzem.:]
+
+4.
+Ej, zvodzilam parobkoch, ej, z calej okolici,
+ej, a ženačoch budzem chocľem z polovici.:]
+
+5.
+Ej, dumala moja mac, ej, že vichova dzivku,
+[:a ona vichovala parobkom frajirku.:]
+
+6.
+Ej, laľi me, biľi me, ej, ňešanovaľi me,
+[:ej, žeľeznu palicu polamaľi na mňe.:]
+
+7.
+Ej, choc me zabijece, ej, choc me polamece,
+[:ej, aj tak vam ňepujdzem, za koho vi chcece.:]
+
+alebo:
+
+6.
+Ej, laľi me, biľi me, ej, ňešanovaľi me,
+[:jašiňovu paľicu polamaľi na mňe.:]
+
+7.
+Ej, lajce me, bice me, robce so mnu co chcece,
+[:a i tak ja ňepujdzem za koho vi chcece.:]
+
+
+alebo:
+Beťar ja dzivočka
+
+1.
+Beťar ja dzivočka, mam beťarske očka,
+[:ej, kedz s ňima podžmurkam, frajir me pobočka.:]
+
+2.
+Kedz ti me pobočkaš, pobočkaj me naraz,
+[:ej, naj ja svojo ľičko ňeuciram dva raz.:]
+
+3.
+Beťar, ja dzivočka, i ňevesta budzem,
+[:ej, zvodzilam parobkoch, i ženačoch budzem.:]
+
+4.
+Zvodzilam parobkoch, z calej okolici,
+ej, a ženačoch budzem chocľem z polovici.:]
+
+5.
+Dumala moja mac, že vichova dzivku,
+[:a ona vichovala parobkom frajirku.:]
+
+6.
+Laľi me, biľi me, ňešanovaľi me,
+[:ej, žeľeznu palicu polamaľi na mňe.:]
+
+7.
+Choc me zabijece, choc me polamece,
+[:ej, aj tak vam ňepujdzem, za koho vi chcece.:]`
+  },
+  {
+    title: "Čerešeň, čerešeň",
+    tags: [],
+    lyrics:
+`1.
+[: Čerešeň, čerešeň, 
+hej, želena čerešeň, :]
+[: čija že ja budzem, šeja hoj, 
+ňevesta na ješeň, bože moj. :]
+
+2.
+[: Stala ja na skale, 
+hej, chcela ja še zabic, :]
+[: ale mi bulo žaľ, šeja hoj, 
+frajira zochabic, bože moj. :]
+
+3.
+[: Sama ja še, sama, 
+hej, do ľubeňa dala,
+a teraz banujem, šeja hoj, 
+až me boli hlava, bože moj. :]`
+  },
+  {
+    title: "Fodri, mojo fodri",
+    tags: [],
+    lyrics:
+`1.
+Fodri, mojo fodri,
+kus pobigľovane,
+[:mojo biele ľičko
+kus vimaľovane.:]
+
+2.
+Poltopanki mojo,
+bi sce še podraľi,
+[:bi z vami šustrove
+fše roboti maľi.:]
+
+3.
+Poltopanki mojo,
+jag mi nošku scišľi,
+[:frajeru moj ľubi,
+jag zme še rozešľi.:]`
+  },
+  {
+    title: "Dzifče počarovne",
+    tags: [],
+    lyrics:
+`1.
+[:Dzifče počarovne, ňezaľup śe do mňe,:]
+[:ja chlopec vandrovni, co ci budze zo mňe?:]
+
+2.
+[:Ja chlapec vandrovni, zo šireho poľa,:]
+[:co ci budze zo mňe, frajirečko moja?:]
+
+3.
+[:Frajirečki dvacec a ja jeden chlapec,:]
+[:teraz mi povice, chtora me ľubice.:]
+
+4.
+[:Či tota najmladša, či tota najstarša,:]
+[:či tota Aňička, co ma bile ľička.:]
+
+5.
+[:Frajirečki štiri na čim sce śe biľi,:]
+[:na tej košuľečke, co sme ci ušiľi.:]
+
+6.
+Poceš me, Bože moj, ked ši me zarmucil,
+zluč me s tym dzivčecom, co ši me rozlučil.`
+  },
+  {
+    title: "Ej, čarni ši jak cigan",
+    tags: [],
+    lyrics:
+`1.
+Ej, čarny ši jak cigan,
+ej, jak ja ce ľubic mam,
+[:ja sama še čudujem,
+že ja ce ľubujem, že ja ce ľubujem.:]
+
+2.
+Ej, neber me na tanec,
+ty muj ľubi frajiru,
+[:ej, len ic ty po macir
+a tancuj z maceru a tancuj z maceru.:]
+
+3.
+Ej, Janičku, kaľviňe,
+radzi še mi vidzime,
+[:ej, pre našo dva viri
+rozejsc še mušime, rozejsc še mušime.:]
+
+4.
+Ej, bo ty ši ľuteran,
+ej, a ja katolička,
+[:ej, ňemožu še ľubic
+tote naše lička, tote naše lička.:]`
+  },
+  {
+    title: "Hodzel ši kolo nas",
+    tags: [],
+    lyrics:
+`
+1.
+Hodzel ši kolo nas jak po drotovaňu,
+pojdzeme do poľa, narobime žaľu,
+[:žaľu narobime, ocovi, maceri,
+i mojej, i tvojej, naco nam braňeľi.:]
+
+2.
+Ňebraňce mi, mamko, ot teho beťara,
+kec mi zabraňice, skočim do Hornada,
+[:skočim do Hornada, do najhľipšej vodi,
+hibaj me sam Pan Boh tamac višľebodzi.:]
+
+3.
+Ňebudzem, ňebudzem, skakac do Hornada,
+bo to veľka voda a ja dzevka mlada,
+[:pojdzem ja za teho, co po vašej voľi,
+aľe moj veľki žaľ ňigda ňepreboľi.:]`
+  },
+  {
+    title: "Nebojim sa pana",
+    tags: [],
+    lyrics:
+`1.
+Ňebojim, ňebojim sa pána,
+ňebojim, ňebojim sa pána.
+[:Ňebojim sa žiťia, nebojim sa biťia,
+ňebojim, ňebojim sa pána.:]`
+  }
 ];
