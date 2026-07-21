@@ -1168,6 +1168,28 @@ function saveTextFile(filename, content, mime){
 
 /* --------------------------------------------------------- sheet/dialogs */
 
+// On iOS, position:fixed elements are sized/positioned against the full
+// layout viewport, which does NOT shrink when the on-screen keyboard opens.
+// Our bottom sheets (.overlay/.sheet) are bottom-anchored, so without this
+// fix the keyboard simply covers the bottom portion of the screen — including
+// the sheet's input field — while the (still full-height) overlay renders
+// underneath it, invisible. We track the browser's visualViewport (which DOES
+// shrink/shift when the keyboard shows) and mirror its size/offset into CSS
+// vars, so .overlay always matches the actually-visible area and the sheet
+// stays pinned above the keyboard instead of behind it.
+function syncVisualViewport(){
+  var vv = window.visualViewport;
+  var root = document.documentElement.style;
+  if (!vv){ root.setProperty('--vvh', '100dvh'); root.setProperty('--vv-top', '0px'); return; }
+  root.setProperty('--vvh', vv.height + 'px');
+  root.setProperty('--vv-top', vv.offsetTop + 'px');
+}
+if (window.visualViewport){
+  window.visualViewport.addEventListener('resize', syncVisualViewport);
+  window.visualViewport.addEventListener('scroll', syncVisualViewport);
+}
+syncVisualViewport();
+
 // Sheets can legitimately nest (e.g. a promptDialog opened from inside an
 // already-open picker), so a single "active sheet" reference isn't enough —
 // opening the nested one used to silently clobber the reference to the outer
