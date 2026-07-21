@@ -367,10 +367,17 @@ function pop(){ navigate(function(){ App.stack.pop(); }, {dir:'back'}); }
 // switching between them slides sideways in the matching direction — like
 // swiping across a row of pages — rather than just cross-fading.
 var TAB_ORDER = ['songs','playlists','admin'];
-function resetTab(tab){
+// `opts.swipe` picks the shorter swipe-forward/swipe-back CSS transition
+// instead of the regular forward/back one — a swipe has already covered
+// physical distance with your finger by the time it fires, so the same
+// ~460ms animation used for a tap (which starts from a standstill) reads
+// as sluggish. See the matching html[data-nav-dir="swipe-*"] rules in
+// styles.css.
+function resetTab(tab, opts){
+  var swipe = opts && opts.swipe;
   var fromIdx = TAB_ORDER.indexOf(App.tab);
   var toIdx = TAB_ORDER.indexOf(tab);
-  var dir = toIdx === fromIdx ? 'cross' : (toIdx > fromIdx ? 'forward' : 'back');
+  var dir = toIdx === fromIdx ? 'cross' : (toIdx > fromIdx ? (swipe ? 'swipe-forward' : 'forward') : (swipe ? 'swipe-back' : 'back'));
   navigate(function(){ App.tab = tab; App.stack = [{name: tab+'-root'}]; }, {dir: dir});
 }
 
@@ -398,8 +405,16 @@ view.addEventListener('scroll', function(){
 // mid-edit can't blow away unsaved input) and only while no sheet/dialog is
 // open. Direction is decided from the first ~10px of movement so a normal
 // vertical scroll of the song list is never hijacked.
+//
+// The switch fires the moment the drag crosses SWIPE_THRESHOLD, mid-gesture
+// — not on touchend. Waiting for the finger to lift on top of an already
+// full-length finger travel made the swipe read as laggy/delayed: the screen
+// sat frozen for the whole drag, then only started animating after release.
+// Firing at the threshold (and using the shorter swipe-* transition instead
+// of the tap one, see resetTab/styles.css) makes it track much closer to
+// when you'd expect the switch to land.
 (function(){
-  var startX = 0, startY = 0, tracking = false, horizontal = null;
+  var startX = 0, startY = 0, tracking = false, horizontal = null, fired = false;
   var SWIPE_THRESHOLD = 60;   // px of horizontal travel to count as a page swipe
   var DIRECTION_LOCK = 10;    // px of movement before deciding horizontal vs vertical
 
@@ -413,6 +428,7 @@ view.addEventListener('scroll', function(){
     startY = e.touches[0].clientY;
     tracking = true;
     horizontal = null;
+    fired = false;
   }, {passive: true});
 
   view.addEventListener('touchmove', function(e){
@@ -422,21 +438,18 @@ view.addEventListener('scroll', function(){
     if (horizontal === null && (Math.abs(dx) > DIRECTION_LOCK || Math.abs(dy) > DIRECTION_LOCK)){
       horizontal = Math.abs(dx) > Math.abs(dy);
     }
-    if (horizontal) e.preventDefault(); // own the gesture once it reads as a swipe
-  }, {passive: false});
-
-  view.addEventListener('touchend', function(e){
-    if (!tracking) return;
-    tracking = false;
     if (!horizontal) return;
-    var dx = e.changedTouches[0].clientX - startX;
-    if (Math.abs(dx) < SWIPE_THRESHOLD) return;
+    e.preventDefault(); // own the gesture once it reads as a swipe
+    if (fired || Math.abs(dx) < SWIPE_THRESHOLD) return;
     var idx = TAB_ORDER.indexOf(App.tab);
     var toIdx = dx < 0 ? idx + 1 : idx - 1; // swipe left -> next tab, right -> previous
     if (toIdx < 0 || toIdx >= TAB_ORDER.length) return;
-    resetTab(TAB_ORDER[toIdx]);
-  });
+    fired = true;
+    tracking = false; // gesture is committed; ignore the rest of this drag
+    resetTab(TAB_ORDER[toIdx], {swipe: true});
+  }, {passive: false});
 
+  view.addEventListener('touchend', function(){ tracking = false; });
   view.addEventListener('touchcancel', function(){ tracking = false; horizontal = null; });
 })();
 
