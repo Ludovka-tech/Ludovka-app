@@ -455,7 +455,13 @@ view.addEventListener('scroll', function(){
 
 function render(){
   var top = App.stack[App.stack.length-1];
-  backBtn.hidden = App.stack.length <= 1;
+  var showBack = App.stack.length > 1;
+  backBtn.hidden = !showBack;
+  // With the back button visible, the title (song title / playlist name /
+  // page name) moves from its default left-aligned spot to centered between
+  // the back button and its matching spacer — see .topbar--detail in
+  // styles.css.
+  document.querySelector('.topbar').classList.toggle('topbar--detail', showBack);
   document.querySelectorAll('.navbtn').forEach(function(b){
     b.classList.toggle('active', b.dataset.tab === App.tab);
   });
@@ -805,7 +811,7 @@ function renderPlaylistsRoot(){
 function renderPlaylistDetail(top){
   var p = playlistById(top.id);
   if (!p){ pop(); return; }
-  topbarTitle.textContent = '';
+  topbarTitle.textContent = p.name;
   var songs = p.songIds.map(songById).filter(Boolean);
 
   var html = '';

@@ -48,8 +48,24 @@ body{display:flex;flex-direction:column;height:100vh;}
   background:rgba(255,255,255,.22);border:none;color:#fff;
   width:36px;height:36px;border-radius:50%;font-size:18px;
   display:flex;align-items:center;justify-content:center;
+  flex:0 0 auto;
 }
 .icon-btn:active{background:rgba(255,255,255,.38);}
+/* Same [hidden]-vs-author-display quirk as .fab (see the .fab[hidden] note
+   below): .icon-btn's own `display:flex` outranks the browser's built-in
+   [hidden]{display:none} regardless of specificity, so without this the
+   back button set to .hidden=true in JS never actually disappeared. */
+.icon-btn[hidden]{display:none;}
+
+/* Back button sits on the left of the topbar; a same-width invisible spacer
+   on the right balances it so the title (song/playlist name, etc.) reads as
+   centered instead of drifting left once the back button appears. On the
+   three root tabs there's no back button, so the title just keeps its
+   normal left-aligned spot as before. */
+.topbar-spacer{width:36px;height:36px;flex:0 0 auto;visibility:hidden;}
+.topbar--detail .topbar-title{
+  text-align:center;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding:0 4px;
+}
 
 main#view{
   flex:1 1 auto;overflow-y:auto;-webkit-overflow-scrolling:touch;
