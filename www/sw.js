@@ -1,7 +1,7 @@
 // Ľudovka service worker — caches the whole app shell so it works fully offline
 // once it has been opened at least once. Bump CACHE_NAME whenever any of the
 // files below change, so returning visitors pick up the update.
-const CACHE_NAME = 'ludovka-v3';
+const CACHE_NAME = 'ludovka-v4';
 
 const APP_SHELL = [
   './',
@@ -10,7 +10,7 @@ const APP_SHELL = [
   './app.js',
   './seed-songs.js',
   './xlsx.min.js',
-  './ornament.svg',
+  './wallpaper.jpg',
   './manifest.json',
   './icons/icon-32.png',
   './icons/icon-180.png',

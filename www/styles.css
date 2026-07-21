@@ -115,14 +115,17 @@ html[data-nav-dir="swipe-back"]::view-transition-new(page-content){ animation:lu
 ::view-transition-group(song-morph){ animation-duration:620ms; animation-timing-function:cubic-bezier(.22,1,.36,1); }
 ::view-transition-old(song-morph), ::view-transition-new(song-morph){ animation-duration:620ms; }
 
-/* App-wide backdrop: deep pastel blue with a faint Slovak folk ornament motif,
-   fixed behind everything so scrolling content never scrolls the pattern itself. */
+/* App-wide backdrop: custom folk-embroidery wallpaper, fixed behind everything
+   so scrolling content never scrolls the pattern itself. Single full-bleed
+   image (not tiled) — background-color is just the fallback shown for the
+   instant before the image loads, kept close to the image's own blue tone. */
 .song-reader-bg{
   position:fixed;inset:0;z-index:0;
   background-color:var(--song-blue);
-  background-image:url('ornament.svg');
-  background-repeat:repeat;
-  background-size:240px 240px;
+  background-image:url('wallpaper.jpg');
+  background-repeat:no-repeat;
+  background-size:cover;
+  background-position:center;
 }
 
 /* Song "reader mode" — the lyrics screen additionally gets extra top/bottom
