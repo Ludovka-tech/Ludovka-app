@@ -310,6 +310,10 @@ a.filelink{color:var(--red);text-decoration:underline;}
   background:var(--cream-2);color:var(--ink);border-radius:999px;padding:6px 12px;
   font-size:12.5px;border:1px solid var(--border);
 }
+/* A song's own tag chips are rendered as <button>s (tap one to browse every
+   other song with that tag) — strip the native button chrome so they still
+   look like plain .chip pills. */
+button.chip{cursor:pointer;font-family:inherit;-webkit-appearance:none;appearance:none;}
 
 /* History (songs-root default view) */
 .chip-search{

@@ -315,6 +315,14 @@ function tagById(id){ return App.tags.find(function(t){ return t.id===id; }); }
 function tagNamesForSong(s){
   return (s.tagIds || []).map(tagById).filter(Boolean).map(function(t){ return t.name; });
 }
+// Shared by both search screens (root + "Všetky piesne") so typing a tag
+// name (e.g. "Orava") finds its songs the same way title/lyrics text does.
+function songMatchesQuery(s, normQ){
+  if (normalizeStr(s.title).indexOf(normQ) >= 0) return true;
+  if (normalizeStr(s.lyrics).indexOf(normQ) >= 0) return true;
+  if (normalizeStr(tagNamesForSong(s).join(' ')).indexOf(normQ) >= 0) return true;
+  return false;
+}
 
 /* ---- navigation + animated transitions ----
  * Every real page change (push/pop/tab switch) goes through navigate(), which
@@ -473,6 +481,7 @@ function render(){
   var renderers = {
     'songs-root': renderSongsRoot,
     'songs-all': renderSongsAll,
+    'songs-by-tag': renderSongsByTag,
     'song-detail': renderSongDetail,
     'song-form': renderSongForm,
     'playlists-root': renderPlaylistsRoot,
@@ -541,9 +550,7 @@ function renderSongsRoot(){
 
   if (normQ){
     // Actively searching: show live results across the whole library.
-    var results = App.songs.filter(function(s){
-      return normalizeStr(s.title).indexOf(normQ) >= 0 || normalizeStr(s.lyrics).indexOf(normQ) >= 0;
-    });
+    var results = App.songs.filter(function(s){ return songMatchesQuery(s, normQ); });
     if (results.length === 0){
       html += '<div class="empty-state"><span class="big">'+iconSearchBig(40)+'</span>Nič sa nenašlo pre „'+escapeHtml(q)+'“.</div>';
     } else {
@@ -554,6 +561,18 @@ function renderSongsRoot(){
     wireSongsRootSearch();
     wireSongCardOpens(view, function(){ addRecentSearch(App.searchQuery); });
     return;
+  }
+
+  // Always-available tag browser, separate from the history below — lets you
+  // find songs by tag (e.g. a region like "Orava") without having to know/type
+  // its exact spelling first.
+  if (App.tags.length){
+    html += '<div class="section-title">Podľa tagu</div>';
+    html += '<div class="chip-row" id="tagBrowseRow">';
+    App.tags.forEach(function(t){
+      html += '<button type="button" class="chip-search" data-browse-tag="'+t.id+'">'+escapeHtml(t.name)+'</button>';
+    });
+    html += '</div>';
   }
 
   // No active query: default view is history, not the full library.
@@ -585,6 +604,9 @@ function renderSongsRoot(){
   view.querySelectorAll('[data-recent-search]').forEach(function(el){
     el.onclick = function(){ App.searchQuery = el.dataset.recentSearch; render(); };
   });
+  view.querySelectorAll('[data-browse-tag]').forEach(function(el){
+    el.onclick = function(){ push({name:'songs-by-tag', tagId: el.dataset.browseTag}); };
+  });
   var clearHistoryBtn = document.getElementById('clearHistoryBtn');
   if (clearHistoryBtn) clearHistoryBtn.onclick = function(){ clearRecentSearches(); clearRecentSongs(); render(); };
   document.getElementById('browseAllBtn').onclick = function(){ push({name:'songs-all', query:''}); };
@@ -612,9 +634,7 @@ function renderSongsAll(top){
   var normQ = normalizeStr(q);
   var results = App.songs;
   if (normQ){
-    results = App.songs.filter(function(s){
-      return normalizeStr(s.title).indexOf(normQ) >= 0 || normalizeStr(s.lyrics).indexOf(normQ) >= 0;
-    });
+    results = App.songs.filter(function(s){ return songMatchesQuery(s, normQ); });
   }
 
   var html = '';
@@ -644,6 +664,25 @@ function renderSongsAll(top){
   wireSongCardOpens(view, function(){ if (top.query) addRecentSearch(top.query); });
 }
 
+/* ---- Songs filtered by one tag (reached via a tag chip, e.g. a region) ---- */
+
+function renderSongsByTag(top){
+  var tag = tagById(top.tagId);
+  if (!tag){ pop(); return; }
+  topbarTitle.textContent = tag.name;
+  var results = App.songs.filter(function(s){ return (s.tagIds||[]).indexOf(tag.id) >= 0; });
+
+  var html = '';
+  if (results.length === 0){
+    html += '<div class="empty-state"><span class="big">'+iconMusic(40)+'</span>Žiadne piesne s tagom „'+escapeHtml(tag.name)+'“.</div>';
+  } else {
+    html += '<div class="section-title">'+results.length+' '+(results.length===1?'pieseň':(results.length>=2&&results.length<=4?'piesne':'piesní'))+'</div>';
+    results.forEach(function(s){ html += songCardHtml(s, ''); });
+  }
+  view.innerHTML = html;
+  wireSongCardOpens(view);
+}
+
 function renderSongDetail(top){
   var s = songById(top.id);
   if (!s){ pop(); return; }
@@ -653,9 +692,11 @@ function renderSongDetail(top){
 
   var html = '';
   html += '<div class="detail-header" data-morph-target><div class="detail-title">'+escapeHtml(s.title)+'</div></div>';
-  var songTagNames = tagNamesForSong(s);
-  if (songTagNames.length){
-    html += '<div class="chip-row" style="margin-bottom:14px;">'+songTagNames.map(function(n){return '<span class="chip">'+escapeHtml(n)+'</span>';}).join('')+'</div>';
+  var songTags = (s.tagIds || []).map(tagById).filter(Boolean);
+  if (songTags.length){
+    // Tappable — jumps to every other song sharing that tag (e.g. a region),
+    // same list as the "Podľa tagu" chips on the Piesne tab.
+    html += '<div class="chip-row" style="margin-bottom:14px;">'+songTags.map(function(t){return '<button type="button" class="chip" data-browse-tag="'+t.id+'">'+escapeHtml(t.name)+'</button>';}).join('')+'</div>';
   }
   html += '<div class="btn-row">';
   html += '<button class="btn btn-primary" id="addToPlaylistBtn">'+iconFolder(16)+' Pridať do playlistu</button>';
@@ -673,6 +714,9 @@ function renderSongDetail(top){
   document.getElementById('editSongBtn').onclick = function(){
     push({name:'song-form', id: s.id});
   };
+  view.querySelectorAll('[data-browse-tag]').forEach(function(el){
+    el.onclick = function(){ push({name:'songs-by-tag', tagId: el.dataset.browseTag}); };
+  });
 }
 
 /* ---- Song add/edit form ---- */
