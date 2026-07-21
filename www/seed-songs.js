@@ -1,11 +1,11 @@
 // Full starter library of Slovak folk songs (public-domain / traditional),
-// imported from the user's Ludovka-import-sablona.xlsx collection.
+// imported from the user's Ludovka-import-sablona-tagged.xlsx collection.
 // This file only seeds the database on first launch. After that, all songs live in
 // IndexedDB and are managed from within the app (add / edit / delete / bulk import).
 window.SEED_SONGS = [
   {
     title: "A čija to chyža",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 A čija to chyža stojit na dolyni,
@@ -25,7 +25,7 @@ Jak my sja ľubily, rybko moja, rybko,
   },
   {
     title: "A čo koho do toho",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 A čo koho do toho, že ja Marku ľúbim,
@@ -42,7 +42,7 @@ lebo by ju mamička za to veľmi kliala.:]`
   },
   {
     title: "A ja sám, vždycky sám",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:A ja sám, vždycky sám,
@@ -54,7 +54,7 @@ své koníčky osedlám.:]`
   },
   {
     title: "A ja som z Oravy debnár",
-    tags: [],
+    tags: ["Orava"],
     lyrics:
 `1.
 A ja som z Oravy debnár,
@@ -84,7 +84,7 @@ tam si ja dievčatko nájdem.:]`
   },
   {
     title: "A ja taka čarna",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:A ja taka čarna jak čarna čarnica,:]
@@ -104,7 +104,7 @@ bo ja od maľučka na poľo chodzila.:]`
   },
   {
     title: "A ja taka dzivočka",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 A ja taka dzivočka, cingi lingi bom.
@@ -127,7 +127,7 @@ naj ňechodza po humňe, cingi lingi bom.:]`
   },
   {
     title: "A jaky ty parobek",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 A jaky ty parobek, taká i ja dzivka,
@@ -141,7 +141,7 @@ Vžala mac palicu, ta nas vypasala,
   },
   {
     title: "A kdeže je tá ulica",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:A kdeže je tá ulica,
@@ -171,7 +171,7 @@ keď poboská aj mladý pán.:]`
   },
   {
     title: "A keď sa Janíčko",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:A keď sa Janíčko vracal z poľa domov večerom,:]
@@ -184,7 +184,7 @@ neni veru času veľa, nech to máme v kope.:]`
   },
   {
     title: "A muj mily z lesa idze",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Lučka, lučka zelenučka,
@@ -209,7 +209,7 @@ a po mňe ši neodkazal.:]`
   },
   {
     title: "A na hure, a na hure oves pokošeni",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 A na hure, a na hure oves pokošeni,
@@ -241,7 +241,7 @@ nebudu sja, nebudu sja, ľubovat, ľubovat.:]`
   },
   {
     title: "A na hure agati",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:A na hure agati, dzvihaj mila kabati.:]
@@ -255,7 +255,7 @@ aja na ňu ujuju, sukeň na ňej zaduju.:]`
   },
   {
     title: "A na hure dišč pada",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 A na hure dišč pada, dišč pada,
@@ -270,7 +270,7 @@ bo ja tvoja ňebudzem, ňebudzem.`
   },
   {
     title: "A na hure oves pokošeni",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 A na hure oves pokošeni,
@@ -295,7 +295,7 @@ s moju milu na ribi, na ribi.
   },
   {
     title: "A na medzi čerešeňka",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:A na medzi čerešeňka
@@ -330,7 +330,7 @@ na tvojo meno.:]`
   },
   {
     title: "A od Prešova",
-    tags: [],
+    tags: ["Šariš"],
     lyrics:
 `1.
 [:A od Prešova a od Prešova
@@ -355,7 +355,7 @@ aľe už do nas ňechodzi.:]`
   },
   {
     title: "A pod mostom riba s chvostom",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:A pod mostom riba s chvostom,:]
@@ -376,7 +376,7 @@ do haluža.:]
   },
   {
     title: "A ta naša krčmarečka",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:A ta naša krčmarečka z okna kuka, carija,
@@ -401,7 +401,7 @@ už takúto frajerečku nenájdeš.:]`
   },
   {
     title: "A tam hore na skalnatej",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:A tam hore na skalnatej
@@ -441,7 +441,7 @@ budete spomínať.:]`
   },
   {
     title: "A teraz vám zaspievame",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 A teraz vám zaspievame,
@@ -466,7 +466,7 @@ ach, Bože, knedlíky, tvrdé jak špendlíky.`
   },
   {
     title: "A tá polka, trcipolka",
-    tags: [],
+    tags: ["Tekov"],
     lyrics:
 `1.
 [:A tá polka, trcipolka
@@ -491,7 +491,7 @@ pôjdeme ich kupovať.:]`
   },
   {
     title: "A ty kačmár",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 A ty kačmar, bili kačmar, dze ši žitko zašal?
@@ -504,7 +504,7 @@ Jak ho oni zežinali, tak še oni dohvarali.
   },
   {
     title: "Ach, Aničko, ňever Janíčkovi",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Ach, Aničko, ňever Janíčkovi,
@@ -524,7 +524,7 @@ a ja líčko prebila, prebila.:]`
   },
   {
     title: "Ach, mamičko, mamko, hej, šerco še mi zamklo",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Ach, mamičko, mamko,
@@ -544,7 +544,7 @@ hej, mamko do starosci.:]`
   },
   {
     title: "Ach, śvekričko moja",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Ach, śvekričko moja,
@@ -569,7 +569,7 @@ jak Lucifir s pekla.:]`
   },
   {
     title: "Aká by to hanba bola",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Aká by to hanba bola,
@@ -594,7 +594,7 @@ daj mi milá ešte raz.`
   },
   {
     title: "Alebo ma vydávajte",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Alebo ma vydávajte,
@@ -609,7 +609,7 @@ už ma môj najmilší ľúbi.:]`
   },
   {
     title: "Anča čierna, buď mi verná",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Anča čierna, buď mi verná,
@@ -623,7 +623,7 @@ Nielen líčka, aj tie očí,
   },
   {
     title: "Andulko šafářova",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Andulko šafářova, husičky nemáš doma.:]
@@ -640,7 +640,7 @@ dřív, než bude bily den.`
   },
   {
     title: "Aňi ja ňe stadzi",
-    tags: [],
+    tags: ["Zemplín"],
     lyrics:
 `Zemplín
 1.
@@ -666,7 +666,7 @@ mi še ňepodajme, čuhaja.:]`
   },
   {
     title: "Ani sa ma nepýtaj",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ani sa ma nepýtaj, nepýtaj,
@@ -686,7 +686,7 @@ urobím ti po vôli, po vôli.:]`
   },
   {
     title: "Anička dušička nekašli",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Anička, dušička, nekašli,
@@ -712,7 +712,7 @@ Močila konope, močila,
   },
   {
     title: "Anička, dušička, kde si bola",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Anička, dušička, kde si bola,
@@ -727,7 +727,7 @@ duša moja, duša moja.:]`
   },
   {
     title: "Anička, dušička, poď si ku mne hopkať",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Anička, dušička, poď si ku mne hopkať,
@@ -744,7 +744,7 @@ Anička, dušička, nechoď do hájička.
   },
   {
     title: "Až budou trumpety",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Až budou trumpety překrásňe spívat,
@@ -759,7 +759,7 @@ a věděl bych proč slzy ukrýváš.`
   },
   {
     title: "Až koníčky osedlám",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Až koníčky osedlám,
@@ -776,7 +776,7 @@ až ti povím, co na srdci mám.`
   },
   {
     title: "Až ráno",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Napij se, synečku, napij, napij se zhluboka,
@@ -810,7 +810,7 @@ Refr.:`
   },
   {
     title: "Až se jednou potkáme",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Až se jednou potkáme, krátky pozdrav si dáme,
@@ -831,7 +831,7 @@ vždyť už to dávno dobře víš, že mám tě rád.:]`
   },
   {
     title: "Běží voda, běží, po kameni šustí",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Běží voda, běží, po kameni šustí,
@@ -865,7 +865,7 @@ Budeš-li taková, jinému jen zbývá,
   },
   {
     title: "Beskyde, Beskyde",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Beskyde, Beskyde, kto po tebe ide,
@@ -895,7 +895,7 @@ V potôčku vyperie, na slnku vysuší,
   },
   {
     title: "Biela ruža rozkvitala",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Biela ruža rozkvitala,
@@ -930,7 +930,7 @@ láska vo mne horela.:]`
   },
   {
     title: "Biele margaréty",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `P. Čady
 1.
@@ -953,7 +953,7 @@ miluj iného, ja tvoj budem.`
   },
   {
     title: "Bobonec, Bobonec",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Bobonec, Bobonec, želený Bobonec,:]
@@ -974,7 +974,7 @@ jak ta ciganečka.:]`
   },
   {
     title: "Bodaj by vás, vy mládenci",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Bodaj by vás, vy mládenci, čerti vzali,
@@ -997,7 +997,7 @@ hoc aj bude po polnoci.:]`
   },
   {
     title: "Boleráz, boleráz",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Boleráz, boleráz, zelený boleráz,:]
@@ -1014,7 +1014,7 @@ až vyjde zornička.:]
   },
   {
     title: "Bolo raz zvečera krásne",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Bolo raz zvečera krásne,
@@ -1037,7 +1037,7 @@ povedal by všetko o nás,
   },
   {
     title: "Borievka",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Borievka, borievka, zelená je borievka,
@@ -1048,7 +1048,7 @@ Ešte nie, ešte nie, ale už ju pýtajú,
   },
   {
     title: "Borovka, borovka",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Borovka, borovka, zelená je borovka,:]
@@ -1062,7 +1062,7 @@ Ešte nie, ešte nie, ale už ju pýtajú,
   },
   {
     title: "Boršičanka (Moravanka)",
-    tags: [],
+    tags: ["Morava"],
     lyrics:
 `1.
 Boršičanka, to je polka vábivá,
@@ -1091,7 +1091,7 @@ a bubeník konec udělá.`
   },
   {
     title: "Boženka",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Keď som šiel včera zvečera,
@@ -1121,7 +1121,7 @@ to ja viem najlepšie sama.:]`
   },
   {
     title: "Boženku, Boženku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Boženku, Boženku, daj mi takú žienku,
@@ -1141,7 +1141,7 @@ aby bola pekná, keď pôjdem do šenku.`
   },
   {
     title: "Byla noc krásna májová",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Byla noc krásna májová,
@@ -1171,7 +1171,7 @@ vždyť krásna je májová noc.:]`
   },
   {
     title: "Bývalo mi dobre",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Bývalo mi dobre od rôčka, do rôčka,
@@ -1192,7 +1192,7 @@ ovsený v komore.:]`
   },
   {
     title: "Cez Oravu bystrá voda pretekala",
-    tags: [],
+    tags: ["Orava"],
     lyrics:
 `1.
 Cez Oravu bystrá voda pretekala.
@@ -1217,7 +1217,7 @@ s jedným som sa pohnevala, desať ich mám.:]`
   },
   {
     title: "Cez vinicu",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Cez vinicu, cez vinicu tečie jarek.:]
@@ -1232,7 +1232,7 @@ s jedným som sa pohnevala, desať ich mám.:]`
   },
   {
     title: "Cez Východnú tečie vodička",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Cez Východnú tečie vodička,
@@ -1252,7 +1252,7 @@ do vody skočili.:]`
   },
   {
     title: "Cez zelené žitko voda tečie",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Cez zelené žitko voda tečie,
@@ -1277,7 +1277,7 @@ už siedmu nedeľu, z rozmarínu.:]`
   },
   {
     title: "Cigánka",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `Hudba a text: Karel Vacek
 1.
@@ -1302,7 +1302,7 @@ pročs neřekla, bych se tvojí lásky bál.`
   },
   {
     title: "Cigánsky baron",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Cigánsky baron som ja,
@@ -1322,7 +1322,7 @@ aby mu nezhorela.`
   },
   {
     title: "Cintorín, cintorín",
-    tags: [],
+    tags: ["Trnava"],
     lyrics:
 `1.
 Cintorín, cintorín, záhradka zelená,
@@ -1381,7 +1381,7 @@ už neuvidíte mojeho milého.`
   },
   {
     title: "Co je to za devčátko",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Co je to za devčátko,
@@ -1432,7 +1432,7 @@ nikdo nedohoní.:]`
   },
   {
     title: "Co se mi stavo",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Co se mi stavo, po celý ráno,:]
@@ -1443,7 +1443,7 @@ nikdo nedohoní.:]`
   },
   {
     title: "Čerešenka cenka",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Napisal mi mili jedno mudre slovo,
@@ -1458,7 +1458,7 @@ toho beťara chcem, čo mi teraz píše.:]`
   },
   {
     title: "Čerešničky, čerešničky",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Čerešničky, čerešničky, čerešne,
@@ -1473,7 +1473,7 @@ len by ťa pre krásu doma chovala.:]`
   },
   {
     title: "Černá vlna na bílém baránku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Černá vlna na bílém baránku.:]
@@ -1490,7 +1490,7 @@ na moj dušu dajú.:]`
   },
   {
     title: "Černý cigán",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Noc je krásna, noc je tichá,
@@ -1525,7 +1525,7 @@ kdo to byl, cigán, černý cigán.:]`
   },
   {
     title: "Červená ružička v krvi je zrodená",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Červená ružička v krvi je zrodená,
@@ -1550,7 +1550,7 @@ mňa už ten svet nebaví.:]
   },
   {
     title: "Červená sukýnka",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Když byla jsem maličká a do školy chodívala.
@@ -1565,7 +1565,7 @@ ať nikdy neuvadne láska mezi náma.:]`
   },
   {
     title: "Červené jabĺčko v oblôčku mám",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Červené jabĺčko v oblôčku mám,
@@ -1580,7 +1580,7 @@ keď milý zanechá milovaní.:]`
   },
   {
     title: "Červený kacheľ biela pec",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Červený kacheľ, biela pec
@@ -1595,7 +1595,7 @@ prečo si mi z pece utiekla?:]`
   },
   {
     title: "Červený kantár biely kôň",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Červený kantár biely kôň,:]
@@ -1627,7 +1627,7 @@ prečo si mi z pece utiekla?:]`
   },
   {
     title: "Červený šátečku, kolem se toč",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Červený šátečku, kolem se toč,
@@ -1652,7 +1652,7 @@ upustila, upustila.`
   },
   {
     title: "Či tebe Aničko, ďabli maľovali",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Či tebe Aničko, ďabli maľovaly,
@@ -1698,7 +1698,7 @@ v svojim serdci maty.:]`
   },
   {
     title: "Čie sú to húsky na tej vode",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Čie sú to húsky na tej vode,
@@ -1733,7 +1733,7 @@ také sa mi dievča chcelo.:]`
   },
   {
     title: "Čierna vlnka na bielom baránku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Čierna vlnka na bielom baránku,:]
@@ -1750,7 +1750,7 @@ na môj dušu dajú.:]`
   },
   {
     title: "Čierne oči, choďte spať",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Čierne oči, choďte spať,
@@ -1805,7 +1805,7 @@ už ty mojou nebudeš.:]`
   },
   {
     title: "Čieže sú to kone ve dvore",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Čieže sú to kone ve dvore, ve dvore,
@@ -1835,7 +1835,7 @@ bude to frajarka jako ja, jako ja.:]`
   },
   {
     title: "Čiže si, šuhajko, čiže si",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Čiže si, šuhajko, čiže si,
@@ -1860,7 +1860,7 @@ keď som ho ja v hrsti držala.:]`
   },
   {
     title: "Čo bolo, to bolo",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Čo bolo, to bolo pod našim obločkom,
@@ -1875,7 +1875,7 @@ veď sa včera večer so mňou zhovárala.:]`
   },
   {
     title: "Čo je to za hora",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Čo je to za hora, hora bez javora,
@@ -1895,7 +1895,7 @@ Sadiť, ako sadiť, ale ho polievať,
   },
   {
     title: "Čo sa stalo nové",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Čo sa stalo nové v tem terchovskem dvore,
@@ -1930,7 +1930,7 @@ Hučia hory, hučia, hučí aj osika,
   },
   {
     title: "Čo ste hasiči",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Čo ste hasiči, čo ste robili,
@@ -1951,7 +1951,7 @@ páni lampasáci, zdraviť nebudem.:]`
   },
   {
     title: "Čo to máš má milá",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Čo to máš má milá, čo to máš za oči,:]
@@ -1980,7 +1980,7 @@ nezažili sveta.:]`
   },
   {
     title: "Čo to tam šuchoce",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Čo to tam šuchoce pod javorinu.:]
@@ -2009,7 +2009,7 @@ když se ti na plotně páli zásmažka.:]`
   },
   {
     title: "Čorni oči, čorni oči jak tereň",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Čorni oči, čorni oči jak tereň,:]
@@ -2041,7 +2041,7 @@ ked ničoho ty nemaš, ty nemaš.
   },
   {
     title: "Čože je to za prekrásne vtáča",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Čože je to za prekrásne vtáča,
@@ -2060,7 +2060,7 @@ aby nás ľudia nesúdili,
   },
   {
     title: "Čtyři páry bílejch koní",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Já mám panenku za horama,
@@ -2091,7 +2091,7 @@ vždyť zítra můžeš dlouho spát.`
   },
   {
     title: "Daleko, široko",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Daleko, široko, u tých Nových Zámků,
@@ -2111,7 +2111,7 @@ moja frajarenka vydávat sa strojí.`
   },
   {
     title: "Dalmácia, Dalmácia, to je Bože kraj",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Dalmácia, Dalmácia, to je Bože kraj,
@@ -2131,7 +2131,7 @@ vezmem si ťa za ženičku, to ťa nemine.:]`
   },
   {
     title: "Dám, dám, dám, dám",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Rozkvitali trnky medzi horama,
@@ -2151,7 +2151,7 @@ veď Anička od malička rada dávala.:]`
   },
   {
     title: "Darmo ma, mamičko",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Darmo ma, mamičko,
@@ -2255,7 +2255,7 @@ do postele vodzic.:]`
   },
   {
     title: "Datelinka v lese",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ďatelinka v lese,
@@ -2280,7 +2280,7 @@ vzala mi ho voda.:]`
   },
   {
     title: "Dbaj, mamko, dbaj",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Dbaj, mamko, dbaj,
@@ -2300,7 +2300,7 @@ daj me jemu, daj.:]`
   },
   {
     title: "Dedinka malá, tá je veselá",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Dedinka malá, tá je veselá,
@@ -2322,7 +2322,7 @@ aj posledný groš za ňu dám:]`
   },
   {
     title: "Dedinka v údolí",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Dedinka v údolí, srdce ma zabolí,
@@ -2341,7 +2341,7 @@ verím, že život je klam.:]`
   },
   {
     title: "Deti z Pirea",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Každého jitra z toho přístavu
@@ -2369,7 +2369,7 @@ o čem snili tolikkrát.`
   },
   {
     title: "Detvianskí žandári",
-    tags: [],
+    tags: ["Podpoľanie"],
     lyrics:
 `1.
 Detvianskí žandári, hore grúňom plačú,
@@ -2383,7 +2383,7 @@ Jeden je na zboji, druhý ovce dojí
   },
   {
     title: "Dievča, dievča lastovička",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Dievča, dievča lastovička,
@@ -2408,7 +2408,7 @@ veď ty budeš žena moja.:]`
   },
   {
     title: "Dievča, dievča, biely krištál",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Dievča, dievča, biely krištál,
@@ -2428,7 +2428,7 @@ keď sme vedno naučení.:]`
   },
   {
     title: "Dievča, dievča, čože to máš",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Dievča, dievča, čože to máš?
@@ -2453,7 +2453,7 @@ zo srdiečka úprimného.:]`
   },
   {
     title: "Dievčatko krásne",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Dievčatko krásne, nechoď preč odo mňa.:]
@@ -2474,7 +2474,7 @@ koho ja milujem, aj si vezmem.:]`
   },
   {
     title: "Dievčatko oravskô",
-    tags: [],
+    tags: ["Orava"],
     lyrics:
 `1.
 [:Dievčatko oravskô,
@@ -2489,7 +2489,7 @@ bolos mi frajerkou, musíš mi byť žienkou.:]`
   },
   {
     title: "Dnes je sobota",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Dnes je sobota, carija-juchacha,
@@ -2518,7 +2518,7 @@ všetkým dievčatám,:]
   },
   {
     title: "Do dvorečka, do dvora",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Do dvorečka, do dvora
@@ -2533,7 +2533,7 @@ a už sa nenavráti.:]`
   },
   {
     title: "Do hory ma poslali",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Do hory ma poslali, sekeru mi nedali.
@@ -2550,7 +2550,7 @@ keď si vypil, utekaj!:]`
   },
   {
     title: "Do lesíčka na čekanou",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Do lesíčka na čekanou
@@ -2590,7 +2590,7 @@ Tmavá noc na tom vinu má,
   },
   {
     title: "Do rána je malá chvíľa",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Do rána je malá chvíľa,
@@ -2620,7 +2620,7 @@ za sto zlatých dajú mi ťa,:]
   },
   {
     title: "Do Trenčína za vojačka ma vzali",
-    tags: [],
+    tags: ["Považie"],
     lyrics:
 `1.
 Do Trenčína za vojačka ma vzali,
@@ -2640,7 +2640,7 @@ ešte sa mám od frajerky odobrať.:]`
   },
   {
     title: "Dobrú noc, hviezdičky",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Dobrú noc, hviezdičky, už idem spať,
@@ -2660,7 +2660,7 @@ a líčka červené, to by ja chcel.:]`
   },
   {
     title: "Dobrú noc, má milá, dobre spi",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Dobrú noc, má milá, dobre spi,
@@ -2675,7 +2675,7 @@ nech sa ti snívajú sladké sny.:]`
   },
   {
     title: "Dobrý večer, frajárečka moja",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Dobrý večer, frajárečka moja,
@@ -2700,7 +2700,7 @@ netreba mi toho roku muža.:]`
   },
   {
     title: "Dolina, dolina, aká si mi dlhá",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Dolina, dolina, aká si mi dlhá,:]
@@ -2733,7 +2733,7 @@ carija, tvoje bledé líčka.:]`
   },
   {
     title: "Dolina, dolina, kamenný chodníček",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Dolina, dolina, kamenný chodníček,:]
@@ -2750,7 +2750,7 @@ nech mu pán Boh platí.:]`
   },
   {
     title: "Drietomskou dolinou chlapci mašírujú",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Drietomskou dolinou chlapci mašírujú.:]
@@ -2787,7 +2787,7 @@ drietomskou dolinou.:]`
   },
   {
     title: "Duj, duj, duj, duj",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Duj, duj, duj, duj, dešuduj,
@@ -2830,7 +2830,7 @@ te čumidav, te čumidav párnomuj,
   },
   {
     title: "Dze śe kuri",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Dze śe kuri, tam śe kuri,
@@ -2845,7 +2845,7 @@ od olafskej ciganky.:]`
   },
   {
     title: "Dzifče počarovne",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Dzifče počarovne,
@@ -2875,7 +2875,7 @@ co sme ci ušiľi.:]`
   },
   {
     title: "Ej, beťar ja dzivočka",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Ej, beťar, ja dzivočka,
@@ -2915,7 +2915,7 @@ za koho vi chcece.`
   },
   {
     title: "Ej, čarni ši jak cigan",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Ej, čarni ši jak cigan,
@@ -2940,7 +2940,7 @@ tote naše lička.:]`
   },
   {
     title: "Ej, čo koho do toho",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ej, čo koho do toho, že ja Marku ľúbim
@@ -2951,7 +2951,7 @@ keď mi pôjde po vínko, aby sa nepotkla.`
   },
   {
     title: "Ej, dumala moja mac",
-    tags: [],
+    tags: ["Šariš"],
     lyrics:
 `1.
 [:Ej, dumala moja mac, že ja oves košil:]
@@ -2962,7 +2962,7 @@ keď mi pôjde po vínko, aby sa nepotkla.`
   },
   {
     title: "Ej, hop, hop, hop",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Ej, hop, hop, hop, hop, hop, hop,
@@ -2977,7 +2977,7 @@ do krčmy ma volajú.:]`
   },
   {
     title: "Ej, hora, hora",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Ej, hora, hora, zelená hora,:]
@@ -3039,7 +3039,7 @@ do krvi rúbal, do krvi rúbal.:]`
   },
   {
     title: "Ej, horou, chlapci, horou",
-    tags: [],
+    tags: ["Podpoľanie"],
     lyrics:
 `Očová
 1.
@@ -3055,7 +3055,7 @@ aby ma poznali medzi regimentom.:]`
   },
   {
     title: "Ej, ľali me, bili me",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Ej, ľali me, bili me, ej, nešanovali me,
@@ -3069,7 +3069,7 @@ Ej, ľubilam jednoho, ej, do ročku novoho,
   },
   {
     title: "Ej, musel by to chlap byť",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ej, musel by to chlap vyť,
@@ -3084,7 +3084,7 @@ ej, veru ubránim sa.:]`
   },
   {
     title: "Ej, od Buchlova",
-    tags: [],
+    tags: ["Morava"],
     lyrics:
 `1.
 Ej, od Buchlova větr věje,
@@ -3104,7 +3104,7 @@ jak ten holúbek po hambalkách.:]`
   },
   {
     title: "Ej, padá, padá rosička",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ej, padá, padá rosička,
@@ -3124,7 +3124,7 @@ už mi odišiel Janíček.
   },
   {
     title: "Ej, slniečko horúce",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ej, slniečko horúce,
@@ -3149,7 +3149,7 @@ ej, srdiečku sejete?:]`
   },
   {
     title: "Ej, žitko, žitko, zelené žitko",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ej, žitko, žitko, zelené žitko,
@@ -3163,7 +3163,7 @@ Ej, vika, vika, zelená vika,
   },
   {
     title: "Ešte mladej nezahrali",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ešte mladej nezahrali,
@@ -3183,7 +3183,7 @@ bo už viacej nebudeme.:]`
   },
   {
     title: "Ešte si ja, ešte si ja",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ešte si ja, ešte si ja, pohár vínka vypijem,
@@ -3200,7 +3200,7 @@ len z plného pohára.:]`
   },
   {
     title: "Ešte som nevidel tak dievčatko plakať",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Ešte som nevidel tak dievčatko plakať,:]
@@ -3217,7 +3217,7 @@ len z plného pohára.:]`
   },
   {
     title: "Ešte som sa neoženil",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ešte som sa neoženil, už ma žena bije,
@@ -3236,7 +3236,7 @@ pujdzem na vešele.:]`
   },
   {
     title: "Ešte vínko nevykyslo",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Ešte vínko nevykyslo, chlapci, pijme ho,:]
@@ -3251,7 +3251,7 @@ budeme s ním tancovati až do rána bieleho.:]`
   },
   {
     title: "Fašiangy, Turice",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Fašiangy, Turíce, Veľká noc ide,
@@ -3271,7 +3271,7 @@ musíme sa z domu, do domu po dedine pliesti.`
   },
   {
     title: "Frajer môj listoček",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Frajer môj lístoček, sadni si na stolček,
@@ -3288,7 +3288,7 @@ frajera nemáme.:]`
   },
   {
     title: "Frajerečko starodávna",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Frajerečko starodávna,
@@ -3313,7 +3313,7 @@ mladosť moja za ročkami.:]`
   },
   {
     title: "Gajdoval gajdoš",
-    tags: [],
+    tags: ["Morava"],
     lyrics:
 `Pieseň z Valašska.
 1.
@@ -3331,7 +3331,7 @@ Daj Pánbú nebe, hudcom aj těbe.`
   },
   {
     title: "Goraľu, cy či ňe zaľ",
-    tags: [],
+    tags: ["Poľsko"],
     lyrics:
 `1.
 Goraľu, cy či ňe zaľ,
@@ -3378,7 +3378,7 @@ goraľu, vroč še do haľ.:]`
   },
   {
     title: "Gúľalo sa, gúľalo",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Gúľalo sa, gúľalo, husie vajce z vŕšku.:]
@@ -3392,7 +3392,7 @@ goraľu, vroč še do haľ.:]`
   },
   {
     title: "Háj, háj, háj, zelený háj",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Háj, háj, háj, zelený háj,
@@ -3412,7 +3412,7 @@ nasypem ti zeleného jačmeňa.:]`
   },
   {
     title: "Haj, husičky, haj, cez zelený háj",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Haj, husičky, haj, cez zelený háj:]
@@ -3422,7 +3422,7 @@ háj, husičky háj, cez zelený háj.:]`
   },
   {
     title: "Hajá, haja, má panenko malá",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Hajá, hajá, má panenko malá.:]
@@ -3438,7 +3438,7 @@ A já, a já, márňe čekám dneska.:]`
   },
   {
     title: "Hájičku zelený, už som ťa dohájil",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Hájiček zelený, už som ťa dohájil,:]
@@ -3481,7 +3481,7 @@ Kde sú tí hájnici, čo ťa hájovali,
   },
   {
     title: "Hájku, háječku",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Hájku, háječku, hájku zelený,:]
@@ -3510,7 +3510,7 @@ Kde sú tí hájnici, čo ťa hájovali,
   },
   {
     title: "Hej, boboňec, boboňec",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Hej, boboňec, boboňec, žeľeni boboňec,:]
@@ -3543,7 +3543,7 @@ co ma bile lička.:]`
   },
   {
     title: "Hej, haj, hej, haj, zelený háj",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Hej, haj, hej, haj, zelený háj,:]
@@ -3564,7 +3564,7 @@ preto ja k tebe chodiť musím.:]`
   },
   {
     title: "Hej, hore háj, dolu háj",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Hej, hore háj, dolu háj, hore hájom chodník,
@@ -3578,7 +3578,7 @@ Hej, pravda u zbojníka, čo zná krivdy s nami
   },
   {
     title: "Hej, ľeto, ľeto horuce, pásla volečky na luce",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Hej, ľeto, ľeto, ľeto horuce,
@@ -3603,7 +3603,7 @@ na vojnu ce poňešu.:]`
   },
   {
     title: "Hej, ľeto, ľeto, ľeto horúce, páslo dzifčatko volky na lúce",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Hej, ľeto, ľeto, ľeto horúce,
@@ -3623,7 +3623,7 @@ uvijem ci pírko v hore z fialky,
   },
   {
     title: "Hej, musel by to chlap byť",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Hej, musel by to chlap byť,
@@ -3638,7 +3638,7 @@ tou veru obránim sa.:]`
   },
   {
     title: "Hej, na tarki, na tarki",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Hej, na tarki, na tarki,
@@ -3653,7 +3653,7 @@ sama pujdzem do tancu.:]`
   },
   {
     title: "Hej, tak som si pomyslel",
-    tags: [],
+    tags: ["Podpoľanie"],
     lyrics:
 `1.
 [:Hej, tak som si pomyslel
@@ -3678,7 +3678,7 @@ na zboj chodiť nikdá.:]`
   },
   {
     title: "Hej, už sa na tej hore lístie červeneje",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Hej, už sa na tej hore lístie červeneje.:]
@@ -3689,7 +3689,7 @@ na zboj chodiť nikdá.:]`
   },
   {
     title: "Hledám galanečku",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Hledám galanečku, která doma není.:]
@@ -3706,7 +3706,7 @@ a to ešte dneska.:]`
   },
   {
     title: "Hoja tebe, hoja i mne",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Hoja tebe, hoja tebe, hoja i mne,
@@ -3726,7 +3726,7 @@ a na mne ši a na mne ši neodkázal.`
   },
   {
     title: "Hore dedinu mládenci idú",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Hore dedinu mládenci idú,
@@ -3757,7 +3757,7 @@ nech môžem ven ísť aj ja.:]`
   },
   {
     title: "Hore Hron, hore Hron",
-    tags: [],
+    tags: ["Horehronie"],
     lyrics:
 `Očová
 1.
@@ -3775,7 +3775,7 @@ Pšenička nežatá, tráva nekosená,
   },
   {
     title: "Hore Košicami",
-    tags: [],
+    tags: ["Abov"],
     lyrics:
 `1.
 [:Hore Košicami, sypana dražečka.:]
@@ -3786,7 +3786,7 @@ Pšenička nežatá, tráva nekosená,
   },
   {
     title: "Horela lipka, horela",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Horela lipka, horela,
@@ -3861,7 +3861,7 @@ točí sa okolo, okolo javora.`
   },
   {
     title: "Hore Strážu",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Hore Strážu, dole Strážu,
@@ -3886,7 +3886,7 @@ muzika nám vyhráva.:]`
   },
   {
     title: "Horička zelená, zelenaj sa",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Horička zelená, zelenaj sa,
@@ -3917,7 +3917,7 @@ do Mora, do Mora, do Moravy.:]`
   },
   {
     title: "Horička, horička, hora",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Horička, horička, hora, zelená hora,
@@ -3932,7 +3932,7 @@ len ten ma milovať môže, kto ma poteší.:]`
   },
   {
     title: "Horo, horo, vysoká jsi",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `česká, zdĺhavo
 1.
@@ -3948,7 +3948,7 @@ pro mne více k nalezení!:]`
   },
   {
     title: "Hovoranský potůček",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Hovoranský potůček tiše plyne dolu,:]
@@ -3969,7 +3969,7 @@ ten byl svědkem bolu.:]`
   },
   {
     title: "Hrajte mi, husličky",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Hrajte mi husličky, z javora doštičky
@@ -3990,7 +3990,7 @@ už sa mi odtrhla od srdca tá skala.:]`
   },
   {
     title: "Hraju v karčme, hraju",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Hraju v karčme, hraju, až tak ta žem dudni,
@@ -4001,7 +4001,7 @@ Pre Boha živého, hudáci nehrajce,
   },
   {
     title: "Hrajže mi muzička",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Hrajže mi muzička, hrajže mi hraj,
@@ -4011,7 +4011,7 @@ hrajže mi muzička, pekné je to.`
   },
   {
     title: "Hrála muzika",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Hrála muzika, bez kapelníka,
@@ -4022,7 +4022,7 @@ dneska nejmíň tisíckrát.:]`
   },
   {
     title: "Hura, hura, šiva skala",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Hura, hura, šiva skala,
@@ -4042,7 +4042,7 @@ dze herlička vajca ňeše.:]`
   },
   {
     title: "Chaloupka nízka",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Chaloupka nízka, hrom do ní tříská,
@@ -4052,7 +4052,7 @@ po léte zas ten smutný čas.`
   },
   {
     title: "Chlapec som ja, chlapec",
-    tags: [],
+    tags: ["Podpoľanie"],
     lyrics:
 `1.
 Chlapec som ja, chlapec,
@@ -4067,7 +4067,7 @@ Nevediem si hrdo, len si ešte budem,
   },
   {
     title: "Chodí richtár po dedine",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Chodí richtár po dedine, rozkazuje kolo,
@@ -4090,7 +4090,7 @@ A my Vašu nekúpime, vaša je lenivá.
   },
   {
     title: "Chodil do nas jeden šuhaj švarny",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Chodil do nas jeden šuhaj švarny,
@@ -4110,7 +4110,7 @@ zbohom, mamko, už še lučim z vami.:]`
   },
   {
     title: "Chodila Anička",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Chodila má milá v zelenem háji,
@@ -4127,7 +4127,7 @@ pověz mi, má milá, kdo ťa miluje.:]`
   },
   {
     title: "Chodila dievčina po hore plačúci",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Chodila dievčina po hore plačúci,:]
@@ -4147,7 +4147,7 @@ pověz mi, má milá, kdo ťa miluje.:]`
   },
   {
     title: "Chodila má milá v zelenom háju",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Chodila má milá v zelenom háju,
@@ -4164,7 +4164,7 @@ vtak letí, odletí a ja taky tak.:]`
   },
   {
     title: "Chodili chlapci k nám",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Chodili chlapci k nám, že pekné očká mám,
@@ -4184,7 +4184,7 @@ Tento rok veselú, na druhý pán Boh vie,
   },
   {
     title: "Chodíme, chodíme, hore po dedine",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Chodíme, chodíme, hore po dedine,
@@ -4219,7 +4219,7 @@ A keď ma porania utriem si ňou rany,
   },
   {
     title: "Chodníček bělavý",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Chodníček bělavý medzi vinohrady,:]
@@ -4232,7 +4232,7 @@ domú pre kravičky.:]`
   },
   {
     title: "Chodníček vyšliapaný",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `Hudba: Andrej Lieskovský, Text: František Trefný
 1.
@@ -4255,7 +4255,7 @@ veď len ju v srdci nosím.`
   },
   {
     title: "Chodzili bi do nas",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Chodzili bi do nas parobci za redom,:]
@@ -4299,7 +4299,7 @@ treba pišňe chodzic.:]`
   },
   {
     title: "Ide furman dolinou",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Ide furman dolinou,:]
@@ -4331,7 +4331,7 @@ nebol by ti po vôli.:]
   },
   {
     title: "Idz daľej, Haňičko, od sceni",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Idz daľej, Haňičko, od sceni,
@@ -4346,7 +4346,7 @@ biš\` me poprituľal ku sebe.:]`
   },
   {
     title: "Išiel Macek do Malacek",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Išiel Macek do Malacek šošovičku mlácic,
@@ -4365,7 +4365,7 @@ hej, dzunu, dzunu-nu-nu-nu-nu.:]`
   },
   {
     title: "Išla Marína do cintorína",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Išla Marína do cintorína,
@@ -4400,7 +4400,7 @@ huja, huja, huja ja, tečie voda z hôr.`
   },
   {
     title: "Išli dievky ľan trhať",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Išli dievky ľan trhať, natrhali samú vňať,
@@ -4429,7 +4429,7 @@ Ej, Marína, Marína, krátka nám je perina,
   },
   {
     title: "Išli furmani z lesa pomaly",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Išli furmani z lesa pomaly,:]
@@ -4458,7 +4458,7 @@ do sudneho dňa.:]`
   },
   {
     title: "Ja by oral ja by sial",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Ja by oral, ja by sial,
@@ -4478,7 +4478,7 @@ hej, ľem ho budu zvodyl.`
   },
   {
     title: "Já mám trakař malej",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Já mám trakař malej,
@@ -4507,7 +4507,7 @@ ona, že jí dusí,
   },
   {
     title: "Ja parobek z Kapušan",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Ja parobek z Kapušan
@@ -4532,7 +4532,7 @@ na jej bile nožičky,:]
   },
   {
     title: "Ja som bača veľmi starý",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ja som bača veľmi starý, nedožijem do jari,
@@ -4586,7 +4586,7 @@ hej, dziny, dziny, dziny, dziny dajdom.:]`
   },
   {
     title: "Ja som chlapec vrtký",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ja som chlapec vrtký, nebojím sa bitky,
@@ -4606,7 +4606,7 @@ Keď moja nebude, bude mi bratova,
   },
   {
     title: "Jak ja išol ku milej, ci drobný dyžď padal",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Jak ja išol ku milej, ci drobný dyžď padal.
@@ -4637,7 +4637,7 @@ a nad ránom i tretí raz, na rozlúčku zas:]`
   },
   {
     title: "Jak jes ňa mamočko",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Jak jes ňa mamočko, jak jes ňa vydala,:]
@@ -4658,7 +4658,7 @@ mamočku vidity.:]`
   },
   {
     title: "Jak sja odavala",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Jak sja odavala, jak sja odavala,
@@ -4684,7 +4684,7 @@ roveň mojmu ličku.:]`
   },
   {
     title: "Jaké je to hezké",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Jaké je to hezké, dva kovaři v měste,
@@ -4704,7 +4704,7 @@ do a dokolečka do kola.:]`
   },
   {
     title: "Janko, Janko, zlá rada",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Janko, Janko, zlá rada,
@@ -4724,7 +4724,7 @@ perinôčkou prikryješ.:]`
   },
   {
     title: "Javorina, chlapci, Javorina",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Javorina, chlapci Javorina,:]
@@ -4745,7 +4745,7 @@ oni ti to modré natrhajú.:]`
   },
   {
     title: "Javorinka šedivá",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Javorinka šedivá, pod ňou dedinka malá,
@@ -4762,7 +4762,7 @@ tam spod javoriny, tam si děvče namluvím.:]`
   },
   {
     title: "Javorník, Javorník",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Javorník, Javorník, cez Javorník chodník,
@@ -4791,7 +4791,7 @@ Mladosť moja, mladosť, vyšlas mi na márnosť,
   },
   {
     title: "Jeden mysliveček, na poli poľuje",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Jeden mysliveček, na poli poľuje
@@ -4811,7 +4811,7 @@ já jsem mysliveček, se mnú obstojíš..]`
   },
   {
     title: "Jedna druhej riekla",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Jedna druhej riekla, keď koláče piekla:
@@ -4831,7 +4831,7 @@ Keď som išiel z Petra, opica ma stretla,
   },
   {
     title: "Jedna ruža, dve ruže",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Jedna ruža, dve ruže, dve ružičky červené,
@@ -4852,7 +4852,7 @@ Naši ešte nespali, otec mater boskali,
   },
   {
     title: "Jedna sestra brata mala",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Jedna sestra brata mala,
@@ -4897,7 +4897,7 @@ zahrabaný v čiernej zemi.:]`
   },
   {
     title: "Jednej dcéry mamka",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Jednej dcéry mamka, jednej dcéry mamka vyšla na ulicu,
@@ -4917,7 +4917,7 @@ naša Anička len za Janíčka by sa vydávala.:]`
   },
   {
     title: "Jednou, dvakrát, budu čekat",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Jednou, dvakrát, budu čekat,
@@ -4930,7 +4930,7 @@ po třetí tě nechám stát.:]`
   },
   {
     title: "Jetelíček u vody",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `hudba/text: Václav Bláha
 1.
@@ -4956,7 +4956,7 @@ jetelíček u vody.:]`
   },
   {
     title: "Jiřiny",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Na podzim, když kvetou jiřiny,
@@ -4976,7 +4976,7 @@ ja jsem si ji vedl jako nevěstu.:]`
   },
   {
     title: "Kačenko turanská",
-    tags: [],
+    tags: ["Myjava"],
     lyrics:
 `1.
 Kačenko turanská z Rudinských kopaníc,
@@ -4987,7 +4987,7 @@ Dverečka otvoriť a líčka pohladiť,
   },
   {
     title: "Kade idem, tade trniem",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Kade idem, tade trniem,
@@ -4997,7 +4997,7 @@ len sa bojím, že ma chytia.`
   },
   {
     title: "Kalná je voda",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Kalná je voda ve Vltavě,
@@ -5016,7 +5016,7 @@ vic už tě k řece nepovedu.`
   },
   {
     title: "Kamaráti, bratia",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Kamaráti, bratia, po jednom sa tratia.:]
@@ -5029,7 +5029,7 @@ už sa nenavrátim.:]`
   },
   {
     title: "Kamarátko moja",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Kamarátko moja, požič mi lajblíka,:]
@@ -5046,7 +5046,7 @@ to ti bude dobrý pre tvojho milého.:]
   },
   {
     title: "Kam to kráča tá dievčina",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Kam to kráča tá dievčina s červenýma lícama,
@@ -5071,7 +5071,7 @@ Spev a radosť ozýva sa po horách, dolinama.:]`
   },
   {
     title: "Kapura, kapura",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Kapura, kapura, na kapure rače,
@@ -5091,7 +5091,7 @@ len budzem ja chodzic jak ruža červena.:]`
   },
   {
     title: "Karlíčku můj",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Karlíčku můj, to je zvyk tvůj,
@@ -5103,7 +5103,7 @@ ale jen kdyš spíš.`
   },
   {
     title: "Kázala mi mati biele húsky hnati",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Keď som na potôčku plátno polievala,:]
@@ -5120,7 +5120,7 @@ ale jen kdyš spíš.`
   },
   {
     title: "Kažu še mi ženic",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Kažu še mi ženic, kažu mi vdovu brac,:]
@@ -5140,7 +5140,7 @@ ale jen kdyš spíš.`
   },
   {
     title: "Kde je sládek",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Kde je sládek, tam je mládek,
@@ -5152,7 +5152,7 @@ až do rána bílého.:]`
   },
   {
     title: "Kdeže ideš, Helenko, Helenko",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Kdeže ideš, Helenko, Helenko?
@@ -5172,7 +5172,7 @@ každé dievča miluje vojaka.
   },
   {
     title: "Kdeže si Anička",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Kdeže si Anička, kdes tú vodu brala.:]
@@ -5201,7 +5201,7 @@ chudobná dievčina.:]`
   },
   {
     title: "Kdyby byl Bavorov",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Kdyby byl Bavorov, co su Vodňany.
@@ -5216,7 +5216,7 @@ nedám ti, má milá, ani jedinou.:]`
   },
   {
     title: "Kdyby byla Morava",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Kdyby byla Morava jako je Videň,
@@ -5241,7 +5241,7 @@ ošidila dcérečka synečka:]`
   },
   {
     title: "Kdyby to vaši věděli",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Kdyby to naši věděli, kam já chodím v neděli,
@@ -5252,7 +5252,7 @@ pak teprv klidné jdu spát.:]`
   },
   {
     title: "Kdyby ty muziky nebyly",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Kdyby ty muziky nebyly,
@@ -5266,7 +5266,7 @@ já si to nechci vzít do nebe.`
   },
   {
     title: "Kdyš se pšenka zelenala",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Kdyš se pšenka zelenala z jara na vršíčku,
@@ -5302,7 +5302,7 @@ vienok panenskej čistoty, k zakúpeniu není.:]`
   },
   {
     title: "Když jsem já šel do Vršovic na posvícení (Baruška)",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Když jsem já šel do Vršovic na posvícení
@@ -5327,7 +5327,7 @@ má roztomilá Baruško, pojď si se mnou hrát.`
   },
   {
     title: "Když jsem já šel kolem panské záhrady",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Když jsem já šel kolem panské záhrady,
@@ -5347,7 +5347,7 @@ frajárečku moju.:]`
   },
   {
     title: "Když jsem ja šel tou Putimskou bránou",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Když jsem ja šel tou Putimskou bránou,
@@ -5373,7 +5373,7 @@ až ja budu tu mší svatou sloužit
   },
   {
     title: "Když jsem k vám chodíval přes ty lesy",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Když jsem k Vám chodíval přes ty lesy,
@@ -5396,7 +5396,7 @@ a teď má panenka smutek nosí, ach, ouvej, smutek nosí.`
   },
   {
     title: "Když jsem šel od vás",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Když jsem šel od vás, byl překrásny čas.:]
@@ -5417,7 +5417,7 @@ dnes, a zítra naposled.:]`
   },
   {
     title: "Když jsem šel z Hradišťa",
-    tags: [],
+    tags: ["Morava"],
     lyrics:
 `1.
 Když jsem šel z Hradišťa z požehnání,
@@ -5437,7 +5437,7 @@ všecko cos´ míval rád konec mívá.:]`
   },
   {
     title: "Když k nám přijdou Šumaři (Šumařinka)",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Když k nám přijdou Šumaři, nic se mi v práci nedaří.
@@ -5452,7 +5452,7 @@ pak teprv klidňe jdu spát.`
   },
   {
     title: "Když se sejdem při muzice",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Když se sejdem při muzice u nás pospolu,
@@ -5465,7 +5465,7 @@ zazpívat si zvesela.`
   },
   {
     title: "Keby ja vedela, kde budem nevestu",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Keby ja vedela, kde budem nevestu,:]
@@ -5490,7 +5490,7 @@ alebo:
   },
   {
     title: "Keby moje nôžky",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Keby moje nôžky nechodili vŕšky,
@@ -5505,7 +5505,7 @@ tak nevedia pekne hrať.:]`
   },
   {
     title: "Keby ste to, mamko moja, vědeli",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Keby ste to, mamko moja, vědeli, vědeli,
@@ -5520,7 +5520,7 @@ a gdosi mňe za klobúčkem perko vzal, perko vzal.
   },
   {
     title: "Keby to tak bolo, ako bolo vlani",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Keby to tak bolo, ako bolo vlani,
@@ -5541,7 +5541,7 @@ Caria ria riarom, caria ria, ria ria rom hej rom.`
   },
   {
     title: "Keď ja budem rukovať",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Keď ja budem rukovať, budeš ešte spať,
@@ -5556,7 +5556,7 @@ až sa ja z tej vojny vrátim, budeš moja.:]`
   },
   {
     title: "Ked ja na Toriśe noški umivala",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Ked ja na Toriśe noški umivala,:]
@@ -5582,7 +5582,7 @@ až sa ja z tej vojny vrátim, budeš moja.:]`
   },
   {
     title: "Keď ja pôjdem na Oravu na viku",
-    tags: [],
+    tags: ["Orava"],
     lyrics:
 `1.
 Keď ja pôjdem na Oravu na viku,
@@ -5607,7 +5607,7 @@ pre seba, pre seba, pre seba.`
   },
   {
     title: "Keď mi prišla karta narukovať",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Keď ma v tom Kubíne odobrali,
@@ -5669,7 +5669,7 @@ bo ona ode mňe brušek nośi.:]`
   },
   {
     title: "Keď nás na tú vojnu brali",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Keď nás na tú vojnu brali,
@@ -5698,7 +5698,7 @@ a lásky nedopraje.:]`
   },
   {
     title: "Keď pôjdeš popred nás",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Keď pôjdeš popred nás, nepozeraj do nás,
@@ -5715,7 +5715,7 @@ A keď ťa nechcú dať, pôjdem inde hľadať,
   },
   {
     title: "Keď rozkvitne biela ruža",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Keď rozkvitne biela ruža, treba ju trhať,
@@ -5743,7 +5743,7 @@ budeme sa my milovať len potajomne.:]`
   },
   {
     title: "Keď som bol maličký pacholíček",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Keď som bol maličký pacholíček,
@@ -5758,7 +5758,7 @@ rubáša nenosí, jak sme spolu.:]`
   },
   {
     title: "Keď som bola, bola maličká",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Keď som bola, bola maličká,
@@ -5788,7 +5788,7 @@ bude chlapcov klamať ako ja.:]`
   },
   {
     title: "Keď som išiel cez bystricku, cez jednu uličku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Keď som išiel cez bystricku,
@@ -5818,7 +5818,7 @@ ztratila by veniec, hop hop hop.:]`
   },
   {
     title: "Keď som išiel cez tie hory, hajdi, hajdi dom",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Keď som išiel cez tie hory, hajdi, hajdi dom.
@@ -5839,7 +5839,7 @@ ani otec, mať nemôže, hojže, Bože môj.:]`
   },
   {
     title: "Keď som išiel hore Poľanu",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Keď som išiel hore Poľanu,
@@ -5869,7 +5869,7 @@ A ona mi na to povedá,
   },
   {
     title: "Keď som išiel od svej milej",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `Terchová
 1.
@@ -5885,7 +5885,7 @@ preto chodí moj koníček poza humná.:]`
   },
   {
     title: "Keď som išiel okolo vás",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Keď som išiel okolo vás,
@@ -5926,7 +5926,7 @@ dajte si ju za farára.:]`
   },
   {
     title: "Keď som išiel, keď som išiel, popod chotár",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Keď som išiel, keď som išiel, popod chotár,
@@ -5951,7 +5951,7 @@ skôr než vyjde zlaté slnko nad Komárno.:]`
   },
   {
     title: "Keď som išla z kostola",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Keď som išla z kostola, dozadu sa pozrela,
@@ -5964,7 +5964,7 @@ a falošním chlapcom pokoj dala.:]`
   },
   {
     title: "Keď som na potôčku plátno polievala",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Keď som na potôčku plátno polievala,:]
@@ -5984,7 +5984,7 @@ a falošním chlapcom pokoj dala.:]`
   },
   {
     title: "Keď som šiel ku milej naposledy",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Keď som šiel ku milej naposledy,
@@ -6009,7 +6009,7 @@ keď sa my obaja zídeme zas.:]`
   },
   {
     title: "Keď som šiel v Prahe po rínku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Keď som šiel v Prahe po rínku,
@@ -6049,7 +6049,7 @@ však ty máš chlapca švárneho.:]`
   },
   {
     title: "Keď šoféri naštartujú",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Keď šoféri naštartujú, juchachá, naštartujú,
@@ -6064,7 +6064,7 @@ to je náš materiál.:]`
   },
   {
     title: "Kedz ja na Toryše nožky umyvala",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Kedz ja na Toryše nožky umyvala.:]
@@ -6081,7 +6081,7 @@ to je náš materiál.:]`
   },
   {
     title: "Kedz som bol v Šarišu",
-    tags: [],
+    tags: ["Šariš"],
     lyrics:
 `1.
 Kedz som bol v Šarišu, stretol som Marišu,
@@ -6104,7 +6104,7 @@ zuba aňi jedneho.:]`
   },
   {
     title: "Kolíne, Kolíne",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Kolíne, Kolíne, tys na pěkné roviňe.:]
@@ -6121,7 +6121,7 @@ Kolinečku, Kolíne.:]`
   },
   {
     title: "Kolo nás, popred nás",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Kolo nás, popred nás, kolo nás, popred nás
@@ -6158,7 +6158,7 @@ kde sa len ukážem. :]`
   },
   {
     title: "Komu lepšie na tom svete",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Komu lepšie na tom svete, ako, strýčku, vám.
@@ -6173,7 +6173,7 @@ len tú jednu starú babu, aj s tú sa hnevám.:]`
   },
   {
     title: "Komu že je lepšie, jak mladej nevesce",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Komu že je lepšie, jak mladej nevesce?:]
@@ -6196,7 +6196,7 @@ len tú jednu starú babu, aj s tú sa hnevám.:]`
   },
   {
     title: "Kone moje vrané",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Kone moje vrané, pekne cifrované,
@@ -6223,7 +6223,7 @@ Rodičovia moji, ja vás pekne prosím,
   },
   {
     title: "Konopa, konopa",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Konopa, konopa, zelená konopa,:]
@@ -6271,7 +6271,7 @@ alebo:
   },
   {
     title: "Koňu, koňu, šarga koňu",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Koňu, koňu, šarga koňu,
@@ -6288,7 +6288,7 @@ frajiročko, budzeš moja, čuhaja.:]`
   },
   {
     title: "Kopala studienku, pozerala do nej",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Kopala studienku, pozerala do nej,:]
@@ -6305,7 +6305,7 @@ potom ti ja, poviem, ej, potom ti ja poviem.:]`
   },
   {
     title: "Krásna, krásna, kde si húsky pásla",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Krásna, krásna, kde si húsky pásla?
@@ -6322,7 +6322,7 @@ Krásna, krásna, húsky viac nepásla.
   },
   {
     title: "Krásna pasačka husičky pásla",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Krásna pasačka husičky pásla,
@@ -6342,7 +6342,7 @@ dokud nás láska k sobě svádí.:]`
   },
   {
     title: "Krčmárik maľučky",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Krčmárik maľučky, trasú sa ti rúčky,
@@ -6433,7 +6433,7 @@ a bíla me bila.:]`
   },
   {
     title: "Krjačok ljalijovyj",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Ked sja vydavala, ked sja vydavala, zahradku kopala.
@@ -6453,7 +6453,7 @@ budu polivaty, budu polivaty krjačok ljalijovyj.:]`
   },
   {
     title: "Kročkom koňu, kročkom",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Kročkom koňu, kročkom, hore tým potočkom.:]
@@ -6470,7 +6470,7 @@ budu polivaty, budu polivaty krjačok ljalijovyj.:]`
   },
   {
     title: "Ku Praze je cesta dlouha",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Ku Praze je cesta dlouha, stromkama je sázena,:]
@@ -6507,7 +6507,7 @@ alebo:
   },
   {
     title: "Kukulienka, kde si bola",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Kukulienka, kde si bola, keď tá tuhá zima bola?
@@ -6536,7 +6536,7 @@ hajaja, kukuku, sedela som na buku.`
   },
   {
     title: "Kúpala sa Katarína",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Kúpala sa Katarína, v tej vodičke studenej.:]
@@ -6547,7 +6547,7 @@ hajaja, kukuku, sedela som na buku.`
   },
   {
     title: "Kúty, Kúty",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Kúty, Kúty, to je pěkné městečko,
@@ -6567,7 +6567,7 @@ dobre mu je, milá, v tvojom zajatí.:]`
   },
   {
     title: "Kvitne drobná ďatelinka",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Kvitne drobná ďatelinka, pekná, červená,
@@ -6582,7 +6582,7 @@ tá sa musí, šuhajíčku, po svete rozniesť.:]`
   },
   {
     title: "Kyjovšti mládenci by sa oženili",
-    tags: [],
+    tags: ["Morava"],
     lyrics:
 `1.
 [:Kyjovšti mládenci by sa oženili,:]
@@ -6616,7 +6616,7 @@ ten ti bude dobrý, keď nemáš nového.:]
   },
   {
     title: "Kysuca, Kysuca",
-    tags: [],
+    tags: ["Kysuce"],
     lyrics:
 `1.
 Kysuca, Kysuca, studená vodička,
@@ -6637,7 +6637,7 @@ dievča k mojej vôli, dievča k mojej vôli.:]`
   },
   {
     title: "Lapášskí mládenci, to je veľký kríž",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Lapášskí mládenci, to je veľký kríž,
@@ -6657,7 +6657,7 @@ aby mi šuhajko vždy zostal verný.:]`
   },
   {
     title: "Láska, Bože, láska",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Láska, Bože, láska, kde ťa ľudia berú?
@@ -6674,7 +6674,7 @@ Ale sa tá láska na horách nerodí,
   },
   {
     title: "Letěla husička",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Letěla husička, letěla z vysoka,
@@ -6771,7 +6771,7 @@ drobný piesok jedia.`
   },
   {
     title: "Letelo vtáča nad nami",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `P. Braxatoris
 1.
@@ -6793,7 +6793,7 @@ my dvaja už sa nikdy viac spolu nezídeme.`
   },
   {
     title: "Letochova hospůdečka malovaná",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Letochova hospůdečka malovaná
@@ -6813,7 +6813,7 @@ oni by mňe na tu vojnu zavolali.:]`
   },
   {
     title: "Lístoček z brezy",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `Hudba: Karol Valečka, Text: V. Pospíšil
 1.
@@ -6829,7 +6829,7 @@ a pozdrav jemu odo mňa odovzdaj.`
   },
   {
     title: "Lístočku dubový",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Lístočku dubový, nepadaj do vody,:]
@@ -6850,7 +6850,7 @@ teraz z fraja idem.:]`
   },
   {
     title: "Ľúbi sa mi jeden šuhaj",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ľúbi sa mi jeden šuhaj švárny,
@@ -6880,7 +6880,7 @@ zbohom, zbohom, lúčim sa s vami.:]`
   },
   {
     title: "Lúčka, lučina",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Lúčka, lučina, tráva zelená,:]
@@ -6894,7 +6894,7 @@ zbohom, zbohom, lúčim sa s vami.:]`
   },
   {
     title: "Lučka, lučka, želenučka",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Lučka, lučka, žeľenučka, mam frajira jak ružička.
@@ -6908,7 +6908,7 @@ Hura, Hura šiva skala, frajira mi voda vžala.
   },
   {
     title: "Mac moja maľučka i ja budzem teľa",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Moja mac maľučka i ja budzem teľa,:]
@@ -6922,7 +6922,7 @@ Hura, Hura šiva skala, frajira mi voda vžala.
   },
   {
     title: "Mac moja, mac moja a ja macerina",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Mac moja, mac moja a ja macerina,
@@ -6941,7 +6941,7 @@ za frajira svojho, co mi mac vybrala.`
   },
   {
     title: "Majorán, majorán",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Majorán, majorán zelený majorán,
@@ -6955,7 +6955,7 @@ Majorán, majorán širokýho listu,
   },
   {
     title: "Májový agát",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Májový večer sa skláňa, mesiačik vychodí,
@@ -6985,7 +6985,7 @@ ak hneď uveríš chlapcom, raz budeš banovať.
   },
   {
     title: "Mal som pišťalôčku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Mal som pišťalôčku, o dvanástich dierkach,:]
@@ -7005,7 +7005,7 @@ ak hneď uveríš chlapcom, raz budeš banovať.
   },
   {
     title: "Mal som raz jednu",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Mal som raz jednu, frajerku vernu,
@@ -7032,7 +7032,7 @@ pre falošnú lásku.`
   },
   {
     title: "Mal som štyri kone",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Mal som štyri kone, dobre mi orali,
@@ -7057,7 +7057,7 @@ hej, nezostala doma.:]`
   },
   {
     title: "Mala ja frajira, što mu meno Petrov",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Mala ja frajira, što mu meno Petrov.
@@ -7077,7 +7077,7 @@ najže ho skarajut toty moji slova.`
   },
   {
     title: "Mala som frajera",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Mala som frajera, bol to, Bože, frajer,
@@ -7091,7 +7091,7 @@ tak ťa budem nosiť, až ma budeš prosiť.`
   },
   {
     title: "Mala som frajera hodinára",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Mala som frajera hodinára,
@@ -7106,7 +7106,7 @@ jak mi ten organčok pekne píska.:]`
   },
   {
     title: "Mala som milého, myši sa mi bál",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Mala som milího, myši sa mi bál,
@@ -7121,7 +7121,7 @@ a môjho milého zožrať nechali.:]`
   },
   {
     title: "Mala som, mala som tulipán za pásom",
-    tags: [],
+    tags: ["Orava"],
     lyrics:
 `1.
 [:Mala som, mala som tulipán za pásom,:]
@@ -7145,7 +7145,7 @@ alebo:
   },
   {
     title: "Maličká som, húsky pasiem",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Maličká som, húsky pasiem,
@@ -7162,7 +7162,7 @@ oteckova som ja holubička.:]`
   },
   {
     title: "Malina, malina",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Malina, malina, nad vodou sa kníše,
@@ -7200,7 +7200,7 @@ prečo neudrela do môjho frajera.`
   },
   {
     title: "Malý hošík černovlasý",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Malý hošík černovlasý
@@ -7250,7 +7250,7 @@ na otce své matičky.:]`
   },
   {
     title: "Mám ja hrušku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Mám ja hrušku a nič na nej,
@@ -7270,7 +7270,7 @@ aby sa jej nič nestalo, holubienke mojej.:]`
   },
   {
     title: "Mám ja kočiar nový, celý dolámaný",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Mám ja kočiar nový, celý dolámaný,
@@ -7287,7 +7287,7 @@ z tej je pekná žena.:]`
   },
   {
     title: "Mám ja kosu, kosičku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Mám ja kosu, kosičku, mám ja kosu ostrú,:]
@@ -7301,7 +7301,7 @@ z tej je pekná žena.:]`
   },
   {
     title: "Mám ja panenku za horama",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Mám ja panenku za horama, cesta je dlouha k ní,
@@ -7325,7 +7325,7 @@ až za vaši zahradou, prásknu bičem nad hlavou.`
   },
   {
     title: "Mám ja ženu starú",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Mám ja ženu starú, dal by ju za mladú,
@@ -7338,7 +7338,7 @@ aby som sa zbavil starého zázraku.:]`
   },
   {
     title: "Mamko moja mamko, ja sa bojím noci",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Mamko moja mamko, ja sa bojím noci,
@@ -7357,7 +7357,7 @@ nemám sa s kým objímať.:]`
   },
   {
     title: "Mamko moja, ja sa vydávať mám",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Mamko moja, ja sa vydávať mám,:]
@@ -7374,7 +7374,7 @@ nemám sa s kým objímať.:]`
   },
   {
     title: "Mamko moja, mamičenko",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Mamko moja, mamičenko, proč mám modré oči.:]
@@ -7401,7 +7401,7 @@ len tej jednej falešnici, kerú mám tolko rád.:]`
   },
   {
     title: "Mikulecká dědina malovaná, malovaná",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Mikulecká dědina malovaná, malovaná,
@@ -7426,7 +7426,7 @@ jak ťa, milá, zapomenu.:]`
   },
   {
     title: "Mila moja, mila moja, miľenka, miľenka",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Mila moja, mila moja, miľenka, miľenka,
@@ -7441,7 +7441,7 @@ predal koňa, predal koňa a kupil kohuta.
   },
   {
     title: "Mila moja, puš me dnuka",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Mila moja, puš mňe dnuka, bo ci ňešem dva jabluka.
@@ -7478,7 +7478,7 @@ jaka u ce žimna voda na kraju, na kraju.:]`
   },
   {
     title: "Mladý horník",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Do práce mladý horník kráči,
@@ -7503,7 +7503,7 @@ horníckou mu píseň spívali.:]`
   },
   {
     title: "Mňel jsem frajárečku",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Mňel jsem frajárečku, mňela sukénečku,
@@ -7520,7 +7520,7 @@ jak jsem ti ju v sukňu všíval.:]`
   },
   {
     title: "Močila konope, močila",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Močila konope, močila, žaba jej do čižmy skočila.:]
@@ -7541,7 +7541,7 @@ aby my pri tebe nenašli.:]`
   },
   {
     title: "Moja mamka niečo má",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Moja mamka niečo má, niečo má,
@@ -7555,7 +7555,7 @@ keď som koňom seno bral, seno bral.`
   },
   {
     title: "Moja milá frajárečka",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Moja milá frajárečka nechce mňa už za muža.:]
@@ -7576,7 +7576,7 @@ u muziky v prvním kole, za pérko ti ružu dám.:]`
   },
   {
     title: "Moja milá neverí, že ja idem do vojny",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Moja milá neverí, že ja idem do vojny,:]
@@ -7587,7 +7587,7 @@ u muziky v prvním kole, za pérko ti ružu dám.:]`
   },
   {
     title: "Moja postelenka",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Moja postelenka, moja postelenka čista režna slama.
@@ -7602,7 +7602,7 @@ a teba šuhajko a teba šuhajko do nutra nepustia.:]`
   },
   {
     title: "Moje milé premilené čerešne",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Moje milé premilené čerešne,
@@ -7627,7 +7627,7 @@ nechže sa len mojej milej krivda nestane.:]`
   },
   {
     title: "Mojeho milého rodina vysoko si vedú",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Mojeho milého rodina vysoko si vedie,
@@ -7651,7 +7651,7 @@ alebo:
   },
   {
     title: "Morava krásna zem",
-    tags: [],
+    tags: ["Morava"],
     lyrics:
 `1.
 Morava krásna zem, v které sem byl zrozen,
@@ -7683,7 +7683,7 @@ posázená, vinohradem.`
   },
   {
     title: "Můj milý šel taky na vojnu",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Můj milý šel taky na vojnu,
@@ -7703,7 +7703,7 @@ jsou to hoši jak malovaní.:]`
   },
   {
     title: "Murovany koscil, červená turnička",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Murovany koscil, červena turnička,
@@ -7714,7 +7714,7 @@ jeho frajíročka, kolo neho leží.`
   },
   {
     title: "Muziky, muziky",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Muziky, muziky, vy pěkňe hrajete,
@@ -7724,7 +7724,7 @@ toho jste, muziky, samy vinny.`
   },
   {
     title: "My sme valasi",
-    tags: [],
+    tags: ["Morava"],
     lyrics:
 `1.
 My sme valasi, jedna rodina,
@@ -7736,7 +7736,7 @@ neni už na světe lepší kapela.`
   },
   {
     title: "Mysliveček vyšel z lesa",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Mysliveček vyšel z lesa na cestičku,
@@ -7762,7 +7762,7 @@ nemysli se, že mě trefíš do srdíčka.:]`
   },
   {
     title: "Na brehu riečky tango",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Na brehu riečky lodička stojí,
@@ -7787,7 +7787,7 @@ líbal ji moc a moc, celučkou noc.`
   },
   {
     title: "Na břehu Blanice",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Na břehu Blanice stojí Maletice,
@@ -7812,7 +7812,7 @@ vždyť jsme jedna česká krev.:]`
   },
   {
     title: "Na Brezovej",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Na Brezovej pri kostole lipka zelená,:]
@@ -7833,7 +7833,7 @@ otvor mi dvere.:]`
   },
   {
     title: "Na dobšinskom nádraží",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Na dobšinskom nádraží
@@ -7868,7 +7868,7 @@ museli sme do vojny.:]`
   },
   {
     title: "Na jeseň, keď chlapci rukujú",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Na jeseň, keď chlapci rukujú,
@@ -7893,7 +7893,7 @@ počul som tam muzikantov hrať.:]`
   },
   {
     title: "Na kamenečku sedela",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Na kamenečku sedela,
@@ -7910,7 +7910,7 @@ a teraz mi už nechcete, nechcete, nechcete,
   },
   {
     title: "Na košickej turni",
-    tags: [],
+    tags: ["Abov"],
     lyrics:
 `1.
 [:Na košickej turni dva holúbky šedza,:]
@@ -7923,7 +7923,7 @@ dzivče i mládenec.:]`
   },
   {
     title: "Na Kráľovej holi",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Na Kráľovej holi stojí strom zelený.:]
@@ -7944,7 +7944,7 @@ a rúra z kanóna, to je moja žena.:]
   },
   {
     title: "Na lúke kvetnatej",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Tmavá noc k zemi sa skláňa, mesiac už vychodí,
@@ -7972,7 +7972,7 @@ Otec mi odpustiť nechcel, stačí to nestačí,
   },
   {
     title: "Na medzi je čerešienka",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Na medzi je čerešienka a pod medzou dve.:]
@@ -7986,7 +7986,7 @@ Otec mi odpustiť nechcel, stačí to nestačí,
   },
   {
     title: "Na Orave dobre",
-    tags: [],
+    tags: ["Orava"],
     lyrics:
 `1.
 [:Na Orave dobre, na Orave zdravo,:]
@@ -8019,7 +8019,7 @@ hej, v podkolienkach nosím.:]`
   },
   {
     title: "Na Pankráci",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Na Pankráci, na malem kopečku,
@@ -8039,7 +8039,7 @@ ale jak mňe ten sen oklamal.:]`
   },
   {
     title: "Na pavlovskej doline",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Na pavlovskej doline,
@@ -8056,7 +8056,7 @@ aby sa mu ľúbila.:]`
   },
   {
     title: "Na rovaš, Haničko, na rovaš",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Na rovaš, Haničko, na rovaš,
@@ -8083,7 +8083,7 @@ a do kešinečky pakoval.:]`
   },
   {
     title: "Na silnici do Prášil",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Na silnici do Prášil, jeden mladý cestář žil.:]
@@ -8100,7 +8100,7 @@ nedělal bych cestáře.:]`
   },
   {
     title: "Na skalickém poli",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Na skalickém poli je studénka vody.
@@ -8114,7 +8114,7 @@ Túži ono, túži, žádny neví po kém,
   },
   {
     title: "Na Strahově pod Petřínem",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `K.Hašler
 1.
@@ -8132,7 +8132,7 @@ kterou měl tak moc rád.:]`
   },
   {
     title: "Na Šumavě je dolina",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Na Šumavě je dolina
@@ -8167,7 +8167,7 @@ teď už ho kryje černá zem.:]`
   },
   {
     title: "Na těch panských lukách",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Na těch panských lukách našel jsem já dukát,:]
@@ -8187,7 +8187,7 @@ teď už ho kryje černá zem.:]`
   },
   {
     title: "Na tej Detve",
-    tags: [],
+    tags: ["Podpoľanie"],
     lyrics:
 `1.
 Na tej Detve studňa murovaná,
@@ -8204,7 +8204,7 @@ však ja prídem o dva o tri rôčky.:]`
   },
   {
     title: "Na tej našej Oravienke",
-    tags: [],
+    tags: ["Orava"],
     lyrics:
 `1.
 [:Na tej našej Oravienke krásne je,
@@ -8229,7 +8229,7 @@ ja lásku k Orave nikdy nestratím.:]`
   },
   {
     title: "Na tom moste tráva rastie",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Na tom moste tráva rastie,
@@ -8246,7 +8246,7 @@ zostarel sa, zostarel sa.:]`
   },
   {
     title: "Na tom našom nátoníčku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Na tom našom nátoníčku, na tom našom nátoni,
@@ -8259,7 +8259,7 @@ jak sa vydať mám.:]`
   },
   {
     title: "Na trenčianskom moste",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Na trenčianskom moste fialôčka rastie.:]
@@ -8280,7 +8280,7 @@ ruža, karafiát, čo mi milá dala.:]`
   },
   {
     title: "Na tú svätú Katarínu",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Na tú svätú Katarínu, Katarínsku nedeľu
@@ -8305,7 +8305,7 @@ Kdybych ja měl moje milá, kdybych ja měl sto zlatých,
   },
   {
     title: "Na tých pánskych lúkách",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Na tých pánskych lúkách, našiel som ja dukát.:]
@@ -8316,7 +8316,7 @@ Kdybych ja měl moje milá, kdybych ja měl sto zlatých,
   },
   {
     title: "Na valale sosna",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Na valale sosna šidzem ročky rosla:]
@@ -8333,7 +8333,7 @@ Kdybych ja měl moje milá, kdybych ja měl sto zlatých,
   },
   {
     title: "Načo mi je záhradôčka",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Načo mi je záhradôčka, keď nemôžem z nej trhať,
@@ -8363,7 +8363,7 @@ Ty si pyšná na svou krásu, tá sa rýchlo pominie.
   },
   {
     title: "Načo pôjdem domov",
-    tags: [],
+    tags: ["Tekov"],
     lyrics:
 `1.
 Načo pôjdem domov, keď nemám nikoho,
@@ -8388,7 +8388,7 @@ Pôjdem do tekova, tam je mladá vdova,
   },
   {
     title: "Načo som na svete narodená",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Načo som na svete narodená,
@@ -8408,7 +8408,7 @@ mám na srdi ťažkú mdlobu.:]`
   },
   {
     title: "Nad Inovcom",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Nad Inovcom, dve hviezdičky svietia,
@@ -8444,7 +8444,7 @@ a tu svoju, pobozkám na líčko.:]`
   },
   {
     title: "Nádeje, nádeje",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Vychodí slniečko, ale málo hreje,
@@ -8469,7 +8469,7 @@ ale vernej lásky nenájdeš u mňa viac.:]`
   },
   {
     title: "Najkrajšia hviezdička",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Najkrajšia hviezdička z celého nebíčka
@@ -8483,7 +8483,7 @@ je tvoja mamička, čo ti Boh dal.`
   },
   {
     title: "Napisal mi mily jedno mudre slovo",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Napisal mi mily jedno mudre slovo,
@@ -8498,7 +8498,7 @@ toho beťara chcem, co mi teraz píše.:]`
   },
   {
     title: "Naša Anička len za Janíčka by sa vydávala",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Naša Anička len za Janíčka by sa vydávala.:]
@@ -8527,7 +8527,7 @@ naša Anička len za Janíčka by sa vydávala.:]`
   },
   {
     title: "Nebanovala by, ej, keby nemusela",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Nebanovala by, ej, keby nemusela,
@@ -8544,7 +8544,7 @@ Za nič je to, za nič, ej, keď sa má poznati
   },
   {
     title: "Nebojte sa maměnko",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Nebojte sa maměnko, že ja sa vám stratím.:]
@@ -8561,7 +8561,7 @@ které maměnce patří, taková cérečka.:]`
   },
   {
     title: "Nebola som veselá",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Nebola som veselá od soboty večera,:]
@@ -8584,7 +8584,7 @@ které maměnce patří, taková cérečka.:]`
   },
   {
     title: "Nebráňte mi rodičovia",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Nebráňte mi rodičovia, že sa ja stále túlam,
@@ -8604,7 +8604,7 @@ pripravils ma o věneček, čo povie mamička.:]`
   },
   {
     title: "Nebudem, nebudem, na dedine bývať",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Nebudem, nebudem, na dedine bývať,
@@ -8615,7 +8615,7 @@ Zimná voda tečie, na každom jaročku,
   },
   {
     title: "Nebudem sa vydávati taká mladá",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Nebudem sa vydávati taká mladá,
@@ -8640,7 +8640,7 @@ len sa ožeň, len sa ožeň, však uvidíš.:]`
   },
   {
     title: "Neďaleko mlyna je stará myslivňa",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Neďaleko mlyna je stará myslivňa,:]
@@ -8666,7 +8666,7 @@ len sa ožeň, len sa ožeň, však uvidíš.:]`
   },
   {
     title: "Neďaleko mlyna, veľká hlbočina",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Neďaleko mlyna, veľká hlbočina,
@@ -8686,7 +8686,7 @@ Ona do mojeho, a ja do jejiho,
   },
   {
     title: "Neďaleko od Trenčína",
-    tags: [],
+    tags: ["Považie"],
     lyrics:
 `1.
 [:Neďaleko od Trenčína, býva mladá Katarína.:]
@@ -8719,7 +8719,7 @@ takú frajarečku chcem, čo má meno Katarína.:]`
   },
   {
     title: "Neklopkaj večer, môj milý",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `Hudba: Karol Valečka, Text: Vlado Pospíšil
 1.
@@ -8738,7 +8738,7 @@ ale lásku nik nevezme nám.`
   },
   {
     title: "Nemám ja ešte osemnásť",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Nemám ja ešte osemnásť,
@@ -8787,7 +8787,7 @@ prilúdia prúdy riek,
   },
   {
     title: "Nemelem, nemelem",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Nemelem, nemelem, nemelem, nemelem,
@@ -8827,7 +8827,7 @@ jak študentské remeslo.`
   },
   {
     title: "Nepi Jano, nepi vodu",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Nepi Jano, nepi vodu, voda ti je len na škodu,
@@ -8853,7 +8853,7 @@ Načo sú nám veľké ženy, na ktoré treba lešení,
   },
   {
     title: "Nepôjdem za vdovca",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Nepôjdem za vdovca, veľmi za starého,
@@ -8878,7 +8878,7 @@ na kolíske jedno, to je desatoro.
   },
   {
     title: "Neráňaj, neráňaj",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Neráňaj, neráňaj, zelené padajú,
@@ -8889,7 +8889,7 @@ Ani som neráňal, zelené padali,
   },
   {
     title: "Nestískaj mi, šuhaj, rúčku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Nestískaj mi, šuhaj rúčku, čo chceš, dobre viem,
@@ -8909,7 +8909,7 @@ večnú lásku a kadečo, keď pripomínaš.
   },
   {
     title: "Nešťastný šafárov dvoreček",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Nešťastný šafárov dvoreček, nešťastný šafárov dvor.:]
@@ -8930,7 +8930,7 @@ vodička mi ju vzala.:]`
   },
   {
     title: "Neviem, neviem, čo ja za mamku mám",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Neviem, neviem, čo ja za mamku mám,:]
@@ -8947,7 +8947,7 @@ vodička mi ju vzala.:]`
   },
   {
     title: "Nezlobte se, rodičové",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Nezlobte se, rodičové, že já se stále toulám,
@@ -8967,7 +8967,7 @@ když jsi mi dal pár hubiček, co tomu máti řekne.:]`
   },
   {
     title: "Nič krajšieho ako z jara",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Nič krajšieho ako z jara zelená sa v poli tráva,
@@ -8981,7 +8981,7 @@ Mňa v kláštore žiť neteší, mne sú chlapci najmilejší
   },
   {
     title: "Obecal mi milý",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Obecal mi milý čerešenky kúpic,
@@ -8996,7 +8996,7 @@ toho beťára chcem, co mi teraz píše.:]`
   },
   {
     title: "Očová, Očová",
-    tags: [],
+    tags: ["Podpoľanie"],
     lyrics:
 `1.
 Očová, Očová, celá si zoraná,
@@ -9010,7 +9010,7 @@ veď vy toho baču nikdy nechytíte.`
   },
   {
     title: "O poštáre abel",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:O poštaris Avel, telegramos anel,:]
@@ -9027,7 +9027,7 @@ džamóre, džamóre, džamóre, na kamav tut.:]`
   },
   {
     title: "Oči, oči, čierne oči",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Oči, oči, čierne oči, čo mám s vami robiť.:]
@@ -9044,7 +9044,7 @@ džamóre, džamóre, džamóre, na kamav tut.:]`
   },
   {
     title: "Od Buchlova vietor veje",
-    tags: [],
+    tags: ["Morava"],
     lyrics:
 `1.
 Od Buchlova vietor veje,
@@ -9064,7 +9064,7 @@ jak ten holoubek po hambalkach.:]`
   },
   {
     title: "Od Mikuláša z tej hory",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Od Mikuláša z tej hory,:]
@@ -9093,7 +9093,7 @@ jak ten holoubek po hambalkach.:]`
   },
   {
     title: "Od Oravy dážď ide",
-    tags: [],
+    tags: ["Orava"],
     lyrics:
 `1.
 [:Od Oravy dážď ide,
@@ -9118,7 +9118,7 @@ Janík dvere otvára.:]`
   },
   {
     title: "Od Oravy vietor veje",
-    tags: [],
+    tags: ["Orava"],
     lyrics:
 `1.
 Od Oravy vietor veje,
@@ -9138,7 +9138,7 @@ frajerečka moja úprimná.:]`
   },
   {
     title: "Od Prešova dražka nova",
-    tags: [],
+    tags: ["Šariš"],
     lyrics:
 `1.
 [:Od Prešova dražka nova
@@ -9153,7 +9153,7 @@ hej, za kym že si čekala?:]`
   },
   {
     title: "Od sceny, Haničko, od sceny",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Od sceny, Haničko, od sceny,
@@ -9168,7 +9168,7 @@ na koho ja budzem volala,
   },
   {
     title: "Odam še neodam",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Odam še neodam, i doma še pridam.
@@ -9194,7 +9194,7 @@ ket ho chcem ulapic, muśim śe pochlapic.:]`
   },
   {
     title: "Odpadla mi šablička",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Odpadla mi šablička, z môjho koňa Šimlička.
@@ -9211,7 +9211,7 @@ Vinohrady nepredám, ja vínečko rada mám.
   },
   {
     title: "Oj, śvekričko moja",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Oj, śvekričko moja, čom me vi ňechcece,
@@ -9241,7 +9241,7 @@ A ja jej pozdravil: pochválený Ježiš,
   },
   {
     title: "Okolo Dubnice",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Okolo Dubnice, tečie bystrá vodička.:]
@@ -9262,7 +9262,7 @@ nemôžem prisahati.:]`
   },
   {
     title: "Okolo Hradce",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Okolo Hradce v malé zahrádce
@@ -9291,7 +9291,7 @@ hubičku mi dala.:]`
   },
   {
     title: "Okolo měsíca",
-    tags: [],
+    tags: ["Morava"],
     lyrics:
 `1.
 [:Okolo měsíca kola se dělajú,:]
@@ -9312,7 +9312,7 @@ pod máju vrtěnú.:]`
   },
   {
     title: "Okolo mlyna, voda sa točí",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Okolo mlyna voda sa točí.:]
@@ -9329,7 +9329,7 @@ vodička studená.:]`
   },
   {
     title: "Okolo Suče",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Okolo Suče vodička tečie,
@@ -9352,7 +9352,7 @@ A keď sa vydám, faloš zanechám,
   },
   {
     title: "Okolo Trenčína",
-    tags: [],
+    tags: ["Považie"],
     lyrics:
 `1.
 Okolo Trenčína trávička zelená,
@@ -9372,7 +9372,7 @@ Volenka, volenka, ty nešťastný tanec,
   },
   {
     title: "Okolo Zvolena",
-    tags: [],
+    tags: ["Podpoľanie"],
     lyrics:
 `1.
 Okolo Zvolena trávička zelená,
@@ -9411,7 +9411,7 @@ Volenka, volenka, ty nešťastný tanec,
   },
   {
     title: "Oliva, oliva",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Oliva, oliva, zelená oliva,:]
@@ -9434,7 +9434,7 @@ Volenka, volenka, ty nešťastný tanec,
   },
   {
     title: "Orava, Orava, čos taká boľava",
-    tags: [],
+    tags: ["Orava"],
     lyrics:
 `1.
 [:Orava, Orava, čos taká boľavá,:]
@@ -9463,7 +9463,7 @@ Volenka, volenka, ty nešťastný tanec,
   },
   {
     title: "Oravskou dolinou vodička preteká",
-    tags: [],
+    tags: ["Orava"],
     lyrics:
 `1.
 Oravskou dolinou vodička preteká,
@@ -9483,7 +9483,7 @@ po švárnom dievčati baby s klebetami.:]`
   },
   {
     title: "Osemdesiatý štvrtý nastal",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Osemdesiatý štvrtý nastal,
@@ -9503,7 +9503,7 @@ až do Dunaja krv potiekla.
   },
   {
     title: "Ovsenisko, jačmenisko",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ovsenisko, jačmenisko,
@@ -9520,7 +9520,7 @@ Pálenku píjať, do krčmy chodiť,
   },
   {
     title: "Páči sa mi jeden šuhaj švárny",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Páči sa mi jeden šuhaj švárny,
@@ -9545,7 +9545,7 @@ zbohom, zbohom, úprimný frajer.:]`
   },
   {
     title: "Páči še mi, páči, v našim valaliku",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Páči še mi, páči, v našim valaliku.:]
@@ -9562,7 +9562,7 @@ od mojho miloho me neodžňnece.:]`
   },
   {
     title: "Padla rosička",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Padla rosička dolu z nebíčka,
@@ -9579,7 +9579,7 @@ Neplač Anička, moja dušička,
   },
   {
     title: "Padol lístok z javora",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Padol lístok z javora, do kasárni do dvora,
@@ -9593,7 +9593,7 @@ Padol lístok z javora, do kasárni do dvora,
   },
   {
     title: "Parchovanskí hudáci",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 A kto beťar v Parchovianoch, kedz ne ja,
@@ -9608,7 +9608,7 @@ ja še volam parchovianskym beťarom.:]`
   },
   {
     title: "Parta moja, parta",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Parta moja, parta, zelený veniec,
@@ -9646,7 +9646,7 @@ A ty venčok, venčok, zelený venčok,
   },
   {
     title: "Pásol Jano kone",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Pásol Jano kone v drobnej ďateline,
@@ -9679,7 +9679,7 @@ Nepoviem, nepoviem, Pán Boh by ma strestal,
   },
   {
     title: "Päťdesiatka",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ako ten čas letí, máme päťdesiat,
@@ -9697,7 +9697,7 @@ pripime si všetci, začnime spievať.`
   },
   {
     title: "Pec nám spadla",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Pec nám spadla, pec nám spadla, ktože nám ju opraví?
@@ -9728,7 +9728,7 @@ dá do toho čtyři rány a už je to hotovo.`
   },
   {
     title: "Petrincová",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Na Močiari pri kostole lipka zelená,:]
@@ -9749,7 +9749,7 @@ otvor mi dvere.:]`
   },
   {
     title: "Pijú chlapci, pijú v kamennej pivnici",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Hej, pijú chlapci, pijú v kamennej pivnici,
@@ -9790,7 +9790,7 @@ Ak ich prichytíme, takto im povieme,
   },
   {
     title: "Pije, pije na koľaji vtáča",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Pije, pije, pije, pije na koľaji vtáča,
@@ -9810,7 +9810,7 @@ Prečo je tá, prečo je tá čierna vlna drahšia?
   },
   {
     title: "Pluli rytieri po vode",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Pluli rytieri po vode,
@@ -9850,7 +9850,7 @@ a svojich bratov objíma.`
   },
   {
     title: "Po doline tichý vetrík povieva",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Po doline tichý vetrík povieva,:]
@@ -9880,7 +9880,7 @@ alebo:
   },
   {
     title: "Po nábreží koník beží",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Po nábreží koník beží, koník vraný,
@@ -9904,7 +9904,7 @@ povedz že mi, duša moja, čia ty budeš?
   },
   {
     title: "Po valašsky od zeme",
-    tags: [],
+    tags: ["Morava"],
     lyrics:
 `1.
 Po valašsky od zeme, kto mi kozy zaženie,
@@ -9924,7 +9924,7 @@ Sedí bača pod bukom, číta ovce klobúkom,
   },
   {
     title: "Pobodaj, pobodaj, želeny majerán",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Pobodaj, pobodaj, želeny majerán,:]
@@ -9949,7 +9949,7 @@ rád dzifky miluje, rád dzifky miluje.:]
   },
   {
     title: "Počkaj že ty kučeravá",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `Terchová
 1.
@@ -9964,7 +9964,7 @@ ty si bola na salaši, hľadala si iného.`
   },
   {
     title: "Pod horama vysokýma",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Pod horama vysokýma, tam je koreň ďatelina.
@@ -9999,7 +9999,7 @@ Ach, ľalia, biela ruža, nemám brata, ani muža.
   },
   {
     title: "Pod horičkou stojí lipka zelená",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Pod horičkou stojí lipka zelená,
@@ -10019,7 +10019,7 @@ naber si tam tú vodičku studenú.
   },
   {
     title: "Pod horou ďatelinka",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Pod horou ďatelinka, žala ju Katarínka.
@@ -10042,7 +10042,7 @@ Mamka ťa nebude láť, keď budeš s nami tu stáť,
   },
   {
     title: "Pod horou, pod horou, čierne psíča breše",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Pod horou, pod horou, čierne psíča breše,:]
@@ -10059,7 +10059,7 @@ Mamka ťa nebude láť, keď budeš s nami tu stáť,
   },
   {
     title: "Pod horou ovos drobný",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Pod horou ovos drobný, kosí ho šuhaj hodný,
@@ -10079,7 +10079,7 @@ Pod horou ďatelina, žala ju Katarína,
   },
   {
     title: "Pod našima okny, tečie vodička",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Pod našima okny, tečie vodička,
@@ -10109,7 +10109,7 @@ pověz že mi milá, proč si tak tlustá.
   },
   {
     title: "Pod naším okienkom",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Pod naším okienkom, pekná zahradôčka,
@@ -10126,7 +10126,7 @@ Pre koňa vraného, maštaľ murovaná,
   },
   {
     title: "Pod oblôčkom vyskakoval",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Pod oblôčkom vyskakoval, štyri groše ukazoval,
@@ -10139,7 +10139,7 @@ nechceme tie štyri groše.:]`
   },
   {
     title: "Pod tou našou, starou lípou",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Pod tou našou, starou lípou, byvala mala lavička.:]
@@ -10164,7 +10164,7 @@ Stará lípa
   },
   {
     title: "Pod tým naším okienečkom",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Pod tým naším okienečkom býva veľký mráz,
@@ -10184,7 +10184,7 @@ lebo sa mňa každý bojí, že som chudobná.:]`
   },
   {
     title: "Podaj milá rúčku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Podaj milá rúčku, rúčku na rozlúčku,
@@ -10214,7 +10214,7 @@ keď ho do hrobu dávali.:]`
   },
   {
     title: "Poďme, chlapci, poďme zbíjať",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Poďme, chlapci, poďme zbíjať,
@@ -10239,7 +10239,7 @@ oj, každý v svoju stranu.:]`
   },
   {
     title: "Pojď s náma holka zlatá mašírovat",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Pojď s náma holka zlatá mašírovat,
@@ -10257,7 +10257,7 @@ kočárek s malou Andulkou.`
   },
   {
     title: "Pokapala na salaši slanina",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Pokapala na salaši slanina,
@@ -10287,7 +10287,7 @@ slanine, slanine, slanine.`
   },
   {
     title: "Poľovníček",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `L. Válka
 1.
@@ -10306,7 +10306,7 @@ Dnes už vieš, že kto od prvej chvíle teba miloval.:]`
   },
   {
     title: "Pomaly ma veďte - odčepčenie",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Pomaly ma veďte, hej, hore tou dedinou,
@@ -10390,7 +10390,7 @@ Jaká je to pekná ruža, keď pobozká žena muža.
   },
   {
     title: "Pozdola majera vodička vyviera",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Pozdola majera vodička vyviera,
@@ -10429,7 +10429,7 @@ veď mňa nenapadne k otcovstvu sa priznať.:]`
   },
   {
     title: "Ponad vodu lávka ohýba sa",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Ponad vodu lávka ohýba sa.:]
@@ -10446,7 +10446,7 @@ spravodlivé, spravodlivé.:]`
   },
   {
     title: "Poniže valala",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Poniže valala palenočku paľa.:]
@@ -10554,7 +10554,7 @@ ta mi nič ňemilo.:]`
   },
   {
     title: "Postuj koňu Pejka",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Postuj koňu Pejka tu dobra paľenka:]
@@ -10568,7 +10568,7 @@ ta mi nič ňemilo.:]`
   },
   {
     title: "Povedal mi jeden chlapec",
-    tags: [],
+    tags: ["Západné Slovensko"],
     lyrics:
 `1.
 Povedal mi jeden chlapec,
@@ -10634,7 +10634,7 @@ myš utiekla.:]`
   },
   {
     title: "Povedže mi javorina košatá",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Povedže mi javorina košatá,
@@ -10657,7 +10657,7 @@ treba ti je, moja milá, treba tak.:]`
   },
   {
     title: "Pozri sa Anička",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Pozri sa Anička v komore na klinček,
@@ -10713,7 +10713,7 @@ Pomáhaj nám Pán Boh i ten svätý Peter,
   },
   {
     title: "Prala som ja na potôčku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Prala som ja na potôčku, prala som, prala som.
@@ -10748,7 +10748,7 @@ kde plávajú drobné rybky, kačičky, kačičky.
   },
   {
     title: "Prečo sa, mládenci, neoženíte",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Prečo sa, mládenci, neoženíte,
@@ -10773,7 +10773,7 @@ radšej on sukničky popodvihuje.:]`
   },
   {
     title: "Prečo si ma vyvolala z krčmy von",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Prečo si ma vyvolala z krčmy von,
@@ -10788,7 +10788,7 @@ zaplatíme muzikantom, budú hrať.:]`
   },
   {
     title: "Prečo si neprišiel",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Prečo si neprišiel, keď som ťa čakala,:]
@@ -10820,7 +10820,7 @@ zaplatíme muzikantom, budú hrať.:]`
   },
   {
     title: "Pred muzikú verbunk",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Pred muzikú verbunk, chasa stojí,
@@ -10835,7 +10835,7 @@ keď si včera večer na mja volaua.
   },
   {
     title: "Před námi je zahrádka",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Před námi je zahrádka
@@ -10855,7 +10855,7 @@ frajárkam ho podali.:]`
   },
   {
     title: "Pres Javorničky",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Pres Javorníčky štyri chodníčky, piaty les.
@@ -10869,7 +10869,7 @@ Cez Javorníčky štyri chodníčky ku milej,
   },
   {
     title: "Prešporská kasáreň",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Prešporská kasáreň maľovaná,
@@ -10920,7 +10920,7 @@ však ja vás, mamičko, živiť budem.:]`
   },
   {
     title: "Pri potoku sedela",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Pri potoku sedela, na kačenku volala,:]
@@ -10934,7 +10934,7 @@ však ja vás, mamičko, živiť budem.:]`
   },
   {
     title: "Pri Prešporku na Dunaji",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Pri Prešporku na Dunaji húsky sa perú,
@@ -10949,7 +10949,7 @@ To sú húsky mojej Zuzky, čo k nej chodievam,
   },
   {
     title: "Prídi Janík premilený",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Prídi Janík premilený, prídi k nám,
@@ -10964,7 +10964,7 @@ ani ružu červenú.:]`
   },
   {
     title: "Prídi ty šuhajko ráno k nám",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Prídi ty šuhajko ráno k nám,
@@ -10984,7 +10984,7 @@ ovečky v košiari bľačali.:]`
   },
   {
     title: "Proč ten jetelíček trávu převyšuje",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Proč ten jetelíček trávu převyšuje,:]
@@ -11010,7 +11010,7 @@ Každičkou sobotu sedm krát za týden,
   },
   {
     title: "Prstienoček zlatý",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Prstienoček zlatý, už na ruke mám,
@@ -11030,7 +11030,7 @@ tak nech naša láska tiež konca nemá.:]`
   },
   {
     title: "Prší, prší, len sa leje",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Prší, prší, len sa leje, nezatváraj milá dvere,
@@ -11047,7 +11047,7 @@ Svätý Jáne, ja ťa prosím, ja to dievča dostať musím,
   },
   {
     title: "Radovi tanec",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Radovi začiname,:]
@@ -11154,7 +11154,7 @@ Svätý Jáne, ja ťa prosím, ja to dievča dostať musím,
   },
   {
     title: "Rakova, Rakova",
-    tags: [],
+    tags: ["Kysuce"],
     lyrics:
 `1.
 [:Rakova, Rakova, to naša dedina,:]
@@ -11171,7 +11171,7 @@ Svätý Jáne, ja ťa prosím, ja to dievča dostať musím,
   },
   {
     title: "Rastie borovienka borová",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Rastie borovienka borová
@@ -11191,7 +11191,7 @@ veľmi sa nahneval.:]`
   },
   {
     title: "Rastie kalina",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Rastie kalina u cintorína, rastie do vysoká.
@@ -11206,7 +11206,7 @@ o daj to, Bože, nech na tom svete nás nič nerozdelí.:]`
   },
   {
     title: "Regrútsky valčík",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ty žandáři verbovali, na vojnu nás odvaďali.
@@ -11224,7 +11224,7 @@ kdyš sem začal k vám chodívat.:]`
   },
   {
     title: "Rosenka už padá",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Rosenka už padá, měsiček vychádza,
@@ -11244,7 +11244,7 @@ hvězdičky nezradi, co si tam říkali.:]`
   },
   {
     title: "Ruža som ja, ruža",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ruža som ja, ruža, pokiaľ nemám muža.
@@ -11261,7 +11261,7 @@ Nevydám, nevydám, nevydám sa ešte,
   },
   {
     title: "Rybička",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Vezmi mňe rybáři na svojí lodičku.
@@ -11281,7 +11281,7 @@ rybička zůstala v spomínkách mé lásky.:]`
   },
   {
     title: "Sabinovsky valal",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Sabinovsky valal okruhly jak taľar,
@@ -11292,7 +11292,7 @@ Maľar vymaľoval, zlatnici zlacili,
   },
   {
     title: "Sadaj, slnko, sadaj",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Sadaj, slnko, sadaj, sadaj, za vysokú horu,
@@ -11309,7 +11309,7 @@ Už slniečko sadá, sadá, každý svoju hľadá,
   },
   {
     title: "Sadíme my máje",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Sadíme my máje, čo nám dajú za ne?
@@ -11326,7 +11326,7 @@ Máje sme sadili, všetci sme hrešili,
   },
   {
     title: "Sadla muška na konárik",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Sadla muška na konárik, otriasala kvet,:]
@@ -11343,7 +11343,7 @@ Máje sme sadili, všetci sme hrešili,
   },
   {
     title: "Sedela na vršku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Sedela na vršku, plakala, že jej pekná sukňa skapala.
@@ -11357,7 +11357,7 @@ Mamka sa jej, šej-haj, pýtala, kde si tie jabĺčka nabrala?
   },
   {
     title: "Sedemdesiat sukieň mala",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Sedemdesiat sukieň mala,
@@ -11377,7 +11377,7 @@ a ja vám dám štyri groše.:]`
   },
   {
     title: "Sedemnásť liet",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Sedemnásť liet, dievčina mladá,
@@ -11410,7 +11410,7 @@ môjho malého syna.:]`
   },
   {
     title: "Sedí sokol na javori",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Sedí sokol na javori,
@@ -11431,7 +11431,7 @@ už ja mosím preč lececi.:]`
   },
   {
     title: "Si moja milá",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Si moja milá, si zabudlivá, alebo pyšná.
@@ -11446,7 +11446,7 @@ bez všetkých rečí, pekne ti svedčí, len sa nehnevaj.:]`
   },
   {
     title: "Skleničko ty sklenená",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Skleničko ty sklenená, sklenená,
@@ -11466,7 +11466,7 @@ budu pro nás plakat.:]`
   },
   {
     title: "Skoro ráno laštověnka léta",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Skoro ráno laštověnka léta,
@@ -11486,7 +11486,7 @@ za klobúček perko dá.
   },
   {
     title: "Slepička kropenatá",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `K.Valdauf
 1.
@@ -11507,7 +11507,7 @@ od pol noci štyriadvadsať razy a nad ránom zas.:]`
   },
   {
     title: "Slovenská rodná dedina",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Vysokou horou obklopená, dedinka moja spí.
@@ -11530,7 +11530,7 @@ Refr.:`
   },
   {
     title: "Slovenské mamičky",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Slovenské mamičky pekných synov máte,:]
@@ -11550,7 +11550,7 @@ Refr.:`
   },
   {
     title: "Sľubovali ste mi",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Sľubovali ste mi, štyri kone vrané.
@@ -11566,7 +11566,7 @@ s plošticami.:]`
   },
   {
     title: "Sobotienka ide",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Sobotienka ide, čože ma je po nej:]
@@ -11603,7 +11603,7 @@ ale ten môj milý, keď je odobraný.:]`
   },
   {
     title: "Spadol lístok z javora",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Spadol lístok z javora, mojej milej do dvora,
@@ -11627,7 +11627,7 @@ Třeba ty jsi chudobná, ty musiš být přesto má,
   },
   {
     title: "Spievaj si, slávičku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Spievaj si, slávičku, v zelenom hájičku
@@ -11644,7 +11644,7 @@ Nebudem veselá, ani nemôžem byť,
   },
   {
     title: "Spievajže, si spievaj",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Spievajže si, spievaj, spevavé stvorenie,
@@ -11661,7 +11661,7 @@ na tom Božom svete.:]`
   },
   {
     title: "Spievanky, spievanky",
-    tags: [],
+    tags: ["Turiec"],
     lyrics:
 `1.
 Spievanky, spievanky, kdeže ste sa vzali?
@@ -11681,7 +11681,7 @@ o ten najbielejší, kde môj najmilejší.`
   },
   {
     title: "Staré dievky, čo robíte",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Staré dievky, čo robíte,
@@ -11696,7 +11696,7 @@ budeme sa na vás dívať.:]`
   },
   {
     title: "Stavěli tesaři",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Stavěli tesaři, zedníkům lešení,
@@ -11729,7 +11729,7 @@ Do vody skočila, kde sa voda točí,
   },
   {
     title: "Strahováček",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Na Strahově pod Petřínem klášter stojí,:]
@@ -11742,7 +11742,7 @@ vezmeš si dívenku svojí, za kuchařku do ní.:]`
   },
   {
     title: "Strieborný potôčik dolinami hučí",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Strieborný potôčik dolinami hučí,
@@ -11759,7 +11759,7 @@ Kto by ju roztrhal ak nie tvoja mati,
   },
   {
     title: "Súsedko múj premilený",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Súsedko múj premilený, poščajte mi ženy,
@@ -11776,7 +11776,7 @@ a ona mi odkazuje, že mi kašle na ňu.`
   },
   {
     title: "Sviť mesjačku z večera do rána",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Sviť mesjačku z večera do rána, už spaňa ňemám.
@@ -11799,7 +11799,7 @@ Teper ľubľu tri ročki molodšu, to ta moja prava.:]`
   },
   {
     title: "Svit misjačku",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Svit misjačku z večera do rana, bo spaňa nemam.
@@ -11822,7 +11822,7 @@ Teper ľubľu tri roky molodšu, toto moja prava.`
   },
   {
     title: "Synček malý, čiernovlasý",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Synček malý, čiernovlasý, mamičke sa žaloval,
@@ -11845,7 +11845,7 @@ Tvoj otec je vo vezení, krutý život prežíva,
   },
   {
     title: "Šablička brúsená",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Šablička brúsená, to je moja žena,
@@ -11865,7 +11865,7 @@ a keď z koňa spadnem, šablička zazvoní.:]`
   },
   {
     title: "Šalata, šalata, šalatovo lisce",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Šalata, šalata, šalatovo lisce,:]
@@ -11879,7 +11879,7 @@ a keď z koňa spadnem, šablička zazvoní.:]`
   },
   {
     title: "Šalena ja bula",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Šalena ja bula, že ja ce ľubila,:]
@@ -11893,7 +11893,7 @@ a keď z koňa spadnem, šablička zazvoní.:]`
   },
   {
     title: "Šej, haj, šej, haj, zelený háj",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Šej, haj, šej, haj, zelený háj,
@@ -11923,7 +11923,7 @@ na obe strany nabrúsenú.:]`
   },
   {
     title: "Šel jsem za noci",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Šel jsem za noci alejí jabloňovou.:]
@@ -11944,7 +11944,7 @@ jiný by mi odloudil mou dívčinu.:]`
   },
   {
     title: "Šípová ružička kvitne z jara",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Šípová ružička kvitne z jara,
@@ -11969,7 +11969,7 @@ keď ja od šporkasy knižku nemám?:]`
   },
   {
     title: "Šípová ružička na zelenom prútku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Šípová ružička na zelenom prútku,
@@ -11990,7 +11990,7 @@ veď chudobnej diouky aspoň krása treba.:]`
   },
   {
     title: "Šípová ružička sama kvitne v poli",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Šípová ružička sama kvitne v poli,:]
@@ -12004,7 +12004,7 @@ veď chudobnej diouky aspoň krása treba.:]`
   },
   {
     title: "Široký jarček, bystrá vodička",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Široký jarček, bystrá vodička.:]
@@ -12021,7 +12021,7 @@ veď chudobnej diouky aspoň krása treba.:]`
   },
   {
     title: "Široký potoček, nemóžem preskočit",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Široký potoček, ej, nemóžem preskočit,:]
@@ -12038,7 +12038,7 @@ ej, po svjete vandrovat.:]`
   },
   {
     title: "Škoda lásky",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `Hudba, text: J.Vejvoda/V. Zeman
 1.
@@ -12057,7 +12057,7 @@ ze všeho mi zbývá jenom v srdci mém vzpomínka jen.`
   },
   {
     title: "Šla Anička na sobáš",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Šla Anička na sobáš a Janíčko v okne stál.:]
@@ -12071,7 +12071,7 @@ ze všeho mi zbývá jenom v srdci mém vzpomínka jen.`
   },
   {
     title: "Šli panenky silnici",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Šli panenky silnici, silnici, silnici,
@@ -12086,7 +12086,7 @@ mezi nima dukáty, dukáty má.`
   },
   {
     title: "Šofere, šofere",
-    tags: [],
+    tags: ["Šariš"],
     lyrics:
 `1.
 [:Šofere, šofere, gdze vašo motore.:]
@@ -12106,7 +12106,7 @@ mezi nima dukáty, dukáty má.`
   },
   {
     title: "Šošovička, hrášok, fazuľa",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Šošovička, hrášok, fazuľa,
@@ -12126,7 +12126,7 @@ to je namôjdušu pravda.:]`
   },
   {
     title: "Študentska halenka",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Študentska halenka, tá je veľmi tenká,:]
@@ -12159,7 +12159,7 @@ ja o tom nevěděl.:]`
   },
   {
     title: "Štyri dni, štyri dni",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Štyri dni, štyri dni, má milá plakala,
@@ -12186,7 +12186,7 @@ Bozkal som ju, bozkal štyri razy v noci,
   },
   {
     title: "Šumela lipka v jeseni",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Šumela lipka v jeseni,
@@ -12201,7 +12201,7 @@ kdeže si sa mi podela.:]`
   },
   {
     title: "Štyri nôcky nespala som",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Štyri nôcky nespala som,
@@ -12221,7 +12221,7 @@ sama si mi pravú rúčku chytila:]`
   },
   {
     title: "Tá naše kapela je veselá",
-    tags: [],
+    tags: ["Morava"],
     lyrics:
 `1.
 [:Tá naše kapela je veselá.:]
@@ -12238,7 +12238,7 @@ si naše potešení.:]`
   },
   {
     title: "Tá oravská mladá chasa",
-    tags: [],
+    tags: ["Orava"],
     lyrics:
 `1.
 [:Tá oravská mladá chasa, rastie pekne dohora.:]
@@ -12252,7 +12252,7 @@ si naše potešení.:]`
   },
   {
     title: "Tá svatovská brána",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Tá svatovská brána pěkňe malována.:]
@@ -12269,7 +12269,7 @@ jak tá zvadlá růže, jak tá zvadlá růže.:]`
   },
   {
     title: "Tá trstenská nemocnica",
-    tags: [],
+    tags: ["Orava"],
     lyrics:
 `1.
 [:Tá trstenská nemocnica, ta je pekne stavaná.:]
@@ -12295,7 +12295,7 @@ jak tá zvadlá růže, jak tá zvadlá růže.:]`
   },
   {
     title: "Také sa mi dievča páči",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Také sa mi dievča páči, čo má čipky na rubáši.:]
@@ -12306,7 +12306,7 @@ jak tá zvadlá růže, jak tá zvadlá růže.:]`
   },
   {
     title: "Takoho ja muža chcem",
-    tags: [],
+    tags: ["Horehronie"],
     lyrics:
 `Horehronie
 1.
@@ -12318,7 +12318,7 @@ jak tá zvadlá růže, jak tá zvadlá růže.:]`
   },
   {
     title: "Takú som si frajárečku zamiloval",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Takú som si frajárečku zamiloval,
@@ -12333,7 +12333,7 @@ skôr než vyjde jasné slnko nad Komárno.:]`
   },
   {
     title: "Taký sa mi frajer páči",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Taký sa mi frajer páči, čo sa do krčmy nevláči,
@@ -12354,7 +12354,7 @@ ramo di, ramo di, ach, Bože moj.:]`
   },
   {
     title: "Tam hore na vršku",
-    tags: [],
+    tags: ["Myjava"],
     lyrics:
 `1.
 Kačenka Turanská, z Rudinských kopaníc,
@@ -12383,7 +12383,7 @@ Z tej doliny na tú preložím si latu,
   },
   {
     title: "Tam na stráni",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Tam na stráni, při měsíčku, líbaval jsem Anduličku.
@@ -12397,7 +12397,7 @@ Já tu svoji Anduličku nepřestal mít nikdy rád.`
   },
   {
     title: "Tam okolo chotára",
-    tags: [],
+    tags: ["Orava"],
     lyrics:
 `1.
 Tam okolo chotára, chotára, tečie rieka Orava.
@@ -12430,7 +12430,7 @@ A mňa doma tiež bijú, tiež bijú, prečo nejdem za inú...`
   },
   {
     title: "Tam, okolo Levoči",
-    tags: [],
+    tags: ["Spiš"],
     lyrics:
 `1.
 [:Tam okolo Levoči, tam še voda točí.:]
@@ -12443,7 +12443,7 @@ pre jedného beťára život utrácala.:]`
   },
   {
     title: "Tam, pod Tatrami",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Tam, pod Tatrami, v slovenskej zemi,
@@ -12468,7 +12468,7 @@ tvoj miláčik je pochovaný.:]`
   },
   {
     title: "Tancovala a neznala",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Tancovala a neznala,
@@ -12497,7 +12497,7 @@ Do haluža, do cirniny,
   },
   {
     title: "Tancovala by som, bosa som",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Tancovala by som, bosa som,
@@ -12512,7 +12512,7 @@ bola by ti dobrou, bola by ti dobrou manželkou.:]`
   },
   {
     title: "Tancuj, tancuj",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Tancuj, tancuj, vykrúcaj, vykrúcaj,
@@ -12545,7 +12545,7 @@ bude šuhaj ako kvet, ako kvet.
   },
   {
     title: "Tancujem, tancujem",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `Malá Poloma
 1.
@@ -12560,7 +12560,7 @@ Na oblok bogáre, na dvere frajäre,
   },
   {
     title: "Teče potůček bublavý",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Teče potůček bublavý, teče kolem skaly,:]
@@ -12587,7 +12587,7 @@ alebo:
   },
   {
     title: "Tečie voda, tečie",
-    tags: [],
+    tags: ["Orava"],
     lyrics:
 `1.
 Tečie voda, tečie, cez Oravský majer,
@@ -12601,7 +12601,7 @@ Do vašeho domu, pod vaše okienko,
   },
   {
     title: "Tečie voda z javora",
-    tags: [],
+    tags: ["Kysuce"],
     lyrics:
 `1.
 Tečie voda z javora, javora,
@@ -12630,7 +12630,7 @@ Skôr sa Stará Turá v kolečko obracia,
   },
   {
     title: "Ten drietomský hájek",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Ten drietomský hájek, ten sa zelená,:]
@@ -12647,7 +12647,7 @@ možno tri nedele, potom prídem zas.:]`
   },
   {
     title: "Ten môj milý taký pyšný",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `Nová Baňa
 1.
@@ -12665,7 +12665,7 @@ Rám, rám, ramody, ria, ria, ra, ramody do vody, ťuhája.`
   },
   {
     title: "Ten turanský kostolíček",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Ten turanský kostolíček,
@@ -12685,7 +12685,7 @@ a obzrel sa na svoj dom.:]
   },
   {
     title: "Tichá noc, tmavá noc, krásna je",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Tichá noc, tmavá noc, krásna je,
@@ -12725,7 +12725,7 @@ bratia Rusi, Srbi, Poliaci.:]`
   },
   {
     title: "Tichá voda do Dunajka padala",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Tichá voda do Dunajka padala,
@@ -12745,7 +12745,7 @@ tvoje oči sa do mojich dívajú.:]`
   },
   {
     title: "To naše stavění",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:To naše stavění, z drobného kamení,:]
@@ -12756,7 +12756,7 @@ tvoje oči sa do mojich dívajú.:]`
   },
   {
     title: "To ta Heľpa",
-    tags: [],
+    tags: ["Horehronie"],
     lyrics:
 `1.
 To tá Heľpa, to tá Heľpa, to je pekné mesto.
@@ -12771,7 +12771,7 @@ len za jedným, len za jedným, potešenie moje.:]`
   },
   {
     title: "Topoľčiansky krížu",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Topoľčiansky krížu, ktože ťa to rezal?:]
@@ -12785,7 +12785,7 @@ len za jedným, len za jedným, potešenie moje.:]`
   },
   {
     title: "Trenčianské hodiny (Rožňovské hodiny)",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Trenčianské hodiny smutne bijú,:]
@@ -12802,7 +12802,7 @@ len za jedným, len za jedným, potešenie moje.:]`
   },
   {
     title: "Trenčiansky zámeček",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Trenčiansky zámeček, široká dolina,
@@ -12825,7 +12825,7 @@ Rúčky si podáme, aj sa pobozkáme,
   },
   {
     title: "Trenčín dolinečka",
-    tags: [],
+    tags: ["Považie"],
     lyrics:
 `1.
 Trenčín dolinečka, pekná rovinečka,
@@ -12839,7 +12839,7 @@ Moja frajarečka, má červené líčka,
   },
   {
     title: "Trhala jsem zrána ďatelinku",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Trhala jsem zrána ďatelinku,
@@ -12859,7 +12859,7 @@ každú noc na besedu, za mnů chodívat.:]`
   },
   {
     title: "Tri dni ma naháňali",
-    tags: [],
+    tags: ["Orava"],
     lyrics:
 `1.
 Tri dni ma naháňali, aj tak ma nedostali,
@@ -12876,7 +12876,7 @@ Dneska som na doline, zajtra som v cintoríne,
   },
   {
     title: "Tri stromečky okolo Rajčianky",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Tri stromečky okolo Rajčianky,
@@ -12901,7 +12901,7 @@ tam, ja deva, opustená som.:]`
   },
   {
     title: "Ty falošná frajírko",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Ty falošná frajírko, ty falošná frajírko,
@@ -12918,7 +12918,7 @@ budeme si dobře žít.:]`
   },
   {
     title: "Ty musíš, má milá",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Ty musíš, má milá, ňečo na mě vědět,:]
@@ -12943,7 +12943,7 @@ neužily světa.:]`
   },
   {
     title: "U nás také parobčisko",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:U nás také parobčisko
@@ -12963,7 +12963,7 @@ kedyže ťa obesia.:]`
   },
   {
     title: "U našeho mlyna",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 U našeho mlyna veľká hlbočina,
@@ -12983,7 +12983,7 @@ Ona do mojeho a ja do jejiho,
   },
   {
     title: "U studánky seděla",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 U studánky seděla,
@@ -13019,7 +13019,7 @@ miluje tam děvče jiné,
   },
   {
     title: "U susedov, tam je topoľ",
-    tags: [],
+    tags: ["Podpoľanie"],
     lyrics:
 `1.
 U susedov, tam je topoľ,
@@ -13034,7 +13034,7 @@ hej, hore Detvou vo dva rady sadený.:]`
   },
   {
     title: "Umočil ma dáždik na dvore",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Umočil ma dáždik na dvore,
@@ -13049,7 +13049,7 @@ a môj najmilejší, boskaj že.:]`
   },
   {
     title: "Už je večer, už zapadá slniečko",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Už je večer, už zapadá slniečko,:]
@@ -13066,7 +13066,7 @@ zabili tam pánski drábi Janíčka.:]
   },
   {
     title: "Už mi koňa vyvádějí",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Už mi koňa vyvádějí, už mi koňa sedlajú,
@@ -13080,7 +13080,7 @@ Děkují vám, má mamičko, za vaše milovaní,
   },
   {
     title: "Už sa jedna ohrančaná dievka vydáva",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Už sa jedna ohrančaná dievka vydáva,
@@ -13100,7 +13100,7 @@ koho si si vyvolila, ten bude s tebou.`
   },
   {
     title: "Už se ten Talínskej rybník nahání",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Už se ten Talínskej rybník nahání,
@@ -13113,7 +13113,7 @@ po které jsem chodil každyčký týden,:]
   },
   {
     title: "Už som doma nebol, hej, štyri nedele",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Už som doma nebol, hej, štyri nedele,
@@ -13142,7 +13142,7 @@ bude sa mi nežáľ prechodiť sa po ňom.`
   },
   {
     title: "Už som prešiel štyri háje",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Už som prešiel štyri háje
@@ -13183,7 +13183,7 @@ stál mesiačik vysoko,:]
   },
   {
     title: "Už som sa oženil, už je darmo",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Už som sa oženil, už je darmo,
@@ -13203,7 +13203,7 @@ beťar bol, čo mi on tej rady dal.:]`
   },
   {
     title: "Už troubějí",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Už troubějí, už troubějí, na horách jeleni.:]
@@ -13224,7 +13224,7 @@ už dotroubil, už dotroubil, do trávy se zložil.:]`
   },
   {
     title: "Už Turek ide",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Už Turek ide, už vojna bude
@@ -13238,7 +13238,7 @@ ale sa nedaj chlapcom oklamať, chlapcom oklamať.`
   },
   {
     title: "Už ty viacej po Rakovej",
-    tags: [],
+    tags: ["Kysuce"],
     lyrics:
 `1.
 Už ty viacej po Rakovej špacírovať nebudeš,
@@ -13255,7 +13255,7 @@ na dva prsty šnajderské.`
   },
   {
     title: "V mojej milej dvore",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 V mojej milej dvore, v mojej milej dvore
@@ -13274,7 +13274,7 @@ zajtra ráno, zajtra ráno za vojačka rukujem.:]`
   },
   {
     title: "V detvianskom poli tri lipky",
-    tags: [],
+    tags: ["Podpoľanie"],
     lyrics:
 `1.
 V detvianskom poli, v detvianskom poli tri lipky,
@@ -13294,7 +13294,7 @@ Keby sa bili, keby sa bili šabľami,
   },
   {
     title: "V hlbokej doline",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:V hlbokej doline srnka vodu pije,:]
@@ -13319,7 +13319,7 @@ a horár červený, ľúbi iné ženy.:]`
   },
   {
     title: "V Hodoníne za vojačka ma vzali",
-    tags: [],
+    tags: ["Morava"],
     lyrics:
 `1.
 V Hodoníne za vojačka ma vzali,
@@ -13339,7 +13339,7 @@ ja sa idem od svej milej odobrať.:]`
   },
   {
     title: "V hornom konci bývam",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 V hornom konci bývam, v dolnom frajara mám,
@@ -13368,7 +13368,7 @@ traj laj co to, traj laj to to.`
   },
   {
     title: "V našom malom potôčku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 V našom malom potôčku voděnka sa múti,
@@ -13383,7 +13383,7 @@ Roztočí sa svet celý, srdce láskou vzkypí.
   },
   {
     title: "V Otrokovciach na rohu",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 V Otrokovciach na rohu stojí parta šuhajú.
@@ -13394,7 +13394,7 @@ A keď mi ho odvedú, dve srdiečka rozvedú,
   },
   {
     title: "V pondelok doma nebudem",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 V pondelok doma nebudem,
@@ -13419,7 +13419,7 @@ keby ja nebola tvoja,
   },
   {
     title: "V richtárovej studni",
-    tags: [],
+    tags: ["Orava"],
     lyrics:
 `1.
 [:V richtárovej studni, bystrá voda šumí,:]
@@ -13439,7 +13439,7 @@ keby ja nebola tvoja,
   },
   {
     title: "V slzách matička sedela",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `(A. Sladkovič)
 1.
@@ -13469,7 +13469,7 @@ A dve ľúbosti objímu nádeje svet nový,
   },
   {
     title: "V širém poli studánečka",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:V širém poli studánečka kamenná:]
@@ -13483,7 +13483,7 @@ A dve ľúbosti objímu nádeje svet nový,
   },
   {
     title: "V šírom poli kríž",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 V šírom poli kríž, poď, má milá, blíž,
@@ -13506,7 +13506,7 @@ Milá zvolala, Ježiš, Mária,
   },
   {
     title: "V tej milostnej bažantici",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:V tej milostnej bažantici kukučky kukajú.:]
@@ -13520,7 +13520,7 @@ Milá zvolala, Ježiš, Mária,
   },
   {
     title: "V tej našej záhradke",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 V tej našej záhradke studnička vyviera,
@@ -13535,7 +13535,7 @@ oprať nechcela.:]`
   },
   {
     title: "V tom kameni",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 V tom kameni kraj dediny lipka zelená,
@@ -13557,7 +13557,7 @@ budem tvojho otca matku o rúčku prosiť.`
   },
   {
     title: "V tom trenčianskom potoku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:V tom trenčianskom potoku tečie voda kalná,:]
@@ -13577,7 +13577,7 @@ každá húska vo vode pierko utratila.:]`
   },
   {
     title: "V záhradôčke, pod okienkom",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 V záhradôčke, pod okienkom, tam je lavička.
@@ -13600,7 +13600,7 @@ nezabudni, nezabudni, žes mal frajerku.:]`
   },
   {
     title: "V Zalužanech na potoce",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:V Zalužanech na potoce stával mlýn,
@@ -13620,7 +13620,7 @@ ach, to by byl rajský cit.:]`
   },
   {
     title: "V mojej milej dvore",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 V mojej milej dvore,
@@ -13637,7 +13637,7 @@ zajtra ráno, zajtra ráno za vojačka rukujem.:]`
   },
   {
     title: "Varila som, varila, riedku kašu s octom",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Varila som, varila, riedku kašu s octom,
@@ -13651,7 +13651,7 @@ Vydávať sa nebudem, ja som malučičká,
   },
   {
     title: "Včera bola nedeľa",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Včera bola nedeľa, ja som doma nebola,
@@ -13676,7 +13676,7 @@ s tebou spať do ránečka.`
   },
   {
     title: "Včera jsem tě čekala",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Včera jsem tě čekela, když jsem trávu sekala,
@@ -13705,7 +13705,7 @@ tá tě nikdy nesklame.:]`
   },
   {
     title: "Včera mi svietilo slniečko",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Včera mi svietilo slniečko dneška už nesvieti.
@@ -13720,7 +13720,7 @@ dva rôčky vojáčkom musím byť, rozísť sa musíme:]`
   },
   {
     title: "Včera som bol u muziky",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Včera som bol u muziky, u muziky celý deň,:]
@@ -13737,7 +13737,7 @@ dva rôčky vojáčkom musím byť, rozísť sa musíme:]`
   },
   {
     title: "Včera u studánky",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Včera u studánky, když jsem vodu brala,
@@ -13751,7 +13751,7 @@ ona sľubovala, nedala mňe syna, ej, nedala mňe syna.`
   },
   {
     title: "Včera večar na draže",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Včera večar na draže, čitali nam v rozkaže,:]
@@ -13768,7 +13768,7 @@ ona sľubovala, nedala mňe syna, ej, nedala mňe syna.`
   },
   {
     title: "Velešvarské pole",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Velešvarské pole dokola zorané.:]
@@ -13782,7 +13782,7 @@ ona sľubovala, nedala mňe syna, ej, nedala mňe syna.`
   },
   {
     title: "Veselá je dedina",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Veselá je dedina, kde sa milá zrodila.:]
@@ -13799,7 +13799,7 @@ ona sľubovala, nedala mňe syna, ej, nedala mňe syna.`
   },
   {
     title: "Vínečko bíle",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Vínečko bíle, si od mej milej,
@@ -13813,7 +13813,7 @@ Vínečka obě, frajárky moje,
   },
   {
     title: "Vínko, vínko červené",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Vínko, vínko, vínko červené,
@@ -13836,7 +13836,7 @@ hora, hora, hora vysoká.:]`
   },
   {
     title: "Víno sem, víno tam",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Víno sem, víno tam, muzikanti hrajte,
@@ -13851,7 +13851,7 @@ jak to naše dievča u muziky tancuje.:]`
   },
   {
     title: "Vretienko mi padá, ktože mi ho podá",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Vretienko mi padá, ktože mi ho podá?:]
@@ -13868,7 +13868,7 @@ jak to naše dievča u muziky tancuje.:]`
   },
   {
     title: "Vrť sa, dievča, vrť sa, dievča",
-    tags: [],
+    tags: ["Morava"],
     lyrics:
 `1.
 Vrť sa dievča, vrť sa dievča, okolo mňa,
@@ -13888,7 +13888,7 @@ až do Brna, až do Brna, až do Brna.:]`
   },
   {
     title: "Vstávaj, Honzo, hore",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Vstávaj, Honzo, hore, na baňu klopajú,
@@ -13899,7 +13899,7 @@ ešte ma hutmanskou palicou vydrali.`
   },
   {
     title: "Všetci ľudia povedajú, že ja ľúbim mlynárku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Všetci ľudia povedajú, že ja ľúbim mlynárku,
@@ -13919,7 +13919,7 @@ Do hrobu ma dajte a dobre sa majte,
   },
   {
     title: "Vydala ma mamka za širokú vodu",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Vydala ma mamka za širokú vodu.
@@ -13940,7 +13940,7 @@ ja na vás mamička v každom svojom kroku.:]`
   },
   {
     title: "Vydala mamička",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Vydala mamička najstaršiu dcérušku,
@@ -13965,7 +13965,7 @@ po svete sa túlati.:]`
   },
   {
     title: "Vyhorela lipka",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Vyhorela lipka od koreňa, od koreňa,
@@ -13988,7 +13988,7 @@ ani sa len so mňou nerozpráva, nerozpráva.
   },
   {
     title: "Vychodí slniečko spoza hory",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Vychodí slniečko spoza hory,
@@ -14008,7 +14008,7 @@ jaj, Bože, prebože, čo robiť mám?:]`
   },
   {
     title: "Vyletela holubička ze skalia",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `Terchová
 1.
@@ -14026,7 +14026,7 @@ nechal, nechal, nechal tak, nechal, nechal, nechal tak.`
   },
   {
     title: "Vyrástla lipka, vyrástla borovienka",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Vyrástla lipka, vyrástla borovienka, vyrastol jalovec,:]
@@ -14040,7 +14040,7 @@ nechal, nechal, nechal tak, nechal, nechal, nechal tak.`
   },
   {
     title: "Vyrástol nám pod oblôčkom ladníček",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Vyrástol nám pod oblôčkom ladníček,
@@ -14060,7 +14060,7 @@ zanechám ťa frajerôčka, aj teba.`
   },
   {
     title: "Vysoký jalovec",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Vysoký jalovec, vysoký jako já,
@@ -14074,7 +14074,7 @@ ona sa im v noci utrhla.`
   },
   {
     title: "Z brezového dreva voda kvapká",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Z brezového dreva voda kvapká,:]
@@ -14088,7 +14088,7 @@ ona sa im v noci utrhla.`
   },
   {
     title: "Z Východnej dievčatá",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Z Východnej dievčatá, čim sa umývate,
@@ -14103,7 +14103,7 @@ kdeže by moja mať peňazí nabrala.:]`
   },
   {
     title: "Z jednej strany hája",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Z jednej strany hája šuhaj sa mi klania,
@@ -14123,7 +14123,7 @@ Kde je verná láska, tam je aj prekážka,
   },
   {
     title: "Za dubom, pred dubom",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `Terchová
 1.
@@ -14139,7 +14139,7 @@ povedz mi, má milá, kto chodí k tebe.:]`
   },
   {
     title: "Za dverama bečka vína",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Za dverama bečka vína, to je dobrá medecína.
@@ -14153,7 +14153,7 @@ Od sadla sa nezaprášiš, od múky sa nezamastíš.
   },
   {
     title: "Za hájičkom, za zeleným",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Za hájičkom, za zeleným,
@@ -14183,7 +14183,7 @@ už sa srdce rozveselí.:]`
   },
   {
     title: "Za horami za dolami hájek zelený",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Za horami za dolami, hájek zelený,
@@ -14198,7 +14198,7 @@ líčka sa jej červeňajú, jak ta malina.:]`
   },
   {
     title: "Za horami, za dolami lipka zelená",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Za horami, za dolami lipka zelená,
@@ -14223,7 +14223,7 @@ budeme sa vyprávati o láske vernej.:]`
   },
   {
     title: "Za Lanžhotem v poli",
-    tags: [],
+    tags: ["Morava"],
     lyrics:
 `1.
 Za Lanžhotem v poli,
@@ -14245,7 +14245,7 @@ rána veselého dočkat se nemožu, dočkat se nemožu.:]`
   },
   {
     title: "Za lesíčkem na zelené stráni",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Za lesíčkem, na zelené stráni,
@@ -14260,7 +14260,7 @@ býva tajná láska má.`
   },
   {
     title: "Za našou dedinou uprostred lesa",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Za našou dedinou uprostred lesa,
@@ -14280,7 +14280,7 @@ s iným mi šťastná buď, až na stokrát.:]`
   },
   {
     title: "Za tou našou stodoličkou",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Za tou našou stodoličkou, za tou našou stodolou,
@@ -14300,7 +14300,7 @@ Keď omdlela, nech omdlela, dáme ju aj pochovať,
   },
   {
     title: "Za tú horu, za vysokú",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Za tú horu, za vysokú,
@@ -14361,7 +14361,7 @@ zatvrdené srdce máš mat.:]`
   },
   {
     title: "Zabili Janíčka na doline",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Zabili Janíčka na doline,
@@ -14391,7 +14391,7 @@ keď išiel z Bobrova od svej milej.:]`
   },
   {
     title: "Zahorsku dzedzinu",
-    tags: [],
+    tags: ["Záhorie"],
     lyrics:
 `1.
 Zahorsku dzedzinu chuapci sa túlajú,
@@ -14411,7 +14411,7 @@ medzi kamarádma v záhorskej dzedzine:]`
   },
   {
     title: "Zahrajte mi, muzikanti",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Zahrajte mi, muzikanti, vesele,
@@ -14428,7 +14428,7 @@ budete mi, muzikanti, smutne hrať.`
   },
   {
     title: "Zahučali hory, zahučali lesy",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Zahučali hory, zahučali lesy,
@@ -14449,7 +14449,7 @@ pre moju nedbalosť.:]`
   },
   {
     title: "Zakukala kukulienka na čerešni",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Zakukala kukulienka na čerešni,
@@ -14484,7 +14484,7 @@ len sa vydaj, len sa vydaj, však uvidíš:]`
   },
   {
     title: "Zaleť sokol, biely vták",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Zaleť sokol, biely vták, ku môjmu milému,:]
@@ -14505,7 +14505,7 @@ večnú lásku tvoju.:]`
   },
   {
     title: "Zaleteli lastovičky",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Zaleteli lastovičky za more, za more,
@@ -14522,7 +14522,7 @@ on si nájde zas inú, zas inú,
   },
   {
     title: "Zapadá slniečko",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Zapadá slniečko za vysoké hory,
@@ -14542,7 +14542,7 @@ keď sa dva milujú jak dva holuby.:]`
   },
   {
     title: "Zasadil jsem čerešenku v humňe",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Zasadil jsem čerešenku v humňe,
@@ -14587,7 +14587,7 @@ a preto, že ťa rada nemám.:]`
   },
   {
     title: "Zasiala som pod oblôčkom ľadníček",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Zasiala som pod oblôčkom ľadníček,
@@ -14607,7 +14607,7 @@ zanechám ja, moja milá, aj teba.:]`
   },
   {
     title: "Zaspala nevěsta",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Zaspala nevěsta v Strážnickej doline.:]
@@ -14624,7 +14624,7 @@ nevěstu bohatú, kravičku rohatú.:]`
   },
   {
     title: "Zašala petrušku pod želenu hrušku",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Zašala petrušku pod želenu hrušku.
@@ -14644,7 +14644,7 @@ ešči ja pre svojho frajíra maľučka.:]`
   },
   {
     title: "Zbohom ostávajte",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Zbohom ostávajte, hej, mamičkine prahy,
@@ -14700,7 +14700,7 @@ Ktože sa to žení, hej, ktože sa vydáva?
   },
   {
     title: "Zelená sa bučina",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Zelená sa bučina, spevom hučí dolina.
@@ -14715,7 +14715,7 @@ Sem ten vatráľ, sem ho daj, a valašku prichystaj.:]`
   },
   {
     title: "Zelený je rozmajrínček",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Zelený je rozmajrínček, červená je ružička,:]
@@ -14729,7 +14729,7 @@ Sem ten vatráľ, sem ho daj, a valašku prichystaj.:]`
   },
   {
     title: "Zjedzte ma, vĺčky, zjedzte",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Zjedzte ma, vĺčky, zjedzte, už ma moja milá nechce,
@@ -14743,7 +14743,7 @@ Zjedzte ma, vĺčky zjedzte, už je koniec mojej ceste,
   },
   {
     title: "Zle je, milá, zle je s náma",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Zle je, milá, zle s náma, zlámala sa pod náma,
@@ -14756,7 +14756,7 @@ od večera do rána.:]`
   },
   {
     title: "Znám ja zahradečku",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Znám ja zahradečku, roste v ní fialka,:]
@@ -14770,7 +14770,7 @@ od večera do rána.:]`
   },
   {
     title: "Zvalila sa skala",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Zvalila sa skala z vŕšku do Dunaja,:]
@@ -14803,7 +14803,7 @@ veľmi nesťaželo.:]`
   },
   {
     title: "Zvoňte mi zvony",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 [:Zvoňte mi, zvony,
@@ -14833,7 +14833,7 @@ mňe nemá nikdo na světe rád.:]`
   },
   {
     title: "Žakarovski valal",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Žakarovski valal, okruhli jak taľar,
@@ -14847,7 +14847,7 @@ mňe nemá nikdo na světe rád.:]`
   },
   {
     title: "Žala by ja, žala",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Žala by ja, žala, hlávku nedvíhala,
@@ -14861,7 +14861,7 @@ mňe nemá nikdo na světe rád.:]`
   },
   {
     title: "Žala naša Anička",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Žala naša Anička, žala trávu,
@@ -14881,7 +14881,7 @@ Nebudem ja, mamička, trávičku žať,
   },
   {
     title: "Žalo dievča, žalo trávu",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Žalo dievča, žalo trávu,
@@ -14910,7 +14910,7 @@ už si v mojom srdci rástla.:]`
   },
   {
     title: "Ženu mám, ženu mám",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Ženu mám, ženu mám, ale s ňou nelíham,
@@ -14924,7 +14924,7 @@ Večer mi nechce spať, ráno mi nechce vstať,
   },
   {
     title: "Žitečko už dozráva, aj ta pšenička",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Žitečko už dozráva, aj ta pšenička.
@@ -14939,7 +14939,7 @@ budem hrát o tu cérečku na veselském rínečku.:]`
   },
   {
     title: "Žitečko dozráva, kto že ho pokosí",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Žitečko dozráva, kto že ho pokosí?:]
@@ -14956,7 +14956,7 @@ budem hrát o tu cérečku na veselském rínečku.:]`
   },
   {
     title: "Živijo",
-    tags: [],
+    tags: ["Neurčené"],
     lyrics:
 `1.
 Živijo, živijo, živijo, živijo!
@@ -14966,7 +14966,7 @@ mnoga ljeta živi byli, mnoga ljeta živijo,
   },
   {
     title: "Žolté ogurki, želené lisce",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Žolté ogurki, želene lisce,
@@ -14992,7 +14992,7 @@ chodzil ši do nas, vecej nebudzeš.`
   },
   {
     title: "Župajda, župajda",
-    tags: [],
+    tags: ["Čechy"],
     lyrics:
 `1.
 Byla jsem mladá, na půdě spala
@@ -15037,7 +15037,7 @@ zaplatíš postýlku, bábu i kňeze.
   },
   {
     title: "Horila Sosna, Palala",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `Horila sosna, palala
 Horila sosna, palala
@@ -15068,7 +15068,7 @@ Už nepidete za družku
   },
   {
     title: "Beťár Som",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1. Beťár som, parobok
 Aj beťára koňa mám.
@@ -15087,7 +15087,7 @@ Ej, dvere zatvárala :]`
   },
   {
     title: "Pidmanula",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `Tys skazala v ponediľok
 Pidem razom na barvinok
@@ -15138,7 +15138,7 @@ Tys mene molodoho z uma z rozumu zvela`
   },
   {
     title: "V tom Zvolene keď ma odobrali",
-    tags: [],
+    tags: ["Podpoľanie"],
     lyrics:
 `1.
 V tom Zvolene keď ma odobrali.
@@ -15192,7 +15192,7 @@ dvanásti mi muzikanti hrali.:]`
   },
   {
     title: "Ameriku som zvandroval",
-    tags: [],
+    tags: ["Šariš"],
     lyrics:
 `1.
 Ameriku som zvandroval, aňi som ňenašporoval,
@@ -15228,7 +15228,7 @@ Netreba nam Ameriku, mame doma repubľiku.`
   },
   {
     title: "Není také polečko",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Neny také polečko, neny také polečko,
@@ -15248,7 +15248,7 @@ Ja mám takú frajerku, ja mám takú frajerku,
   },
   {
     title: "Pod Telgártom",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Pot Ťelgártom f tej doľiňe,
@@ -15276,7 +15276,7 @@ za jaročkom, za jaročkom.:]`
   },
   {
     title: "Na Telgárte hrajú",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 Na Telgárte hrajú, až čierna zem duní,
@@ -15292,7 +15292,7 @@ Keď ju vytiahnete, potom hrať budete,
   },
   {
     title: "Cesta hore, cesta dolu",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Cesta hore, cesta dolu,
@@ -15328,7 +15328,7 @@ hej, ňeda mňa mamička moja.:]`
   },
   {
     title: "Išlo dzifče do Hradok do mľina",
-    tags: [],
+    tags: ["Spiš"],
     lyrics:
 `1.
 Išlo dzifče do Hradok do mľina,
@@ -15350,7 +15350,7 @@ s pravu ručku vojačka vitala,
   },
   {
     title: "Ej, zahraj mi hudačku",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Ej, zahraj mi hudačku, na cenku strunočku,
@@ -15401,7 +15401,7 @@ a ja stal na dvore kolo vašej sceni.`
   },
   {
     title: "Borovka, borovka",
-    tags: [],
+    tags: ["Stredné Slovensko"],
     lyrics:
 `1.
 [:Borovka, borovka, zelená je borovka,:]
@@ -15418,7 +15418,7 @@ a ja stal na dvore kolo vašej sceni.`
   },
   {
     title: "Ej, beťar ja dzivočka",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Ej, beťa, ja dzivočka, ej, mam beťarske očka,
@@ -15492,7 +15492,7 @@ Choc me zabijece, choc me polamece,
   },
   {
     title: "Čerešeň, čerešeň",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [: Čerešeň, čerešeň, 
@@ -15514,7 +15514,7 @@ až me boli hlava, bože moj. :]`
   },
   {
     title: "Fodri, mojo fodri",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Fodri, mojo fodri,
@@ -15536,7 +15536,7 @@ jag zme še rozešľi.:]`
   },
   {
     title: "Dzifče počarovne",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 [:Dzifče počarovne, ňezaľup śe do mňe,:]
@@ -15564,7 +15564,7 @@ zluč me s tym dzivčecom, co ši me rozlučil.`
   },
   {
     title: "Ej, čarni ši jak cigan",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Ej, čarny ši jak cigan,
@@ -15592,7 +15592,7 @@ tote naše lička, tote naše lička.:]`
   },
   {
     title: "Hodzel ši kolo nas",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `
 1.
@@ -15615,7 +15615,7 @@ aľe moj veľki žaľ ňigda ňepreboľi.:]`
   },
   {
     title: "Nebojim sa pana",
-    tags: [],
+    tags: ["Východné Slovensko"],
     lyrics:
 `1.
 Ňebojim, ňebojim sa pána,
