@@ -322,6 +322,14 @@ button.chip{cursor:pointer;font-family:inherit;-webkit-appearance:none;appearanc
   display:inline-flex;align-items:center;gap:6px;
 }
 .chip-search:active{background:#fff;}
+/* Tiny "+N" oval that sits inline after the 3-tag preview in the Podľa tagu
+   row — deliberately smaller/quieter than a real tag chip so it reads as
+   "more" rather than as another tag. */
+.chip-more{
+  background:rgba(255,255,255,.32);color:#fff;border:1px solid rgba(255,255,255,.5);
+  border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:700;font-family:inherit;cursor:pointer;
+}
+.chip-more:active{background:rgba(255,255,255,.5);}
 .history-clear{
   background:none;border:none;color:rgba(255,255,255,.75);font-size:12.5px;font-family:inherit;
   text-decoration:underline;padding:6px 2px 2px;

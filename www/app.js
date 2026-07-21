@@ -571,21 +571,33 @@ function renderSongsRoot(){
 
   // Always-available tag browser, separate from the history below — lets you
   // find songs by tag (e.g. a region like "Orava") without having to know/type
-  // its exact spelling first. Collapsed to a 3-tag preview by default since
-  // the full list (21 tags) ate up half the screen; tagBrowseExpanded (a
-  // plain module-level flag, not per-render state) remembers the user opened
-  // it for the rest of the session.
+  // its exact spelling first. Collapsed to a 3-tag preview (the 3 most-used
+  // tags) by default since the full list (21 tags) ate up half the screen.
+  // The "+N" expander sits inline in the same chip row rather than as its own
+  // full-width button below. tagBrowseExpanded (a plain module-level flag,
+  // not per-render state) remembers the user opened it for the rest of the
+  // session. Tags are sorted by usage (most songs first, ties broken
+  // alphabetically) both collapsed and expanded, so the first 3 chips don't
+  // reshuffle when it opens — expanding just appends the rest after them.
   if (App.tags.length){
     html += '<div class="section-title">Podľa tagu</div>';
+    var tagCounts = {};
+    App.songs.forEach(function(s){
+      (s.tagIds || []).forEach(function(id){ tagCounts[id] = (tagCounts[id] || 0) + 1; });
+    });
+    var sortedTags = App.tags.slice().sort(function(a, b){
+      var diff = (tagCounts[b.id] || 0) - (tagCounts[a.id] || 0);
+      return diff !== 0 ? diff : a.name.localeCompare(b.name, 'sk');
+    });
+    var visibleTags = tagBrowseExpanded ? sortedTags : sortedTags.slice(0, 3);
     html += '<div class="chip-row" id="tagBrowseRow">';
-    var visibleTags = tagBrowseExpanded ? App.tags : App.tags.slice(0, 3);
     visibleTags.forEach(function(t){
       html += '<button type="button" class="chip-search" data-browse-tag="'+t.id+'">'+escapeHtml(t.name)+'</button>';
     });
-    html += '</div>';
-    if (!tagBrowseExpanded && App.tags.length > 3){
-      html += '<button type="button" class="browse-all-link" id="expandTagsBtn">'+iconPlus(16)+' Zobraziť všetky tagy ('+App.tags.length+')</button>';
+    if (!tagBrowseExpanded && sortedTags.length > 3){
+      html += '<button type="button" class="chip-more" id="expandTagsBtn">+'+(sortedTags.length - 3)+'</button>';
     }
+    html += '</div>';
   }
 
   // No active query: default view is history, not the full library.
