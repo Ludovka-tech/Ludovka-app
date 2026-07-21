@@ -596,6 +596,8 @@ function renderSongsRoot(){
     });
     if (!tagBrowseExpanded && sortedTags.length > 3){
       html += '<button type="button" class="chip-more" id="expandTagsBtn">+'+(sortedTags.length - 3)+'</button>';
+    } else if (tagBrowseExpanded && sortedTags.length > 3){
+      html += '<button type="button" class="chip-more" id="collapseTagsBtn">Skryť</button>';
     }
     html += '</div>';
   }
@@ -634,6 +636,8 @@ function renderSongsRoot(){
   });
   var expandTagsBtn = document.getElementById('expandTagsBtn');
   if (expandTagsBtn) expandTagsBtn.onclick = function(){ tagBrowseExpanded = true; render(); };
+  var collapseTagsBtn = document.getElementById('collapseTagsBtn');
+  if (collapseTagsBtn) collapseTagsBtn.onclick = function(){ tagBrowseExpanded = false; render(); };
   var clearHistoryBtn = document.getElementById('clearHistoryBtn');
   if (clearHistoryBtn) clearHistoryBtn.onclick = function(){ clearRecentSearches(); clearRecentSongs(); render(); };
   document.getElementById('browseAllBtn').onclick = function(){ push({name:'songs-all', query:''}); };
