@@ -83,15 +83,17 @@ html[data-nav-dir="cross"]::view-transition-old(page-content){ animation:ludovka
 html[data-nav-dir="cross"]::view-transition-new(page-content){ animation:ludovka-fade-in 380ms both; }
 
 /* Tab switches triggered by a swipe (as opposed to tapping the bottom nav)
-   reuse the same slide keyframes but shorter — by the time a swipe crosses
-   the trigger threshold your finger has already covered real distance, so
-   the ~460ms tap animation (which starts from a standstill) reads as slow. */
-html[data-nav-dir="swipe-forward"] ::view-transition-group(page-content){ animation-duration:220ms; }
-html[data-nav-dir="swipe-forward"]::view-transition-old(page-content){ animation:ludovka-slide-out-left 220ms both cubic-bezier(.22,1,.36,1); }
-html[data-nav-dir="swipe-forward"]::view-transition-new(page-content){ animation:ludovka-slide-in-right 220ms both cubic-bezier(.22,1,.36,1); }
-html[data-nav-dir="swipe-back"] ::view-transition-group(page-content){ animation-duration:220ms; }
-html[data-nav-dir="swipe-back"]::view-transition-old(page-content){ animation:ludovka-slide-out-right 220ms both cubic-bezier(.22,1,.36,1); }
-html[data-nav-dir="swipe-back"]::view-transition-new(page-content){ animation:ludovka-slide-in-left 220ms both cubic-bezier(.22,1,.36,1); }
+   reuse the same slide keyframes but shorter than the tap version — by the
+   time a swipe crosses the trigger threshold your finger has already
+   covered real distance, so the ~460ms tap animation (which starts from a
+   standstill) reads as slow. Still a bit longer than instant so it reads
+   as a natural glide rather than a jump-cut. */
+html[data-nav-dir="swipe-forward"] ::view-transition-group(page-content){ animation-duration:320ms; }
+html[data-nav-dir="swipe-forward"]::view-transition-old(page-content){ animation:ludovka-slide-out-left 320ms both cubic-bezier(.22,1,.36,1); }
+html[data-nav-dir="swipe-forward"]::view-transition-new(page-content){ animation:ludovka-slide-in-right 320ms both cubic-bezier(.22,1,.36,1); }
+html[data-nav-dir="swipe-back"] ::view-transition-group(page-content){ animation-duration:320ms; }
+html[data-nav-dir="swipe-back"]::view-transition-old(page-content){ animation:ludovka-slide-out-right 320ms both cubic-bezier(.22,1,.36,1); }
+html[data-nav-dir="swipe-back"]::view-transition-new(page-content){ animation:ludovka-slide-in-left 320ms both cubic-bezier(.22,1,.36,1); }
 
 /* Song "dive in": the tapped title morphs into the song's reader-mode title. */
 ::view-transition-group(song-morph){ animation-duration:620ms; animation-timing-function:cubic-bezier(.22,1,.36,1); }
